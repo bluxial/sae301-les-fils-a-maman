@@ -1,6 +1,6 @@
-# Validation locale — 16 octobre 2026
+# Validation locale et production — 16 octobre 2026
 
-Environnement testé : `http://sae301.ddev.site/`, thème enfant actif, Chrome. Ces résultats concernent DDEV ; la production n’a pas été déployée.
+Environnement local testé : `http://sae301.ddev.site/`, thème enfant actif, Chrome. Les contrôles de production sont décrits plus bas.
 
 ## Catalogue et présentation
 
@@ -38,4 +38,17 @@ Le parcours complet a réussi sans erreur JavaScript ni requête en échec relev
 
 ## Limites de cette validation
 
-Il ne s’agit pas d’un audit d’accessibilité complet ni d’une validation multi-navigateurs. Les options de produits, champs SCF, stocks, emails et paiements seront contrôlés lorsqu’ils seront implémentés. Rejouer les vérifications après le transfert vers mmi.unilim.fr et après les mises à jour de WordPress/WooCommerce.
+Il ne s’agit pas d’un audit d’accessibilité complet ni d’une validation multi-navigateurs. Les options de produits, champs SCF, stocks, emails et paiements seront contrôlés lorsqu’ils seront implémentés. Rejouer les vérifications après les mises à jour de WordPress/WooCommerce.
+
+## Production MMI — 16 octobre 2026, 15 h 37
+
+Adresse : https://mmi.unilim.fr/~maree2/r3SAE01/. PHP 8.4.26, thème 0.2.1, préfixe sae301_. La base importée comporte 52 tables, neuf produits et un compte administrateur. Les 63 fichiers des dix pièces jointes, avec leurs variantes, sont présents.
+
+- Dix-sept routes contrôlées dans Chrome avec la session universitaire déjà ouverte : accueil, boutique, trois catégories, neuf fiches, panier, compte et commande.
+- Neuf produits dans la boutique, trois par catégorie, images et prix attendus. Aucun visuel cassé, aucune erreur PHP affichée ou console relevée, aucune référence DDEV dans le HTML contrôlé. Les polices du thème sont chargées.
+- Ajout AJAX d’une portion de croquettes : compteur à 1. Ajout de deux portions depuis la fiche : compteur à 3, panier natif affichant trois unités et 24 €. Retrait du produit de test : panier vide et compteur à 0. Aucune commande créée.
+- À 390 px, menu mobile ouvert puis fermé par Échap ; aucun débordement horizontal ni image cassée sur l’accueil. L’affichage du navigateur a ensuite été rétabli.
+- L’adresse wp-admin mène au formulaire WordPress de connexion. Le rôle administrateur est conservé ; aucune session administrative interactive n’a été ouverte pendant ce contrôle.
+- Les outils temporaires de restauration ont été retirés. SQL et configuration privée restent hors du dépôt et les sauvegardes hors de la racine web.
+
+Une requête anonyme reçoit HTTP 401 avec l’authentification universitaire « Devoir MMI ». Les vérifications ont utilisé la session Chrome existante, sans extraire ses cookies ni identifiants HTTP. Le transfert n’ajoute pas les options, les paiements ou la livraison des prochaines itérations.

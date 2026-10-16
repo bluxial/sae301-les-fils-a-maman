@@ -7,10 +7,10 @@
 | US-1.1 | DDEV actif, PHP 8.4, MariaDB 11.8, WordPress 7.1.3. Préfixe initial `wp_` migré en `sae301_` après sauvegarde ; 52 tables, neuf produits et droits administrateur conservés. Le mot de passe existant n’a pas été modifié ni audité. |
 | US-1.2 | WooCommerce 11.2.1, Storefront 4.6.2, SCF déjà présents ; Classic Editor 1.7.0 installé et activé. |
 | US-1.3 | Thème enfant créé et activé ; historique Git avec préfixes d’itérations. |
-| US-1.4 | Production différée à la demande de Jules : transfert prévu avec FileZilla et phpMyAdmin après validation locale. |
-| US-1.5 | Procédure et journal préparés ; accès frontend/backend de production à vérifier après transfert. |
+| US-1.4 | Site déployé le 16/10/2026 dans r3SAE01 sur mmi.unilim.fr après sauvegarde, transfert des fichiers et import de la base adaptée. |
+| US-1.5 | Frontend, écran de connexion WordPress et rôle administrateur vérifiés ; journal et procédure actualisés. |
 
-Le dépôt public est disponible à l’adresse https://github.com/bluxial/sae301-les-fils-a-maman. IT-1 ne sera entièrement validée qu’une fois la production vérifiée.
+Le dépôt public est disponible à l’adresse https://github.com/bluxial/sae301-les-fils-a-maman. La production est accessible sur https://mmi.unilim.fr/~maree2/r3SAE01/ avec l’authentification MMI. Les parcours vérifiés sont détaillés dans VALIDATION.md.
 
 ## IT-2 : catalogue et produits simples
 

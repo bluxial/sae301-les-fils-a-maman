@@ -1,6 +1,12 @@
 # Transfert DDEV → mmi.unilim.fr
 
-Cette procédure est préparée pour le transfert que Jules réalisera avec FileZilla et phpMyAdmin. Aucune mise en production n’a encore été exécutée.
+Le site a été déployé le **16 octobre 2026 à 15 h 37 (Europe/Paris)** : [site MMI](https://mmi.unilim.fr/~maree2/r3SAE01/) et [administration](https://mmi.unilim.fr/~maree2/r3SAE01/wp-admin/).
+
+Le transfert a utilisé SSH/SFTP et WP-CLI. Le dossier existant a été sauvegardé hors de public_html ; la base cible était vide. WordPress, les trois extensions utiles, Storefront, le thème enfant et les 63 fichiers de médias ont été transférés. L’export a adapté les URL et les données sérialisées sans modifier la base locale : 52 tables et neuf produits. La configuration de production utilise de nouvelles clés et reste exclue de GitHub.
+
+Le serveur utilise PHP 8.4.26. Les règles Apache ciblent le sous-dossier /~maree2/r3SAE01/. Les médias appartenant au service PHP ont été restaurés avec un outil temporaire limité aux images, retiré après utilisation. L’accès HTTP « Devoir MMI » reste celui de l’hébergement. Les contrôles réalisés figurent dans VALIDATION.md.
+
+Le code déployé correspond au commit **30ca4fffc352a679f76c9c5b196cdacc57a8db3f**, version 0.2.1. Les étapes ci-dessous servent aux prochains transferts.
 
 ## Préparation locale
 
