@@ -27,6 +27,15 @@ Le parcours complet a réussi sans erreur JavaScript ni requête en échec relev
 - Préfixe de base `sae301_` confirmé ; neuf produits conservés et rôle administrateur toujours opérationnel après migration.
 - Sauvegardes conservées hors du dossier web ; aucun SQL, identifiant ou fichier de configuration privé ne fait partie du dépôt du thème.
 
+## Réécriture du code — version 0.2.1
+
+- Syntaxe des onze fichiers PHP contrôlée dans DDEV et des fichiers JavaScript contrôlée avec Node.
+- Parcours WooCommerce et trente contrôles responsive ci-dessus rejoués avec succès après réécriture.
+- Cinquante-quatre captures avant/après couvrent l’accueil, le catalogue, les catégories, les neuf fiches, le panier, le compte, la commande et le design system, sur ordinateur et mobile.
+- Comparaison détaillée de dix-sept vues : éléments visibles, dimensions, polices, couleurs, espacements, bordures, ombres et attributs des images identiques. Les deux captures du design system sont identiques pixel par pixel. Certaines captures WordPress présentent de légères variations de rasterisation des photos ; les fichiers des visuels n’ont pas été modifiés.
+- Design system testé depuis le fichier local et depuis le thème servi en HTTP : filtres, options, quantités, panier de démonstration, copie du CSS et des couleurs, exemples de code et menu mobile fonctionnels, sans erreur JavaScript relevée.
+- Le code utilise des fonctions nommées, des conditions et des boucles. Les appels et protections nécessaires à WordPress et WooCommerce sont conservés. Les feuilles CSS gardent leurs couches `@layer`.
+
 ## Limites de cette validation
 
 Il ne s’agit pas d’un audit d’accessibilité complet ni d’une validation multi-navigateurs. Les options de produits, champs SCF, stocks, emails et paiements seront contrôlés lorsqu’ils seront implémentés. Rejouer les vérifications après le transfert vers mmi.unilim.fr et après les mises à jour de WordPress/WooCommerce.

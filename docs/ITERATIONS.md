@@ -10,7 +10,7 @@
 | US-1.4 | Production différée à la demande de Jules : transfert prévu avec FileZilla et phpMyAdmin après validation locale. |
 | US-1.5 | Procédure et journal préparés ; accès frontend/backend de production à vérifier après transfert. |
 
-IT-1 ne sera entièrement validée qu’une fois la production et le dépôt distant vérifiés.
+Le dépôt public est disponible à l’adresse https://github.com/bluxial/sae301-les-fils-a-maman. IT-1 ne sera entièrement validée qu’une fois la production vérifiée.
 
 ## IT-2 : catalogue et produits simples
 
@@ -23,6 +23,8 @@ IT-1 ne sera entièrement validée qu’une fois la production et le dépôt dis
 | US-2.5 | Navigation réelle accueil → catégorie → produit ; liens vers le panier et le compte. |
 
 Adresses corrigées pour les croquettes, les beignets et les œufs mimosa, qui portaient auparavant des slugs de catégories. Le mode WooCommerce « bientôt disponible » a été désactivé sur DDEV pour permettre les tests des pages publiques.
+
+La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les techniques retenues pour le projet : HTML/PHP simple, CSS avec `@layer` et JavaScript sans framework. Le catalogue de composants est livré dans `design-system/system.html`, avec des fichiers CSS et JavaScript séparés. Ses démonstrations d’options et de panier restent des exemples ; elles ne remplacent pas les prochaines itérations WooCommerce.
 
 ## À traiter ensuite
 
