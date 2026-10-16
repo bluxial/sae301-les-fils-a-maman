@@ -1,54 +1,64 @@
 # Les Fils à Maman — SAE 3.01
 
-Thème enfant **Storefront**, réalisé à partir du Figma de Jules Marée et du design system HTML/CSS. Les produits, leurs prix, leurs descriptions et leurs catégories proviennent de WooCommerce.
+Thème enfant Storefront réalisé à partir du Figma et du design system. Le site utilise les produits, les prix, les descriptions et le panier de WooCommerce.
+
+[Dépôt GitHub](https://github.com/bluxial/sae301-les-fils-a-maman)
 
 ## Installation
 
-Installer WordPress, WooCommerce, Storefront, Secure Custom Field et Classic Editor, puis copier ce dossier dans `wp-content/themes/les-fils-a-maman/` et activer **Les Fils à Maman — SAE301**. Conserver le thème parent Storefront installé.
+1. Installer WordPress, WooCommerce, Storefront, Secure Custom Field et Classic Editor.
+2. Copier ce dossier dans wp-content/themes/les-fils-a-maman/.
+3. Activer le thème enfant dans **Apparence → Thèmes**. Garder Storefront installé.
+4. Choisir la page Click & Collect comme page d’accueil dans les réglages WordPress.
+5. Vérifier les pages boutique, panier, commande et compte dans les réglages WooCommerce.
+6. Ajouter les produits et leurs images depuis l’administration.
 
-Dans le projet local DDEV existant :
+Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catégories. Le script utilisé une fois pour préparer ces contenus a été retiré.
 
-```sh
-ddev wp theme activate les-fils-a-maman
-```
+## Fichiers
 
-Le script `tools/setup-local.php` associe les neuf visuels aux produits déjà saisis, corrige leurs slugs, ajoute les descriptions courtes manquantes et crée l’accueil Click & Collect. Il ne recrée pas les produits et ne modifie pas leurs prix ou leurs descriptions longues. Il est réexécutable sans duplication des médias. Sauvegarder la base avant de l’utiliser :
+| Fichier | Rôle |
+| --- | --- |
+| functions.php | Charge les deux fichiers PHP du dossier inc. |
+| inc/setup.php | Charge les styles et les scripts ; adapte Storefront ; actualise le compteur du panier. |
+| inc/catalogue.php | Lit les catégories et prépare les textes et les boutons des produits. |
+| header.php, footer.php | Navigation et pied de page. |
+| front-page.php | Accueil et cartes des catégories. |
+| page.php, index.php | Pages WordPress et affichage de secours. |
+| woocommerce/ | Boutique, cartes et fiches produits. |
+| system.css | Couleurs, polices et composants partagés. |
+| assets/css/wordpress.css | Mise en page propre au site WordPress. |
+| assets/js/theme.js | Menu mobile et boutons de quantité. |
+| design-system/ | Catalogue HTML et ses démonstrations JavaScript. |
+| docs/ | Itérations, vérifications, journal et transfert en production. |
 
-```sh
-ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/setup-local.php
-```
+## Écriture du code
 
-## Architecture
+Le PHP utilise des fonctions nommées, des tableaux, des boucles et des conditions. Le JavaScript utilise le DOM et les événements du navigateur, sans bibliothèque ajoutée. Le CSS utilise des classes, des variables, Flexbox, Grid et des media queries.
 
-```text
-functions.php             Chargement des modules du thème
-inc/setup.php             Hooks WordPress/Storefront, CSS, fragments du panier
-inc/catalogue.php         Présentation et lecture des données WooCommerce
-header.php / footer.php   Navigation, identité et pied de page
-front-page.php            Accueil et catégories dynamiques
-page.php                  Pages natives WordPress/WooCommerce
-woocommerce/              Surcharges ciblées du catalogue et de la fiche produit
-system.css                Design system portable avec @layer
-assets/css/wordpress.css  Adaptation des composants aux interfaces natives
-assets/js/theme.js        Menu mobile et quantité du formulaire WooCommerce
-assets/                   Polices et visuels originaux
-docs/                     Audit, validation, déploiement et journal
-```
+Les fonctions add_action et add_filter relient nos fonctions à WordPress. La fonction remove_action retire les éléments Storefront remplacés par notre mise en page. Les fonctions esc_html, esc_attr, esc_url et wp_kses_post préparent les données avant leur affichage.
 
-Ordre de cascade : `theme`, `lf-reset`, `lf-fonts`, `lf-tokens`, `lf-base`, `lf-components`, `lf-utilities`, `lf-overrides`. Le périmètre est `.lf-system`, ajouté au `body`. Les feuilles et styles inline Storefront sont rangés dans `theme`, y compris le CSS ajouté tardivement par son Customizer. Les adaptations propres à WordPress sont séparées du design system.
+Les styles restent organisés avec @layer :
 
-Les fichiers sous `woocommerce/` indiquent la version de leur modèle de référence ; les vérifier lors des mises à jour de WooCommerce. Les hooks des formulaires et les données structurées sont conservés. Le prix et le panier sont calculés par WooCommerce : aucun tarif n’est recopié en JavaScript.
+    @layer theme, lf-reset, lf-fonts, lf-tokens, lf-base,
+           lf-components, lf-utilities, lf-overrides;
 
-## Périmètre livré
+La couche theme contient les styles Storefront et WooCommerce. Les autres couches contiennent nos styles. La classe lf-system porte les variables et les règles de base ; les composants utilisent des classes commençant par lf-.
 
-- IT-1 : DDEV fonctionnel ; thème enfant ; Classic Editor ; préfixe `sae301_` ; sauvegardes ; suivi Git local et procédure de déploiement. La publication mmi.unilim.fr sera réalisée après validation locale.
-- IT-2 : accueil, boutique, catégories, neuf produits simples avec images, navigation, fiches produits, responsive et ajout au panier natif.
-- Les options variables, champs SCF, retrait/livraison/paiement, compte personnalisé, emails et avis seront traités dans les itérations correspondantes. Les onglets/éléments Storefront absents de la maquette sont retirés de la fiche pour cette version.
+## Design system
 
-## Sources
+Ouvrir design-system/system.html dans un navigateur. Le catalogue utilise les images et les polices du dossier assets. Son panier et ses options sont des démonstrations locales. Le panier du site WordPress reste celui de WooCommerce.
 
-- [Figma — MAREE Jules, Les Fils à Maman](https://www.figma.com/design/e8BqdgVoRoGSz7QAoYilwo?node-id=19-488)
+## Périmètre
+
+IT-1 et IT-2 en local : environnement DDEV, thème enfant, accueil, boutique, catégories, neuf produits simples, fiches et navigation responsive.
+
+La mise en production sur mmi.unilim.fr sera faite après validation locale, selon docs/DEPLOIEMENT.md. Les variantes, les champs SCF, la livraison et les paiements appartiennent aux itérations suivantes.
+
+Les logos et les photographies de l’enseigne sont utilisés pour ce projet pédagogique. Les configurations privées, les mots de passe et les exports SQL sont exclus du dépôt.
+
+## Références
+
+- [Figma — Les Fils à Maman](https://www.figma.com/design/e8BqdgVoRoGSz7QAoYilwo?node-id=19-488)
 - [Thèmes enfants WordPress](https://developer.wordpress.org/themes/advanced-topics/child-themes/)
-- [Surcharges de templates WooCommerce](https://developer.woocommerce.com/docs/theming/theme-development/template-structure/)
-
-Les logos et photographies de l’enseigne sont utilisés pour ce projet pédagogique. Les bases de données, configurations privées et mots de passe sont exclus du dépôt.
+- [Modèles WooCommerce](https://developer.woocommerce.com/docs/theming/theme-development/template-structure/)
