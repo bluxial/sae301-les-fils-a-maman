@@ -4,6 +4,8 @@ Thème enfant Storefront réalisé à partir du Figma et du design system. Le si
 
 [Dépôt GitHub](https://github.com/bluxial/sae301-les-fils-a-maman)
 
+[Site sur MMI](https://mmi.unilim.fr/~maree2/r3SAE01/) · [Administration WordPress](https://mmi.unilim.fr/~maree2/r3SAE01/wp-admin/)
+
 ## Installation
 
 1. Installer WordPress, WooCommerce, Storefront, Secure Custom Field et Classic Editor.
@@ -53,7 +55,7 @@ Ouvrir design-system/system.html dans un navigateur. Le catalogue utilise les im
 
 IT-1 et IT-2 en local : environnement DDEV, thème enfant, accueil, boutique, catégories, neuf produits simples, fiches et navigation responsive.
 
-La mise en production sur mmi.unilim.fr sera faite après validation locale, selon docs/DEPLOIEMENT.md. Les variantes, les champs SCF, la livraison et les paiements appartiennent aux itérations suivantes.
+Le site est déployé dans r3SAE01 sur mmi.unilim.fr depuis le 16 octobre 2026. L’accès utilise l’authentification universitaire « Devoir MMI ». Le transfert et ses contrôles sont décrits dans docs/DEPLOIEMENT.md et docs/VALIDATION.md. Les variantes, les champs SCF, la livraison et les paiements appartiennent aux itérations suivantes.
 
 Les logos et les photographies de l’enseigne sont utilisés pour ce projet pédagogique. Les configurations privées, les mots de passe et les exports SQL sont exclus du dépôt.
 
