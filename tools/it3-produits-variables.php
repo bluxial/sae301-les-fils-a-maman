@@ -3,9 +3,10 @@
  * IT-3 : transforme 3 produits simples en produits variables.
  * À lancer depuis le dossier du site :
  * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it3-produits-variables.php
+ * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it3-produits-variables
  * Le script peut être relancé : il recrée les déclinaisons.
  */
-if (!defined('WP_CLI')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -22,7 +23,7 @@ function lf_tool_make_variable($mot, $libelle, $choix) {
     $id = lf_tool_find_product($mot);
 
     if ($id === 0) {
-        WP_CLI::warning('Produit introuvable : ' . $mot);
+        lf_tool_message('Attention : produit introuvable : ' . $mot);
         return;
     }
 
@@ -68,7 +69,7 @@ function lf_tool_make_variable($mot, $libelle, $choix) {
     WC_Product_Variable::sync($id);
     wc_delete_product_transients($id);
 
-    WP_CLI::success(get_the_title($id) . ' : ' . count($choix) . ' déclinaisons');
+    lf_tool_message('OK : ' . get_the_title($id) . ' : ' . count($choix) . ' déclinaisons');
 }
 
 // Taille / proportion : stock disponible (20) et faible (3).

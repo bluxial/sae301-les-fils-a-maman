@@ -1,7 +1,17 @@
 <?php
-// Fonctions communes aux scripts du dossier tools (lancés avec WP-CLI uniquement).
-if (!defined('WP_CLI')) {
+// Fonctions communes aux scripts du dossier tools.
+// On les lance avec WP-CLI (ddev wp eval-file ...) ou, en local, avec ?lf_outil=nom-du-script.
+if (!defined('ABSPATH')) {
     exit;
+}
+
+// Affiche un message dans le terminal (WP-CLI) ou dans la page (navigateur).
+function lf_tool_message($texte) {
+    if (defined('WP_CLI') && WP_CLI) {
+        WP_CLI::log($texte);
+    } else {
+        echo esc_html($texte) . "<br>\n";
+    }
 }
 
 // Renvoie l'identifiant du produit dont le nom contient $mot (0 si aucun).

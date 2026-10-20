@@ -43,9 +43,18 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-4.3 | Fonction `lf_product_facts()` accrochée à `woocommerce_single_product_summary` (priorité 22) : après la description (20) et avant le prix (25). Affichage avec le composant `lf-facts` de la maquette. |
 | US-4.4 | Le visiteur voit composition, allergènes et énergie sur la fiche du produit. Rien ne s’affiche si les champs sont vides. |
 
+## IT-5 : panier et expédition
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-5.1 | Script `tools/it5-paiement-livraison.php` : « Virement bancaire » et « Paiement au retrait » (paiement à la livraison de WooCommerce renommé, réservé au retrait au restaurant). Réglages dans **WooCommerce → Réglages → Paiements**. |
+| US-5.2 | Zone « Paris » (France, codes postaux 75*) : Retrait au restaurant gratuit, Livraison à vélo 4,90 €, Livraison express 8,90 €. Ailleurs : retrait au restaurant seulement. Adresse du restaurant : 7 bis rue Geoffroy-Marie, 75009 Paris. |
+| US-5.3 | Pages panier et commande passées en version classique (shortcodes) pour pouvoir les personnaliser. Modèle `woocommerce/cart/cart.php` simplifié : articles en cartes `lf-cart-item`, récapitulatif `lf-summary` comme dans la maquette. |
+| US-5.4 | Testé en local : ajout de 8 croquettes (14 €), panier, choix du mode d’expédition. Avec le code postal 75009 : trois modes ; la livraison à vélo ajoute 4,90 € (total 18,90 €) et retire le paiement au retrait. |
+
 ## À traiter ensuite
 
-IT-5/6 : panier personnalisé, livraison/retrait, paiements et validation. Aucun créneau ou mode de paiement fictif n’est présenté comme opérationnel dans cette version.
+IT-6 : instructions de retrait et validation de commande. Aucun créneau ou mode de paiement fictif n’est présenté comme opérationnel dans cette version.
 
 ## Sauvegardes locales
 

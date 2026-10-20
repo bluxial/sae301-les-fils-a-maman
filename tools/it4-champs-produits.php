@@ -3,9 +3,10 @@
  * IT-4 : remplit les champs Composition, Allergènes et Énergie des produits.
  * À lancer depuis le dossier du site :
  * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it4-champs-produits.php
+ * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it4-champs-produits
  * Compositions reprises de la carte du restaurant. Allergènes et calories : valeurs indicatives.
  */
-if (!defined('WP_CLI')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -27,7 +28,7 @@ foreach ($infos as $mot => $valeurs) {
     $id = lf_tool_find_product($mot);
 
     if ($id === 0) {
-        WP_CLI::warning('Produit introuvable : ' . $mot);
+        lf_tool_message('Attention : produit introuvable : ' . $mot);
         continue;
     }
 
@@ -35,5 +36,5 @@ foreach ($infos as $mot => $valeurs) {
     update_field('field_lf_allergenes', $valeurs[1], $id);
     update_field('field_lf_calories', $valeurs[2], $id);
 
-    WP_CLI::success(get_the_title($id) . ' : champs remplis');
+    lf_tool_message('OK : ' . get_the_title($id) . ' : champs remplis');
 }
