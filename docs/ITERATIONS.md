@@ -48,7 +48,7 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | User story | Mise en œuvre |
 | --- | --- |
 | US-5.1 | Script `tools/it5-paiement-livraison.php` : « Virement bancaire » et « Paiement au retrait » (paiement à la livraison de WooCommerce renommé, réservé au retrait au restaurant). Réglages dans **WooCommerce → Réglages → Paiements**. |
-| US-5.2 | Zone « Paris » (France, codes postaux 75*) : Retrait au restaurant gratuit, Livraison à vélo 4,90 €, Livraison express 8,90 €. Ailleurs : retrait au restaurant seulement. Adresse du restaurant : 7 bis rue Geoffroy-Marie, 75009 Paris. |
+| US-5.2 | Zone « Paris » (France, codes postaux 75*) : Retrait au restaurant gratuit, Livraison à vélo 4,90 €, Livraison express 8,90 € (depuis IT-19 : livraison à vélo au poids, express retirée). Ailleurs : retrait au restaurant seulement. Adresse du restaurant : 7 bis rue Geoffroy-Marie, 75009 Paris. |
 | US-5.3 | Pages panier et commande passées en version classique (shortcodes) pour pouvoir les personnaliser. Modèle `woocommerce/cart/cart.php` simplifié : articles en cartes `lf-cart-item`, récapitulatif `lf-summary` comme dans la maquette. |
 | US-5.4 | Testé en local : ajout de 8 croquettes (14 €), panier, choix du mode d’expédition. Avec le code postal 75009 : trois modes ; la livraison à vélo ajoute 4,90 € (total 18,90 €) et retire le paiement au retrait. |
 
@@ -156,6 +156,14 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-18.1 | Script `tools/it18-filtres.php` : attribut global « Taille » (**Produits → Attributs**) avec deux valeurs, Petite faim (6 produits) et Grosse faim (3 produits), ajouté sans toucher aux options des produits variables. Le prix est filtré directement par WooCommerce. |
 | US-18.2 | `inc/filtres.php` : barre latérale « Filtrer » à gauche de la grille (au-dessus sur mobile) : recherche, prix minimum et maximum, pastilles de taille. Le formulaire envoie les paramètres reconnus par WooCommerce (`s`, `min_price`, `max_price`, `filter_taille`) ; il reste sur la catégorie ou l’envie en cours. |
 | US-18.3 | Testé en local : Grosse faim → cordon bleu, tartare, œufs Bénédicte ; prix 10–20 € → croquettes, cordon bleu, œufs Bénédicte ; Petite faim ≤ 7 € → œufs mimosa, cookie ; recherche « cookie » → fiche du cookie ; Plats + Grosse faim → 3 plats. |
+
+## IT-19 : tarifs selon le poids
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-19.1 | `inc/livraison-poids.php` : le prix des livraisons « forfait » (Livraison à vélo) est remplacé par celui de la tranche correspondant au poids total du panier (`woocommerce_package_rates`). Script `tools/it19-poids.php` : poids d’une portion sur les 9 produits (0,15 à 0,6 kg, 0,6 kg pour 8 croquettes), unité kg. La livraison express (prix fixe) est retirée de la zone Paris pour garder un seul mode de livraison au poids. |
+| US-19.2 | Trois tranches réglables dans **WooCommerce → Réglages → Expédition → Options d’expédition** : jusqu’à 1 kg 3,90 €, jusqu’à 3 kg 5,90 €, au-delà 8,90 €. |
+| US-19.3 | Le poids et le prix s’affichent dans le panier et au checkout (« Livraison à vélo · 2,1 kg : 5,90 € »). Testé en local avec le calculateur du panier (75009) : 0,9 kg → 3,90 € ; 2,1 kg → 5,90 € ; 3,7 kg → 8,90 €. |
 
 ## À traiter ensuite
 

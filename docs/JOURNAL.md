@@ -23,5 +23,6 @@
 | 20/10/2026 | IT-16 / 0.16.0 | DDEV local | Section « Les nouveautés » (3 derniers produits, dynamique) sur la page d’accueil. | Non déployée. |
 | 20/10/2026 | IT-18 / 0.18.0 | DDEV local | Barre latérale de filtres (recherche, prix, taille), attribut global Taille. Script `tools/it18-filtres.php`. IT-17 (factures PDF) en attente de l’installation de l’extension. | Non déployée. |
 | 20/10/2026 | IT-17 / 0.18.0 | DDEV local | Factures PDF (extension PDF Invoices & Packing Slips) avec modèle aux couleurs de l’enseigne dans le thème, jointes aux e-mails et téléchargeables dans Mon compte. Script `tools/it17-factures.php`. | Non déployée. |
+| 20/10/2026 | IT-19 / 0.19.0 | DDEV local | Poids des produits, livraison à vélo selon 3 tranches de poids réglables, express retirée. Script `tools/it19-poids.php`. | Non déployée. |
 
 Pour chaque mise en production, ajouter une ligne avec date/heure, URL, hash du commit, export de base utilisé, fichiers transférés, tests effectués et éventuels problèmes. Ne pas consigner de mots de passe.
