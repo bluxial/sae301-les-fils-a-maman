@@ -35,6 +35,7 @@ Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catég
 | inc/equipe.php, archive-membre.php, single-membre.php | IT-11 : pages de l’équipe. |
 | inc/envies.php | IT-12 : taxonomie Envies et pastilles de la boutique. |
 | inc/ventes-croisees.php | IT-13 : suggestions sur la fiche produit et dans le panier. |
+| inc/avis.php | IT-14 : avis clients sous la fiche produit. |
 | woocommerce/cart/cart.php | IT-5 / IT-10 : page panier (articles, code promo et récapitulatif). |
 | tools/ | Scripts lancés une fois pour préparer les contenus : `ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/<script>.php` ou, en local, `http://sae301.ddev.site/?lf_outil=<script>` (extension locale `mu-plugins/lf-outils-locaux.php`, hors dépôt). |
 | header.php, footer.php | Navigation et pied de page. |
@@ -68,7 +69,7 @@ Ouvrir design-system/system.html dans un navigateur. Le catalogue utilise les im
 
 IT-1 et IT-2 en local : environnement DDEV, thème enfant, accueil, boutique, catégories, neuf produits simples, fiches et navigation responsive.
 
-Le site est déployé dans r3SAE01 sur mmi.unilim.fr depuis le 16 octobre 2026. L’accès utilise l’authentification universitaire « Devoir MMI ». Le transfert et ses contrôles sont décrits dans docs/DEPLOIEMENT.md et docs/VALIDATION.md. IT-3 (produits variables), IT-4 (champs SCF) IT-5 (paiements, expédition, panier) IT-6 (checkout, instructions de retrait) IT-7 (compte client) IT-8 (e-mails) IT-9 (commandes) IT-10 (promotions) IT-11 (équipe) IT-12 (taxonomie Envies) et IT-13 (ventes croisées) sont faites en local.
+Le site est déployé dans r3SAE01 sur mmi.unilim.fr depuis le 16 octobre 2026. L’accès utilise l’authentification universitaire « Devoir MMI ». Le transfert et ses contrôles sont décrits dans docs/DEPLOIEMENT.md et docs/VALIDATION.md. IT-3 (produits variables), IT-4 (champs SCF) IT-5 (paiements, expédition, panier) IT-6 (checkout, instructions de retrait) IT-7 (compte client) IT-8 (e-mails) IT-9 (commandes) IT-10 (promotions) IT-11 (équipe) IT-12 (taxonomie Envies) IT-13 (ventes croisées) et IT-14 (avis) sont faites en local.
 
 Les logos et les photographies de l’enseigne sont utilisés pour ce projet pédagogique. Les configurations privées, les mots de passe et les exports SQL sont exclus du dépôt.
 

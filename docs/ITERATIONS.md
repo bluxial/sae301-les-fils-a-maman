@@ -118,6 +118,13 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-13.2 | `inc/ventes-croisees.php` : bloc « Ça va bien avec… » sous la fiche produit et « Pour compléter ta commande » sous le panier (pleine largeur au lieu de la colonne du récapitulatif), avec les cartes produits de la boutique. |
 | US-13.3 | Testé en local : fiche du cordon bleu (3 suggestions) et panier avec un tartare (pêche d’enfer et millefeuille), boutons « Ajouter + » fonctionnels. |
 
+## IT-14 : avis clients
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-14.1 | Les onglets WooCommerce étant retirés, les avis sont affichés sous la fiche produit (`inc/avis.php`, `comments_template()`), dans des cartes crème avec bordure, étoiles orange, formulaire dans un cadre aux couleurs du site. |
+| US-14.2 | Script `tools/it14-avis.php` : avis activés sur les 9 produits, note obligatoire, avis réservés aux clients connectés qui ont acheté le produit, badge « propriétaire vérifié ». Les avis sont validés dans **Produits → Avis**. Testé en local : un visiteur non acheteur voit le message « Seuls les clients connectés ayant acheté ce produit… » ; le client test commande un cookie (commande terminée), laisse une note 5/5 et un commentaire, l’avis passe en attente puis s’affiche une fois validé, avec le badge vérifié. |
+
 ## À traiter ensuite
 
 

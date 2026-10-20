@@ -54,3 +54,7 @@ Sans SSH, préparer un export adapté à la production avec un outil de migratio
 - Permaliens actualisés, HTTPS et envoi d’emails vérifiés selon l’hébergement.
 
 Compléter `JOURNAL.md` avec l’URL, la date, le commit et les tests réellement exécutés. Ne pas annoncer l’itération comme déployée avant ces contrôles.
+
+## E-mails en production
+
+En local, DDEV capture tous les e-mails dans Mailpit (`http://sae301.ddev.site:8025`) : rien n’est envoyé. Sur mmi.unilim.fr, les e-mails partent réellement. Consigne de la DSI (20/10/2026) : utiliser uniquement des adresses e-mail réelles pour les comptes et commandes de test en production, jamais d’adresses inventées (ex. : `test@example.com`, `moi@gmail.com`), pour ne pas faire blacklister le serveur. Les commandes de test locales ne sont pas recopiées en production.

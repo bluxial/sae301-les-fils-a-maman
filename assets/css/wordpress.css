@@ -1510,3 +1510,63 @@
         margin-bottom: 24px;
     }
 }
+
+/* IT-14 : avis clients */
+@layer lf-components {
+    .lf-reviews {
+        clear: both;
+        margin-top: 64px;
+    }
+
+    .lf-system .lf-reviews #reviews h2 {
+        margin-bottom: 24px;
+        font: 400 32px/1.2 var(--famille-titre);
+    }
+
+    .lf-reviews .commentlist {
+        display: grid;
+        gap: 16px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .lf-reviews .commentlist .comment_container {
+        padding: 20px;
+        border: var(--contour);
+        border-radius: 12px;
+        background: var(--creme);
+        box-shadow: var(--ombre-bouton);
+    }
+
+    .lf-reviews .star-rating span::before,
+    .lf-reviews .stars a {
+        color: var(--orange);
+    }
+
+    .lf-reviews #review_form_wrapper {
+        margin-top: 32px;
+        padding: 24px;
+        border: var(--contour-fort);
+        border-radius: 16px;
+        background: var(--creme);
+    }
+
+    .lf-reviews textarea {
+        width: 100%;
+        padding: 12px;
+        border: var(--contour);
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .lf-system .lf-reviews .form-submit input[type="submit"] {
+        padding: 14px 22px;
+        border: var(--contour);
+        border-radius: 8px;
+        box-shadow: var(--ombre-bouton);
+        background: var(--bouton-principal);
+        color: var(--encre);
+        font: 600 16px/1 var(--famille-texte);
+    }
+}
