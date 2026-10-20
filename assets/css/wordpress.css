@@ -1599,3 +1599,95 @@
         margin-bottom: 32px;
     }
 }
+
+/* IT-18 : barre latérale de filtres de la boutique */
+@layer lf-components {
+    .lf-shop-layout {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 1fr);
+        gap: 32px;
+        align-items: start;
+    }
+
+    .lf-filters {
+        position: sticky;
+        top: 24px;
+        padding: 24px;
+        border: var(--contour-fort);
+        border-radius: 16px;
+        background: var(--creme);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-filters__title {
+        margin: 0 0 16px;
+        font: 400 28px/1.2 var(--famille-titre);
+    }
+
+    .lf-filters form {
+        display: grid;
+        gap: 20px;
+    }
+
+    .lf-filters__field {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+    }
+
+    .lf-filters label,
+    .lf-filters legend {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .lf-filters .lf-chip {
+        display: inline-flex;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .lf-filters input[type="search"],
+    .lf-filters input[type="number"] {
+        width: 100%;
+        min-height: 44px;
+        padding: 8px 12px;
+        border: var(--contour);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--encre);
+    }
+
+    .lf-filters__prices {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .lf-filters .lf-chip:has(input:checked) {
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-system .lf-shop-results ul.products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 1200px) {
+        .lf-system .lf-shop-results ul.products {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 900px) {
+        .lf-shop-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .lf-filters {
+            position: static;
+        }
+    }
+}

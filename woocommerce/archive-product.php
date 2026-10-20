@@ -30,6 +30,10 @@ if (is_tax('envie')) {
         <?php do_action('woocommerce_archive_description'); ?>
     </header>
 
+    <div class="lf-shop-layout">
+    <?php lf_shop_filters(); ?>
+
+    <div class="lf-shop-results">
     <?php if (woocommerce_product_loop()) : ?>
         <div class="lf-catalogue-toolbar">
             <?php do_action('woocommerce_before_shop_loop'); ?>
@@ -50,6 +54,8 @@ if (is_tax('envie')) {
     <?php else : ?>
         <?php do_action('woocommerce_no_products_found'); ?>
     <?php endif; ?>
+    </div>
+    </div>
 </section>
 
 <?php

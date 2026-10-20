@@ -141,6 +141,14 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-16.2 | `front-page.php` : section « Les nouveautés » sous les étapes « Comment ça marche », alimentée par `wc_get_products()` (3 produits publiés, du plus récent au plus ancien) et affichée avec les cartes produits de la boutique. |
 | US-16.3 | Testé en local : la page d’accueil affiche les trois derniers produits du catalogue (pêche d’enfer, cookie de Maman, millefeuille), avec prix et bouton d’ajout au panier. |
 
+## IT-18 : recherche et filtrage
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-18.1 | Script `tools/it18-filtres.php` : attribut global « Taille » (**Produits → Attributs**) avec deux valeurs, Petite faim (6 produits) et Grosse faim (3 produits), ajouté sans toucher aux options des produits variables. Le prix est filtré directement par WooCommerce. |
+| US-18.2 | `inc/filtres.php` : barre latérale « Filtrer » à gauche de la grille (au-dessus sur mobile) : recherche, prix minimum et maximum, pastilles de taille. Le formulaire envoie les paramètres reconnus par WooCommerce (`s`, `min_price`, `max_price`, `filter_taille`) ; il reste sur la catégorie ou l’envie en cours. |
+| US-18.3 | Testé en local : Grosse faim → cordon bleu, tartare, œufs Bénédicte ; prix 10–20 € → croquettes, cordon bleu, œufs Bénédicte ; Petite faim ≤ 7 € → œufs mimosa, cookie ; recherche « cookie » → fiche du cookie ; Plats + Grosse faim → 3 plats. |
+
 ## À traiter ensuite
 
 
