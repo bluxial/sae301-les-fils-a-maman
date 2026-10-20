@@ -19,5 +19,6 @@
 | 20/10/2026 | IT-12 / 0.12.0 | DDEV local | Taxonomie Envies (Végétarien, Gourmand, Léger), pages dédiées et pastilles dans la boutique. Script `tools/it12-envies.php`. | Non déployée. |
 | 20/10/2026 | IT-13 / 0.13.0 | DDEV local | Ventes croisées sur six produits, affichées sur la fiche produit et sous le panier. Script `tools/it13-ventes-croisees.php`. | Non déployée. |
 | 20/10/2026 | IT-14 / 0.14.0 | DDEV local | Avis clients sous la fiche produit, réservés aux acheteurs vérifiés, note obligatoire, modération. Script `tools/it14-avis.php`. | Non déployée. |
+| 20/10/2026 | IT-15 / 0.15.0 | DDEV local | Frais de préparation automatiques sous un seuil, montant et seuil réglables dans WooCommerce, message dans le panier. | Non déployée. |
 
 Pour chaque mise en production, ajouter une ligne avec date/heure, URL, hash du commit, export de base utilisé, fichiers transférés, tests effectués et éventuels problèmes. Ne pas consigner de mots de passe.

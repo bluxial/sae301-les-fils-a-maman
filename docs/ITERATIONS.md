@@ -125,6 +125,14 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-14.1 | Les onglets WooCommerce étant retirés, les avis sont affichés sous la fiche produit (`inc/avis.php`, `comments_template()`), dans des cartes crème avec bordure, étoiles orange, formulaire dans un cadre aux couleurs du site. |
 | US-14.2 | Script `tools/it14-avis.php` : avis activés sur les 9 produits, note obligatoire, avis réservés aux clients connectés qui ont acheté le produit, badge « propriétaire vérifié ». Les avis sont validés dans **Produits → Avis**. Testé en local : un visiteur non acheteur voit le message « Seuls les clients connectés ayant acheté ce produit… » ; le client test commande un cookie (commande terminée), laisse une note 5/5 et un commentaire, l’avis passe en attente puis s’affiche une fois validé, avec le badge vérifié. |
 
+## IT-15 : règles de tarification avancées
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-15.1 | Deux réglages ajoutés dans **WooCommerce → Réglages → Expédition → Options d’expédition** : « Montant des frais » (1,50 € par défaut) et « Seuil » (15 € par défaut). |
+| US-15.2 | `inc/frais-preparation.php` : la fonction accrochée à `woocommerce_cart_calculate_fees` ajoute « Frais de préparation » quand le sous-total est inférieur au seuil ; le calcul est refait à chaque mise à jour du panier et au checkout. |
+| US-15.3 | Testé en local : une pêche d’enfer (8 €) → frais de 1,50 €, total 9,50 €, message « Plus que 7,00 € pour ne pas payer les frais de préparation » ; quantité 2 (16 €) → frais et message disparaissent, total 16 €. |
+
 ## À traiter ensuite
 
 

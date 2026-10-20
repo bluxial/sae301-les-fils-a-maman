@@ -15,3 +15,4 @@ require_once get_stylesheet_directory() . '/inc/equipe.php';
 require_once get_stylesheet_directory() . '/inc/envies.php';
 require_once get_stylesheet_directory() . '/inc/ventes-croisees.php';
 require_once get_stylesheet_directory() . '/inc/avis.php';
+require_once get_stylesheet_directory() . '/inc/frais-preparation.php';
