@@ -141,6 +141,14 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-16.2 | `front-page.php` : section « Les nouveautés » sous les étapes « Comment ça marche », alimentée par `wc_get_products()` (3 produits publiés, du plus récent au plus ancien) et affichée avec les cartes produits de la boutique. |
 | US-16.3 | Testé en local : la page d’accueil affiche les trois derniers produits du catalogue (pêche d’enfer, cookie de Maman, millefeuille), avec prix et bouton d’ajout au panier. |
 
+## IT-17 : génération de factures
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-17.1 | Extension « PDF Invoices & Packing Slips for WooCommerce » (WP Overnight, 5.16.5) installée depuis wordpress.org. Script `tools/it17-factures.php` : facture créée et jointe aux e-mails « commande en cours » et « commande terminée », numérotée, datée. |
+| US-17.2 | Modèle du thème `woocommerce/pdf/lfam/` (copie du modèle Simple) : logo, nom et adresse du restaurant, titre « Facture » orange, en-tête du tableau turquoise, ligne Total jaune, filets encre. Réglages dans **WooCommerce → Documents PDF**. Mentions légales à compléter (SIRET, TVA) : l’enseigne est fictive pour ce projet, le pied de page l’indique. |
+| US-17.3 | Téléchargement depuis **Mon compte → Commandes** dès que la facture existe (réglage « Uniquement quand une facture est déjà créée/envoyée »). Testé en local : facture n° 1 de la commande n° 58 générée depuis le back office et affichée en PDF. Bouton côté client à revérifier avec le compte client test. |
+
 ## IT-18 : recherche et filtrage
 
 | User story | Mise en œuvre |
