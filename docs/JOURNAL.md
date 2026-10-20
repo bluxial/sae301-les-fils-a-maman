@@ -11,5 +11,6 @@
 | 20/10/2026 | Local | DDEV local | Après `ddev start`, le conteneur a été recréé et le dossier `wp-content/uploads` local était vide (photos des produits en 404). Les 9 photos ont été remises depuis `assets/` du thème et les miniatures régénérées. Les médias de la production ne sont pas concernés. | — |
 | 20/10/2026 | IT-5 / 0.5.0 | DDEV local | Virement et paiement au retrait, zone Paris (retrait gratuit, livraison vélo 4,90 €, express 8,90 €), panier classique aux couleurs de la maquette. Script `tools/it5-paiement-livraison.php`. | Non déployée. |
 | 20/10/2026 | IT-6 / 0.6.0 | DDEV local | Instructions pour le retrait réglables dans WooCommerce et affichées dans le checkout. Commande test n° 46 (retrait, paiement au retrait) validée jusqu’à la confirmation. | Non déployée. |
+| 20/10/2026 | IT-7 / 0.7.0 | DDEV local | Création de compte et connexion configurées, espace client aux couleurs du design system, client test créé. Script `tools/it7-compte-client.php`. | Non déployée. |
 
 Pour chaque mise en production, ajouter une ligne avec date/heure, URL, hash du commit, export de base utilisé, fichiers transférés, tests effectués et éventuels problèmes. Ne pas consigner de mots de passe.

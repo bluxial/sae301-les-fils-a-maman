@@ -59,9 +59,17 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-6.1 | Bloc « Instructions pour le retrait » affiché dans la validation de commande, juste avant le choix du paiement (`inc/retrait.php`). Le texte se modifie dans **WooCommerce → Réglages → Expédition → Options d’expédition**, champ « Instructions pour le retrait ». Un texte par défaut est utilisé si le champ est vide. |
 | US-6.2 | Testé en local : panier → validation de commande → retrait au restaurant → paiement au retrait → « Commander ». Commande n° 46 reçue (14 €), page de confirmation affichée. |
 
+## IT-7 : compte client
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-7.1 | Script `tools/it7-compte-client.php` : inscription depuis « Mon compte » et pendant la commande, rappel de connexion au checkout, le client choisit son mot de passe, identifiant créé à partir de l’e-mail. Réglages dans **WooCommerce → Réglages → Comptes et confidentialité**. |
+| US-7.2 | Connexion et inscription dans deux cartes crème côte à côte (une colonne sur mobile). Menu du compte en pastilles `lf-chip` (`woocommerce/myaccount/navigation.php`), page active en encre. « Téléchargements » retiré du menu (`inc/compte-client.php`) : la boutique ne vend pas de fichiers. |
+| US-7.3 | Testé en local : inscription d’un client test, tableau de bord, commandes, adresses, détails du compte, déconnexion. Identifiants de test rangés hors du dépôt dans `SAE301-backups/comptes-test.md`. |
+
 ## À traiter ensuite
 
-Aucun créneau ou mode de paiement fictif n’est présenté comme opérationnel dans cette version.
+
 
 ## Sauvegardes locales
 

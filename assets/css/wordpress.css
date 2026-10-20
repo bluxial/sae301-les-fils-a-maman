@@ -1009,6 +1009,10 @@
         display: block;
     }
 
+    .lf-variations-form .lf-options {
+        background: transparent;
+    }
+
     .lf-variations-form .lf-chip:has(input:checked) {
         background: var(--encre);
         color: var(--creme);
@@ -1227,5 +1231,94 @@
 
     .lf-pickup p:last-child {
         margin-bottom: 0;
+    }
+}
+
+/* IT-7 : compte client (connexion, inscription, menu et contenu) */
+@layer lf-components {
+    .lf-system .woocommerce-MyAccount-navigation,
+    .lf-system .woocommerce-MyAccount-content {
+        float: none;
+        width: 100%;
+    }
+
+    .lf-account-nav {
+        margin-bottom: 32px;
+    }
+
+    .lf-account-nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .lf-system .lf-account-nav .lf-chip::before {
+        display: none;
+    }
+
+    .lf-account-nav .lf-chip[aria-current="page"] {
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-system .woocommerce-MyAccount-content,
+    .lf-system .u-columns.col2-set .u-column1,
+    .lf-system .u-columns.col2-set .u-column2 {
+        padding: 28px;
+        border: var(--contour-fort);
+        border-radius: 16px;
+        background: var(--creme);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-system .u-columns.col2-set {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+
+    .lf-system .u-columns.col2-set::before,
+    .lf-system .u-columns.col2-set::after {
+        display: none;
+    }
+
+    .lf-system .u-columns.col2-set .u-column1,
+    .lf-system .u-columns.col2-set .u-column2 {
+        float: none;
+        width: auto;
+        margin: 0;
+    }
+
+    .woocommerce-account .lf-page-content h2 {
+        font: 400 32px/1.2 var(--famille-titre);
+    }
+
+    .lf-system .woocommerce-form-login .woocommerce-button,
+    .lf-system .woocommerce-form-register .woocommerce-button,
+    .lf-system .woocommerce-MyAccount-content .button {
+        padding: 14px 22px;
+        border: var(--contour);
+        border-radius: 8px;
+        box-shadow: var(--ombre-bouton);
+        background: var(--bouton-principal);
+        color: var(--encre);
+        font: 600 16px/1 var(--famille-texte);
+    }
+
+    .lf-system .woocommerce-MyAccount-content table {
+        border-collapse: collapse;
+    }
+
+    .lf-system .woocommerce-MyAccount-content th,
+    .lf-system .woocommerce-MyAccount-content td {
+        padding: 12px;
+        border-bottom: 1px dashed var(--encre);
+        background: transparent;
+    }
+
+    @media (max-width: 768px) {
+        .lf-system .u-columns.col2-set {
+            grid-template-columns: 1fr;
+        }
     }
 }

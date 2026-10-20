@@ -8,3 +8,4 @@ require_once get_stylesheet_directory() . '/inc/catalogue.php';
 require_once get_stylesheet_directory() . '/inc/produits-variables.php';
 require_once get_stylesheet_directory() . '/inc/champs-produits.php';
 require_once get_stylesheet_directory() . '/inc/retrait.php';
+require_once get_stylesheet_directory() . '/inc/compte-client.php';
