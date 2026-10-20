@@ -67,6 +67,15 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-7.2 | Connexion et inscription dans deux cartes crème côte à côte (une colonne sur mobile). Menu du compte en pastilles `lf-chip` (`woocommerce/myaccount/navigation.php`), page active en encre. « Téléchargements » retiré du menu (`inc/compte-client.php`) : la boutique ne vend pas de fichiers. |
 | US-7.3 | Testé en local : inscription d’un client test, tableau de bord, commandes, adresses, détails du compte, déconnexion. Identifiants de test rangés hors du dépôt dans `SAE301-backups/comptes-test.md`. |
 
+## IT-8 : e-mails transactionnels
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-8.1 | Script `tools/it8-emails.php` : expéditeur « Les Fils à Maman », couleurs de la charte (turquoise, pêche, crème, encre), pied de page, e-mails client activés en HTML (commande reçue, en cours, terminée, annulée, remboursée, nouveau compte). Réglages dans **WooCommerce → Réglages → E-mails**. |
+| US-8.2 | Modèles `woocommerce/emails/email-header.php` et `email-footer.php` simplifiés : logo PNG (`assets/email-logo.png`), accroche « Click & Collect », adresse du restaurant. Bordure encre, coins arrondis et ombre portée ajoutés avec le filtre `woocommerce_email_styles` (`inc/emails.php`). |
+| US-8.3 | Bloc jaune « Instructions pour le retrait » ajouté aux e-mails envoyés au client quand la commande est en retrait au restaurant (même texte que le checkout, version texte brut prévue). |
+| US-8.4 | Testé en local avec Mailpit (`http://sae301.ddev.site:8025`) : e-mail « Merci pour votre commande » de la commande n° 48 avec logo, couleurs et instructions de retrait. |
+
 ## À traiter ensuite
 
 

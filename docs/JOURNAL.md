@@ -12,5 +12,6 @@
 | 20/10/2026 | IT-5 / 0.5.0 | DDEV local | Virement et paiement au retrait, zone Paris (retrait gratuit, livraison vélo 4,90 €, express 8,90 €), panier classique aux couleurs de la maquette. Script `tools/it5-paiement-livraison.php`. | Non déployée. |
 | 20/10/2026 | IT-6 / 0.6.0 | DDEV local | Instructions pour le retrait réglables dans WooCommerce et affichées dans le checkout. Commande test n° 46 (retrait, paiement au retrait) validée jusqu’à la confirmation. | Non déployée. |
 | 20/10/2026 | IT-7 / 0.7.0 | DDEV local | Création de compte et connexion configurées, espace client aux couleurs du design system, client test créé. Script `tools/it7-compte-client.php`. | Non déployée. |
+| 20/10/2026 | IT-8 / 0.8.0 | DDEV local | E-mails WooCommerce aux couleurs de l’enseigne (logo, bandeau, bordures), instructions de retrait dans les e-mails client. Vérifié dans Mailpit. Script `tools/it8-emails.php`. | Non déployée. |
 
 Pour chaque mise en production, ajouter une ligne avec date/heure, URL, hash du commit, export de base utilisé, fichiers transférés, tests effectués et éventuels problèmes. Ne pas consigner de mots de passe.
