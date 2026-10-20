@@ -26,9 +26,17 @@ Adresses corrigées pour les croquettes, les beignets et les œufs mimosa, qui p
 
 La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les techniques retenues pour le projet : HTML/PHP simple, CSS avec `@layer` et JavaScript sans framework. Le catalogue de composants est livré dans `design-system/system.html`, avec des fichiers CSS et JavaScript séparés. Ses démonstrations d’options et de panier restent des exemples ; elles ne remplacent pas les prochaines itérations WooCommerce.
 
+## IT-3 : produits variables
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-3.1 | Trois produits simples deviennent variables avec le script `tools/it3-produits-variables.php` (WP-CLI) : croquettes de chorizo (Portion 4 ou 8 pièces, 8 € / 14 €), cordon bleu des Fistons (Accompagnement), œufs Bénédicte (Garniture, 17,50 € / 19 €). Stock géré par déclinaison : disponible, faible (5 portions ou moins) et épuisé. Modifiable ensuite dans **Produits → Modifier → Variations**. |
+| US-3.2 | Le modèle `woocommerce/single-product/add-to-cart/variable.php` remplace les listes déroulantes par les pastilles `lf-options` / `lf-chip` du design system. Les listes restent cachées dans la page car le script de WooCommerce s’en sert ; `theme.js` les met à jour quand on clique sur une pastille. |
+| US-3.3 | Sur la fiche, le prix, le stock et le bouton changent selon l’option choisie. Sur les cartes : « À partir de … » et bouton « Choisir + ». Badge jaune « Plus que X en stock » quand le stock est faible, « Rupture de stock » et bouton désactivé quand il est épuisé. |
+
 ## À traiter ensuite
 
-IT-3 : variantes, suppléments, choix d’options et états de stock. IT-4 : champs personnalisés sur au moins trois produits, affichés avant le prix. IT-5/6 : panier personnalisé, livraison/retrait, paiements et validation. Aucun créneau ou mode de paiement fictif n’est présenté comme opérationnel dans cette version.
+IT-4 : champs personnalisés sur au moins trois produits, affichés avant le prix. IT-5/6 : panier personnalisé, livraison/retrait, paiements et validation. Aucun créneau ou mode de paiement fictif n’est présenté comme opérationnel dans cette version.
 
 ## Sauvegardes locales
 

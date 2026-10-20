@@ -24,6 +24,8 @@ Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catég
 | functions.php | Charge les deux fichiers PHP du dossier inc. |
 | inc/setup.php | Charge les styles et les scripts ; adapte Storefront ; actualise le compteur du panier. |
 | inc/catalogue.php | Lit les catégories et prépare les textes et les boutons des produits. |
+| inc/produits-variables.php | IT-3 : prix « À partir de », bouton « Choisir + » et classe de stock faible. |
+| tools/ | Scripts WP-CLI lancés une fois pour préparer les contenus (`ddev wp eval-file …`). |
 | header.php, footer.php | Navigation et pied de page. |
 | front-page.php | Accueil et cartes des catégories. |
 | page.php, index.php | Pages WordPress et affichage de secours. |

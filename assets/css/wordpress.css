@@ -1002,3 +1002,49 @@
     }
 
 }
+
+/* IT-3 : produits variables (pastilles d'options et niveaux de stock) */
+@layer lf-components {
+    .lf-product-summary form.variations_form {
+        display: block;
+    }
+
+    .lf-variations-form .lf-chip:has(input:checked) {
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-variations-form .lf-chip:has(input:focus-visible) {
+        outline: 3px solid var(--encre);
+        outline-offset: 4px;
+    }
+
+    .lf-variations-form .woocommerce-variation-price .price {
+        display: block;
+        margin-bottom: 12px;
+        font: 700 24px/1.2 var(--famille-texte);
+        color: var(--encre);
+    }
+
+    .lf-variations-form .woocommerce-variation-add-to-cart {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    .lf-product-summary .stock.in-stock {
+        display: inline-block;
+        margin: 0;
+        padding: 4px 14px;
+        border: var(--contour);
+        border-radius: 999px;
+        background: var(--turquoise-clair);
+        color: var(--encre);
+    }
+
+    .lf-product-summary .stock.low-stock {
+        background: var(--jaune);
+    }
+}
