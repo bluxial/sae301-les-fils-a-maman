@@ -1048,3 +1048,10 @@
         background: var(--jaune);
     }
 }
+
+/* IT-4 : composition, allergènes et énergie dans la fiche produit */
+@layer lf-components {
+    .lf-product-facts {
+        margin: 0 0 32px;
+    }
+}

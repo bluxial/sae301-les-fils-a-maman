@@ -34,9 +34,18 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-3.2 | Le modèle `woocommerce/single-product/add-to-cart/variable.php` remplace les listes déroulantes par les pastilles `lf-options` / `lf-chip` du design system. Les listes restent cachées dans la page car le script de WooCommerce s’en sert ; `theme.js` les met à jour quand on clique sur une pastille. |
 | US-3.3 | Sur la fiche, le prix, le stock et le bouton changent selon l’option choisie. Sur les cartes : « À partir de … » et bouton « Choisir + ». Badge jaune « Plus que X en stock » quand le stock est faible, « Rupture de stock » et bouton désactivé quand il est épuisé. |
 
+## IT-4 : enrichissement du contenu
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-4.1 | Groupe de champs Secure Custom Fields « Informations du produit » déclaré en PHP dans `inc/champs-produits.php` : Composition (texte), Allergènes (cases à cocher), Valeur énergétique (nombre). Il apparaît sous l’éditeur de chaque produit dans le back office. |
+| US-4.2 | Les neuf produits sont remplis avec `tools/it4-champs-produits.php` (WP-CLI). Compositions reprises de la carte du restaurant ; allergènes et calories indicatifs, modifiables dans chaque fiche. |
+| US-4.3 | Fonction `lf_product_facts()` accrochée à `woocommerce_single_product_summary` (priorité 22) : après la description (20) et avant le prix (25). Affichage avec le composant `lf-facts` de la maquette. |
+| US-4.4 | Le visiteur voit composition, allergènes et énergie sur la fiche du produit. Rien ne s’affiche si les champs sont vides. |
+
 ## À traiter ensuite
 
-IT-4 : champs personnalisés sur au moins trois produits, affichés avant le prix. IT-5/6 : panier personnalisé, livraison/retrait, paiements et validation. Aucun créneau ou mode de paiement fictif n’est présenté comme opérationnel dans cette version.
+IT-5/6 : panier personnalisé, livraison/retrait, paiements et validation. Aucun créneau ou mode de paiement fictif n’est présenté comme opérationnel dans cette version.
 
 ## Sauvegardes locales
 
