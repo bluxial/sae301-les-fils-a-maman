@@ -133,6 +133,14 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-15.2 | `inc/frais-preparation.php` : la fonction accrochée à `woocommerce_cart_calculate_fees` ajoute « Frais de préparation » quand le sous-total est inférieur au seuil ; le calcul est refait à chaque mise à jour du panier et au checkout. |
 | US-15.3 | Testé en local : une pêche d’enfer (8 €) → frais de 1,50 €, total 9,50 €, message « Plus que 7,00 € pour ne pas payer les frais de préparation » ; quantité 2 (16 €) → frais et message disparaissent, total 16 €. |
 
+## IT-16 : landing page
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-16.1 | Aucun réglage à faire : dès qu’un produit est publié dans **Produits → Ajouter**, il remplace le plus ancien des trois. |
+| US-16.2 | `front-page.php` : section « Les nouveautés » sous les étapes « Comment ça marche », alimentée par `wc_get_products()` (3 produits publiés, du plus récent au plus ancien) et affichée avec les cartes produits de la boutique. |
+| US-16.3 | Testé en local : la page d’accueil affiche les trois derniers produits du catalogue (pêche d’enfer, cookie de Maman, millefeuille), avec prix et bouton d’ajout au panier. |
+
 ## À traiter ensuite
 
 

@@ -1588,3 +1588,14 @@
         font-weight: 600;
     }
 }
+
+/* IT-16 : nouveautés sur la page d'accueil */
+@layer lf-components {
+    .lf-home-latest {
+        padding-block: 64px 16px;
+    }
+
+    .lf-home-latest .lf-section-heading {
+        margin-bottom: 32px;
+    }
+}

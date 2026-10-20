@@ -48,6 +48,42 @@ get_header();
     </div>
 </section>
 
+<?php
+// IT-16 : les 3 derniers produits ajoutés au catalogue.
+global $post;
+$nouveautes = wc_get_products([
+    'status' => 'publish',
+    'limit' => 3,
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'return' => 'ids'
+]);
+?>
+
+<?php if (!empty($nouveautes)) : ?>
+    <section class="lf-container lf-catalogue-page lf-home-latest" aria-labelledby="lf-latest-title">
+        <div class="lf-section-heading">
+            <div>
+                <p class="lf-script">tout juste arrivés</p>
+                <h2 class="lf-title lf-title--h1 lf-title--outlined" id="lf-latest-title">LES NOUVEAUTÉS</h2>
+            </div>
+        </div>
+
+        <?php
+        woocommerce_product_loop_start();
+
+        foreach ($nouveautes as $id) {
+            $post = get_post($id);
+            setup_postdata($post);
+            wc_get_template_part('content', 'product');
+        }
+
+        woocommerce_product_loop_end();
+        wp_reset_postdata();
+        ?>
+    </section>
+<?php endif; ?>
+
 <section class="lf-container lf-home-categories" aria-labelledby="lf-menu-title">
     <div class="lf-section-heading">
         <div>
