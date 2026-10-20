@@ -110,6 +110,14 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-12.2 | Script `tools/it12-envies.php` : Végétarien (4 produits), Gourmand (3), Léger (3). |
 | US-12.3 | Page dédiée par envie (`/envie/vegetarien/`, `/envie/gourmand/`, `/envie/leger/`) avec la grille de la boutique ; pastilles « Envie de : » sous les catégories. Correctif : « Toute la carte » n’est active que sur la boutique. |
 
+## IT-13 : ventes croisées
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-13.1 | Script `tools/it13-ventes-croisees.php` : six produits reçoivent 2 ou 3 produits complémentaires (ex. : cordon bleu → pêche d’enfer, cookie, beignets). Modifiable dans **Produits → Modifier → Données produit → Produits liés → Ventes croisées**. |
+| US-13.2 | `inc/ventes-croisees.php` : bloc « Ça va bien avec… » sous la fiche produit et « Pour compléter ta commande » sous le panier (pleine largeur au lieu de la colonne du récapitulatif), avec les cartes produits de la boutique. |
+| US-13.3 | Testé en local : fiche du cordon bleu (3 suggestions) et panier avec un tartare (pêche d’enfer et millefeuille), boutons « Ajouter + » fonctionnels. |
+
 ## À traiter ensuite
 
 

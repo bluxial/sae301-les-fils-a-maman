@@ -1498,3 +1498,15 @@
         color: var(--creme);
     }
 }
+
+/* IT-13 : ventes croisées sur la fiche produit et dans le panier */
+@layer lf-components {
+    .lf-suggestions {
+        clear: both;
+        margin-top: 64px;
+    }
+
+    .lf-suggestions h2 {
+        margin-bottom: 24px;
+    }
+}
