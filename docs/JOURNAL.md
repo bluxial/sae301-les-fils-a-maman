@@ -13,5 +13,6 @@
 | 20/10/2026 | IT-6 / 0.6.0 | DDEV local | Instructions pour le retrait réglables dans WooCommerce et affichées dans le checkout. Commande test n° 46 (retrait, paiement au retrait) validée jusqu’à la confirmation. | Non déployée. |
 | 20/10/2026 | IT-7 / 0.7.0 | DDEV local | Création de compte et connexion configurées, espace client aux couleurs du design system, client test créé. Script `tools/it7-compte-client.php`. | Non déployée. |
 | 20/10/2026 | IT-8 / 0.8.0 | DDEV local | E-mails WooCommerce aux couleurs de l’enseigne (logo, bandeau, bordures), instructions de retrait dans les e-mails client. Vérifié dans Mailpit. Script `tools/it8-emails.php`. | Non déployée. |
+| 20/10/2026 | IT-9 / 0.9.0 | DDEV local | Statut « Prête à retirer » avec e-mail, textes des e-mails de suivi, parcours retrait (n° 49) et livraison + virement + annulation + remboursement (n° 50) testés. Script `tools/it9-commandes.php`. | Non déployée. |
 
 Pour chaque mise en production, ajouter une ligne avec date/heure, URL, hash du commit, export de base utilisé, fichiers transférés, tests effectués et éventuels problèmes. Ne pas consigner de mots de passe.

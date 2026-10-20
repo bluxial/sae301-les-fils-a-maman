@@ -76,6 +76,14 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-8.3 | Bloc jaune « Instructions pour le retrait » ajouté aux e-mails envoyés au client quand la commande est en retrait au restaurant (même texte que le checkout, version texte brut prévue). |
 | US-8.4 | Testé en local avec Mailpit (`http://sae301.ddev.site:8025`) : e-mail « Merci pour votre commande » de la commande n° 48 avec logo, couleurs et instructions de retrait. |
 
+## IT-9 : commandes
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-9.1 | Commandes visibles dans **WooCommerce → Commandes**. Nouveau statut « Prête à retirer » entre « En cours » et « Terminée » (`inc/commandes.php`), disponible dans la fiche commande et en action groupée. Stock géré par déclinaison : la commande de 8 croquettes fait passer le stock de 3 à 2 ; une annulation remet le stock. Script `tools/it9-commandes.php` : textes des e-mails de suivi. |
+| US-9.2 | Testé en local : panier de deux produits (beignets + œufs mimosa, 14,50 €), retrait au restaurant, paiement au retrait → commande n° 49 « En cours » (e-mail « reçue ») → « Prête à retirer » (e-mail « Votre commande est prête ! » avec les instructions de retrait) → « Terminée » (e-mail « Bon appétit ! »). Le client suit aussi le statut dans **Mon compte → Commandes**. |
+| US-9.3 | Testé en local avec le client connecté : cookie de Maman, livraison à vélo, virement (10,90 €) → n° 50 « En attente » (e-mail « en attente de votre virement ») → « En cours » (paiement reçu, préparation) → « Annulée » (e-mail d’annulation) → remboursement total → « Remboursée » (e-mail de remboursement). Tous les e-mails vérifiés dans Mailpit. |
+
 ## À traiter ensuite
 
 
