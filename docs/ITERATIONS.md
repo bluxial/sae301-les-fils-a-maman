@@ -52,9 +52,16 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-5.3 | Pages panier et commande passées en version classique (shortcodes) pour pouvoir les personnaliser. Modèle `woocommerce/cart/cart.php` simplifié : articles en cartes `lf-cart-item`, récapitulatif `lf-summary` comme dans la maquette. |
 | US-5.4 | Testé en local : ajout de 8 croquettes (14 €), panier, choix du mode d’expédition. Avec le code postal 75009 : trois modes ; la livraison à vélo ajoute 4,90 € (total 18,90 €) et retire le paiement au retrait. |
 
+## IT-6 : checkout
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-6.1 | Bloc « Instructions pour le retrait » affiché dans la validation de commande, juste avant le choix du paiement (`inc/retrait.php`). Le texte se modifie dans **WooCommerce → Réglages → Expédition → Options d’expédition**, champ « Instructions pour le retrait ». Un texte par défaut est utilisé si le champ est vide. |
+| US-6.2 | Testé en local : panier → validation de commande → retrait au restaurant → paiement au retrait → « Commander ». Commande n° 46 reçue (14 €), page de confirmation affichée. |
+
 ## À traiter ensuite
 
-IT-6 : instructions de retrait et validation de commande. Aucun créneau ou mode de paiement fictif n’est présenté comme opérationnel dans cette version.
+Aucun créneau ou mode de paiement fictif n’est présenté comme opérationnel dans cette version.
 
 ## Sauvegardes locales
 

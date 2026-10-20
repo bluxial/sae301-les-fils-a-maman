@@ -1177,7 +1177,18 @@
     }
 
     .lf-system .woocommerce-checkout h3 {
+        clear: both;
         font: 400 28px/1.2 var(--famille-titre);
+    }
+
+    .lf-system #ship-to-different-address {
+        font: 600 18px/1.3 var(--famille-texte);
+    }
+
+    .lf-system #ship-to-different-address label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .lf-system .woocommerce-checkout-review-order {
@@ -1198,3 +1209,23 @@
     }
 }
 
+
+/* IT-6 : instructions pour le retrait */
+@layer lf-components {
+    .lf-pickup {
+        margin: 24px 0;
+        padding: 20px;
+        border: var(--contour);
+        border-radius: 12px;
+        background: var(--jaune);
+    }
+
+    .lf-system .lf-pickup h3 {
+        margin: 0 0 8px;
+        font: 600 20px/1.3 var(--famille-texte);
+    }
+
+    .lf-pickup p:last-child {
+        margin-bottom: 0;
+    }
+}
