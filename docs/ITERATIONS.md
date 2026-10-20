@@ -147,7 +147,7 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | --- | --- |
 | US-17.1 | Extension « PDF Invoices & Packing Slips for WooCommerce » (WP Overnight, 5.16.5) installée depuis wordpress.org. Script `tools/it17-factures.php` : facture créée et jointe aux e-mails « commande en cours » et « commande terminée », numérotée, datée. |
 | US-17.2 | Modèle du thème `woocommerce/pdf/lfam/` (copie du modèle Simple) : logo, nom et adresse du restaurant, titre « Facture » orange, en-tête du tableau turquoise, ligne Total jaune, filets encre. Réglages dans **WooCommerce → Documents PDF**. Mentions légales à compléter (SIRET, TVA) : l’enseigne est fictive pour ce projet, le pied de page l’indique. |
-| US-17.3 | Téléchargement depuis **Mon compte → Commandes** dès que la facture existe (réglage « Uniquement quand une facture est déjà créée/envoyée »). Testé en local : facture n° 1 de la commande n° 58 générée depuis le back office et affichée en PDF. Bouton côté client à revérifier avec le compte client test. |
+| US-17.3 | Téléchargement depuis **Mon compte → Commandes** dès que la facture existe (réglage « Uniquement quand une facture est déjà créée/envoyée »). Testé en local : facture n° 1 de la commande n° 58 générée depuis le back office et affichée en PDF. Facture jointe automatiquement à l’e-mail « commande reçue » (commande n° 60, `facture-2.pdf`). Bouton côté client à revérifier avec le compte client test. |
 
 ## IT-18 : recherche et filtrage
 
@@ -164,6 +164,14 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-19.1 | `inc/livraison-poids.php` : le prix des livraisons « forfait » (Livraison à vélo) est remplacé par celui de la tranche correspondant au poids total du panier (`woocommerce_package_rates`). Script `tools/it19-poids.php` : poids d’une portion sur les 9 produits (0,15 à 0,6 kg, 0,6 kg pour 8 croquettes), unité kg. La livraison express (prix fixe) est retirée de la zone Paris pour garder un seul mode de livraison au poids. |
 | US-19.2 | Trois tranches réglables dans **WooCommerce → Réglages → Expédition → Options d’expédition** : jusqu’à 1 kg 3,90 €, jusqu’à 3 kg 5,90 €, au-delà 8,90 €. |
 | US-19.3 | Le poids et le prix s’affichent dans le panier et au checkout (« Livraison à vélo · 2,1 kg : 5,90 € »). Testé en local avec le calculateur du panier (75009) : 0,9 kg → 3,90 € ; 2,1 kg → 5,90 € ; 3,7 kg → 8,90 €. |
+
+## IT-20 : créneaux de livraison et de retrait
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-20.1 | `inc/creneaux.php` : liste « Jour » dans le formulaire de commande, avec les 6 prochains jours (aujourd’hui compris). |
+| US-20.2 | Pastilles « Créneau horaire » (midi : 12h00 à 13h30, soir : 19h00 à 20h30, par demi-heure), même composant que les options produit. |
+| US-20.3 | Les mêmes champs servent au retrait au restaurant. Jour et créneau obligatoires et vérifiés côté serveur, enregistrés dans la commande, affichés sur la page de confirmation, dans Mon compte, dans la fiche commande du back office et dans les e-mails. Testé en local : sans choix → deux messages d’erreur ; avec mercredi 21 octobre, 12h30 – 13h00 → commande n° 60, créneau visible sur la confirmation, dans le back office et dans les e-mails client et administrateur (facture PDF jointe à l’e-mail client, IT-17). |
 
 ## À traiter ensuite
 

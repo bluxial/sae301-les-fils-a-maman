@@ -1691,3 +1691,40 @@
         }
     }
 }
+
+/* IT-20 : jour et créneau de retrait ou de livraison */
+@layer lf-components {
+    .lf-slots {
+        margin-top: 32px;
+        padding: 24px;
+        border: var(--contour-fort);
+        border-radius: 16px;
+        background: var(--creme);
+    }
+
+    .lf-slots select {
+        width: 100%;
+        min-height: 44px;
+        padding: 8px 12px;
+        border: var(--contour);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--encre);
+    }
+
+    .lf-slots .lf-options {
+        background: transparent;
+    }
+
+    .lf-slots .lf-chip:has(input:checked) {
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-slot-summary {
+        padding: 12px 16px;
+        border: var(--contour);
+        border-radius: 8px;
+        background: var(--jaune);
+    }
+}
