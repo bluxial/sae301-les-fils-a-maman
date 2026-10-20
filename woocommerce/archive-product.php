@@ -14,10 +14,15 @@ if (is_product_category()) {
     $key = lf_category_key($category);
     $subtitle = lf_category_script($key);
 }
+
+if (is_tax('envie')) {
+    $subtitle = 'selon ton envie';
+}
 ?>
 
 <section class="lf-container lf-catalogue-page" data-category="<?php echo esc_attr($key); ?>">
     <?php lf_category_navigation(); ?>
+    <?php lf_envie_navigation(); ?>
 
     <header class="lf-catalogue-heading">
         <h1 class="lf-title lf-title--h1 lf-title--outlined"><?php woocommerce_page_title(); ?></h1>

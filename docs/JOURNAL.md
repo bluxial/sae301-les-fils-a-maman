@@ -16,5 +16,6 @@
 | 20/10/2026 | IT-9 / 0.9.0 | DDEV local | Statut « Prête à retirer » avec e-mail, textes des e-mails de suivi, parcours retrait (n° 49) et livraison + virement + annulation + remboursement (n° 50) testés. Script `tools/it9-commandes.php`. | Non déployée. |
 | 20/10/2026 | IT-10 / 0.10.0 | DDEV local | Codes promo pourcentage et montant fixe sur deux produits chacun, code expiré de test, champ code promo dans le panier. Script `tools/it10-promotions.php`. | Non déployée. |
 | 20/10/2026 | IT-11 / 0.11.0 | DDEV local | Type de contenu Équipe, champs SCF, pages liste et profil, lien dans le menu. Trois profils fictifs créés avec `tools/it11-equipe.php`. | Non déployée. |
+| 20/10/2026 | IT-12 / 0.12.0 | DDEV local | Taxonomie Envies (Végétarien, Gourmand, Léger), pages dédiées et pastilles dans la boutique. Script `tools/it12-envies.php`. | Non déployée. |
 
 Pour chaque mise en production, ajouter une ligne avec date/heure, URL, hash du commit, export de base utilisé, fichiers transférés, tests effectués et éventuels problèmes. Ne pas consigner de mots de passe.

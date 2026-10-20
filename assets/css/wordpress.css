@@ -1478,3 +1478,23 @@
         }
     }
 }
+
+/* IT-12 : pastilles « Envie de » dans la boutique */
+@layer lf-components {
+    .lf-envie-nav {
+        margin: 12px 0 40px;
+    }
+
+    .lf-envie-nav__label {
+        font-weight: 600;
+    }
+
+    .lf-envie-nav .lf-chip {
+        background: var(--turquoise-clair);
+    }
+
+    .lf-envie-nav .lf-chip[aria-current="page"] {
+        background: var(--encre);
+        color: var(--creme);
+    }
+}

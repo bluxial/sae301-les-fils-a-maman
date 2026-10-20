@@ -88,7 +88,7 @@ function lf_category_navigation() {
     }
     ?>
     <nav class="lf-chips lf-category-nav" aria-label="Catégories de la carte">
-        <a class="lf-chip" href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>" <?php if ($current === 0) { echo 'aria-current="page"'; } ?>>Toute la carte</a>
+        <a class="lf-chip" href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>" <?php if (is_shop()) { echo 'aria-current="page"'; } ?>>Toute la carte</a>
 
         <?php foreach (lf_categories() as $category) : ?>
             <a class="lf-chip" href="<?php echo esc_url(get_term_link($category)); ?>" <?php if ($current === $category->term_id) { echo 'aria-current="page"'; } ?>><?php echo esc_html($category->name); ?></a>

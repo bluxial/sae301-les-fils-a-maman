@@ -102,6 +102,14 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-11.4 | Pas d’écran « Équipe » dans la maquette Figma : les pages reprennent les composants du design system (cartes colorées, bordures et ombres, titres Luckiest Guy, bloc `lf-facts`). Écran à ajouter dans Figma pour la cohérence du rendu. |
 | US-11.5 | Lien « L’équipe » ajouté au menu principal et au pied de page. Testé en local : liste des trois membres et page de profil. |
 
+## IT-12 : taxonomies
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-12.1 | Taxonomie « Envies » (`envie`) indépendante des catégories, rattachée aux produits (`inc/envies.php`). Administration dans **Produits → Envies**, case à cocher dans chaque fiche produit et colonne dans la liste des produits. |
+| US-12.2 | Script `tools/it12-envies.php` : Végétarien (4 produits), Gourmand (3), Léger (3). |
+| US-12.3 | Page dédiée par envie (`/envie/vegetarien/`, `/envie/gourmand/`, `/envie/leger/`) avec la grille de la boutique ; pastilles « Envie de : » sous les catégories. Correctif : « Toute la carte » n’est active que sur la boutique. |
+
 ## À traiter ensuite
 
 
