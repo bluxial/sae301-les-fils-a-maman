@@ -25,6 +25,7 @@ if (!defined('ABSPATH')) {
             <a href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>">La carte</a>
             <a href="<?php echo esc_url(home_url('/#comment-ca-marche')); ?>">Comment ça marche</a>
             <a href="<?php echo esc_url(home_url('/#notre-restaurant')); ?>">Notre restaurant</a>
+            <a href="<?php echo esc_url(get_post_type_archive_link('membre')); ?>">L’équipe</a>
         </nav>
 
         <div class="lf-header__actions">

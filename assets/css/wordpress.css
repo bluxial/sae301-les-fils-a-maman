@@ -1365,3 +1365,116 @@
         font-size: 14px;
     }
 }
+
+/* IT-11 : page équipe et profil d'un membre */
+@layer lf-components {
+    .lf-team-intro {
+        max-width: 640px;
+        margin-bottom: 40px;
+        font-size: 18px;
+    }
+
+    .lf-team {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 32px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .lf-member a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        height: 100%;
+        padding: 32px 24px;
+        border: var(--contour-fort);
+        border-radius: 16px;
+        background: var(--creme);
+        box-shadow: var(--ombre-carte);
+        color: var(--encre);
+        text-align: center;
+        text-decoration: none;
+        transition: transform .16s ease;
+    }
+
+    .lf-member a:hover {
+        transform: translate(-2px, -2px);
+    }
+
+    .lf-member--jaune a,
+    .lf-member-page__grid.lf-member--jaune .lf-member__avatar {
+        background: var(--jaune);
+    }
+
+    .lf-member--turquoise a,
+    .lf-member-page__grid.lf-member--turquoise .lf-member__avatar {
+        background: var(--turquoise);
+    }
+
+    .lf-member--rose a,
+    .lf-member-page__grid.lf-member--rose .lf-member__avatar {
+        background: var(--rose);
+    }
+
+    .lf-member__avatar,
+    .lf-member__photo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 128px;
+        height: 128px;
+        border: var(--contour-fort);
+        border-radius: 50%;
+        background: var(--creme);
+        font: 400 48px/1 var(--famille-titre);
+        object-fit: cover;
+    }
+
+    .lf-member__name {
+        margin: 12px 0 0;
+        font: 400 28px/1.2 var(--famille-titre);
+    }
+
+    .lf-member__role {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .lf-member-page__grid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 48px;
+        align-items: start;
+        margin-top: 32px;
+    }
+
+    .lf-member-page__visual .lf-member__avatar,
+    .lf-member-page__visual .lf-member__photo {
+        width: 240px;
+        height: 240px;
+        font-size: 88px;
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-member-page .lf-page-content {
+        margin-bottom: 24px;
+        font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+        .lf-member-page__grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .lf-member-page__visual .lf-member__avatar,
+        .lf-member-page__visual .lf-member__photo {
+            width: 160px;
+            height: 160px;
+            font-size: 56px;
+        }
+    }
+}

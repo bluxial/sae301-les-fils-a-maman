@@ -92,6 +92,16 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-10.2 | Champ « Code promo » ajouté au modèle panier, sous les articles ; ligne de réduction en orange dans le récapitulatif avec le lien « Enlever ». |
 | US-10.3 | Testé en local avec un tartare (21 €) : FAUX → « n’existe pas » ; ETE2025 → « a expiré » ; MAMAN2 → « n’est pas applicable aux produits sélectionnés » ; FISTONS10 → -2,10 €, total 18,90 € ; « Enlever » → retour à 21 €. |
 
+## IT-11 : équipe
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-11.1 | Type de contenu « Équipe » (`membre`) avec son menu dans le back office (`inc/equipe.php`) : un membre = une page. Champs SCF « Profil du membre » : poste, plat préféré, couleur de la carte. La photo se met en « Image mise en avant » ; sans photo, les initiales s’affichent. |
+| US-11.2 | Script `tools/it11-equipe.php` : trois profils fictifs (cheffe de cuisine, pâtissier, responsable du Click & Collect). |
+| US-11.3 | Modèles `archive-membre.php` (liste, adresse `/equipe/`) et `single-membre.php` (profil). Ordre d’affichage réglable avec le champ « Ordre » du membre. |
+| US-11.4 | Pas d’écran « Équipe » dans la maquette Figma : les pages reprennent les composants du design system (cartes colorées, bordures et ombres, titres Luckiest Guy, bloc `lf-facts`). Écran à ajouter dans Figma pour la cohérence du rendu. |
+| US-11.5 | Lien « L’équipe » ajouté au menu principal et au pied de page. Testé en local : liste des trois membres et page de profil. |
+
 ## À traiter ensuite
 
 
