@@ -1322,3 +1322,46 @@
         }
     }
 }
+
+/* IT-10 : code promo dans le panier et lignes de réduction */
+@layer lf-components {
+    .lf-cart__actions {
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    .lf-coupon {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .lf-coupon label {
+        width: 100%;
+        font-weight: 600;
+    }
+
+    .lf-coupon input.input-text {
+        min-height: 44px;
+        padding: 8px 12px;
+        border: var(--contour);
+        border-radius: 8px;
+        background: var(--fond-surface);
+        color: var(--encre);
+        text-transform: uppercase;
+    }
+
+    .lf-summary .cart-discount td,
+    .lf-summary .cart-discount th {
+        color: var(--orange);
+        font-weight: 600;
+    }
+
+    .lf-summary .woocommerce-remove-coupon {
+        color: var(--encre);
+        font-size: 14px;
+    }
+}

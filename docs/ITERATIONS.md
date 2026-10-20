@@ -84,6 +84,14 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-9.2 | Testé en local : panier de deux produits (beignets + œufs mimosa, 14,50 €), retrait au restaurant, paiement au retrait → commande n° 49 « En cours » (e-mail « reçue ») → « Prête à retirer » (e-mail « Votre commande est prête ! » avec les instructions de retrait) → « Terminée » (e-mail « Bon appétit ! »). Le client suit aussi le statut dans **Mon compte → Commandes**. |
 | US-9.3 | Testé en local avec le client connecté : cookie de Maman, livraison à vélo, virement (10,90 €) → n° 50 « En attente » (e-mail « en attente de votre virement ») → « En cours » (paiement reçu, préparation) → « Annulée » (e-mail d’annulation) → remboursement total → « Remboursée » (e-mail de remboursement). Tous les e-mails vérifiés dans Mailpit. |
 
+## IT-10 : promotions
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-10.1 | Script `tools/it10-promotions.php` : FISTONS10 (pourcentage, -10 % sur le cordon bleu et le tartare), MAMAN2 (montant fixe, -2 € sur le cookie et le millefeuille), ETE2025 (expiré, pour les tests). Codes modifiables dans **Marketing → Codes promo**. |
+| US-10.2 | Champ « Code promo » ajouté au modèle panier, sous les articles ; ligne de réduction en orange dans le récapitulatif avec le lien « Enlever ». |
+| US-10.3 | Testé en local avec un tartare (21 €) : FAUX → « n’existe pas » ; ETE2025 → « a expiré » ; MAMAN2 → « n’est pas applicable aux produits sélectionnés » ; FISTONS10 → -2,10 €, total 18,90 € ; « Enlever » → retour à 21 €. |
+
 ## À traiter ensuite
 
 

@@ -48,6 +48,14 @@ do_action('woocommerce_before_cart');
         <?php endforeach; ?>
 
         <div class="lf-cart__actions">
+            <?php if (wc_coupons_enabled()) : ?>
+                <div class="lf-coupon">
+                    <label for="coupon_code">Code promo</label>
+                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Ex. : FISTONS10">
+                    <button type="submit" class="lf-btn lf-btn--small" name="apply_coupon" value="Appliquer">Appliquer</button>
+                </div>
+            <?php endif; ?>
+
             <button type="submit" class="lf-btn lf-btn--ghost" name="update_cart" value="Mettre à jour le panier">Mettre à jour le panier</button>
             <?php wp_nonce_field('woocommerce-cart', 'woocommerce-cart-nonce'); ?>
         </div>
