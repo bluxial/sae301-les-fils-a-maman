@@ -27,7 +27,7 @@
             </div>
             <header class="doc-intro">
                 <div class="doc-intro__sticker" aria-hidden="true">
-                    <img src="../assets/21df4.svg" width="107.777" height="140.001" alt="">
+                    <img src="../assets/21df4.svg" width="108" height="140" alt="">
                 </div>
                 <p class="lf-script">les bons ingrédients</p><h1 class="lf-title lf-title--outlined">DESIGN<br>SYSTEM</h1>
                 <p class="doc-intro__text">Un peu de rétro. Beaucoup de gourmandise.<br>Tous les ingrédients visuels des maquettes, réunis dans une bibliothèque de composants réutilisables.</p>
@@ -72,7 +72,7 @@
                         <div class="swatch__color" style="background:#FEDE85" aria-hidden="true">
                         </div>
                         <div class="swatch__info">
-                            <h3>Jaune</h3><code>#FEDE85</code><p>Bandeaux, titres sur photo</p><button class="copy-color" data-copy-color="#FEDE85" aria-label="Copier la couleur Jaune">Copier --jaune</button>
+                            <h3>Jaune</h3><code>#FEDE85</code><p>Bandeaux, catégorie Desserts &amp; boissons</p><button class="copy-color" data-copy-color="#FEDE85" aria-label="Copier la couleur Jaune">Copier --jaune</button>
                         </div>
                     </article>
                     <article class="swatch">
@@ -307,10 +307,10 @@
                     <div class="panel">
                         <div class="sticker-row" aria-hidden="true">
                             <div class="sticker-casque">
-                                <img src="../assets/3ed39.svg" width="109.632" height="106.777" alt="">
+                                <img src="../assets/3ed39.svg" width="110" height="107" alt="">
                             </div>
                             <div class="sticker-tama">
-                                <img src="../assets/620a8.svg" width="84.6821" height="110.001" alt="">
+                                <img src="../assets/620a8.svg" width="85" height="110" alt="">
                             </div>
                         </div>
                         <p class="note">Casque et Tamagotchi d’Analyse DA. Rotations légères, proportions d’origine et masques SVG conservés.</p>
@@ -1071,7 +1071,7 @@
                 <span>Les Fils à Maman · Design system HTML & CSS</span><span>Source : MAREE Jules — Les Fils à Maman · 16 octobre 2026</span>
             </footer>
         </main>
-        <dialog class="product-dialog" id="product-dialog" aria-labelledby="dialog-title">
+        <dialog class="product-dialog" id="product-dialog" aria-label="Fiche produit">
             <div class="product-dialog__top">
                 <span>Fiche produit · démonstration</span><button class="lf-btn lf-btn--secondary lf-btn--small" id="close-dialog" aria-label="Fermer la fiche produit">Fermer ×</button>
             </div>
@@ -1082,6 +1082,7 @@
         </div>
         <script id="wordpress-css" type="text/plain">
 @layer theme, lf-reset, lf-fonts, lf-tokens, lf-base, lf-components, lf-utilities, lf-overrides;
+
 @layer lf-reset {
     .lf-system, .lf-system *,   .lf-system::before, .lf-system *::before,   .lf-system::after, .lf-system *::after {
         box-sizing: border-box;
@@ -1290,7 +1291,6 @@
     .lf-title--outlined {
         color: var(--texte-titre);
         -webkit-text-stroke: 1.5px var(--encre);
-        paint-order: stroke fill;
         text-shadow: 3px 7px 0 var(--encre);
     }
 
@@ -2392,8 +2392,7 @@
     }
 
 }
-
-</script>
+        </script>
         <script src="system.js" defer></script>
     </body>
 </html>

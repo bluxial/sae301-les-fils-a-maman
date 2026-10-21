@@ -1,3 +1,9 @@
+@import url("../../../storefront/style.css") layer(theme);
+@import url("../../../storefront/assets/css/base/icons.css") layer(theme);
+@import url("../../../storefront/assets/css/base/gutenberg-blocks.css") layer(theme);
+@import url("../../../storefront/assets/css/woocommerce/woocommerce.css") layer(theme);
+@import url("storefront-couleurs.css") layer(theme);
+
 @layer lf-base {
     html {
         scroll-padding-top: 24px;
@@ -356,7 +362,6 @@
         color: var(--turquoise);
         text-transform: uppercase;
         -webkit-text-stroke: 1.5px var(--encre);
-        paint-order: stroke fill;
         text-shadow: 3px 7px 0 var(--encre);
         margin-bottom: 32px;
     }
@@ -1886,7 +1891,6 @@
         font: 400 48px/1.1 var(--famille-titre);
         color: var(--creme);
         -webkit-text-stroke: 1.5px var(--encre);
-        paint-order: stroke fill;
         text-shadow: 3px 5px 0 var(--encre);
     }
 

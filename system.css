@@ -1,10 +1,5 @@
 @layer theme, lf-reset, lf-fonts, lf-tokens, lf-base, lf-components, lf-utilities, lf-overrides;
 
-@import url("../storefront/style.css") layer(theme);
-@import url("../storefront/assets/css/base/icons.css") layer(theme);
-@import url("../storefront/assets/css/base/gutenberg-blocks.css") layer(theme);
-@import url("../storefront/assets/css/woocommerce/woocommerce.css") layer(theme);
-@import url("assets/css/storefront-couleurs.css") layer(theme);
 @layer lf-reset {
     .lf-system, .lf-system *,   .lf-system::before, .lf-system *::before,   .lf-system::after, .lf-system *::after {
         box-sizing: border-box;
@@ -213,7 +208,6 @@
     .lf-title--outlined {
         color: var(--texte-titre);
         -webkit-text-stroke: 1.5px var(--encre);
-        paint-order: stroke fill;
         text-shadow: 3px 7px 0 var(--encre);
     }
 
