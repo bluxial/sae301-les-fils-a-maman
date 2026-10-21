@@ -26,7 +26,7 @@ Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catég
 | inc/setup.php | Charge les styles et les scripts ; adapte Storefront ; affiche la barre panier mobile. |
 | inc/catalogue.php | Lit les catégories et prépare les textes et les boutons des produits. |
 | inc/produits-variables.php | IT-3 : prix « À partir de », bouton « Choisir + » et classe de stock faible. |
-| inc/champs-produits.php | IT-4 : champs SCF des produits et leur affichage avant le prix. |
+| inc/champs-produits.php | IT-4 : affichage des champs SCF des produits avant le prix (les champs sont créés dans SCF → Groupes de champs). |
 | inc/retrait.php | IT-6 : texte « Instructions pour le retrait » (réglage WooCommerce et affichage au checkout). |
 | inc/compte-client.php | IT-7 : menu du compte client. |
 | woocommerce/myaccount/navigation.php | IT-7 : menu du compte en pastilles. |

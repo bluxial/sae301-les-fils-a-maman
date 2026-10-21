@@ -3,7 +3,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// IT-11 : pages de l'équipe (un type de contenu « Membre de l'équipe » + champs SCF).
+// IT-11 : pages de l'équipe (un type de contenu « Membre de l'équipe »).
+// Les champs (poste, plat préféré, couleur) sont créés dans SCF → Groupes de champs → « Profil du membre ».
 
 // 1. Le type de contenu, avec son menu « Équipe » dans le back office.
 function lf_register_team() {
@@ -28,53 +29,7 @@ function lf_register_team() {
 }
 add_action('init', 'lf_register_team');
 
-// 2. Les champs du membre (poste, plat préféré, couleur de la carte).
-function lf_team_fields() {
-    acf_add_local_field_group([
-        'key' => 'group_lf_membre',
-        'title' => 'Profil du membre',
-        'fields' => [
-            [
-                'key' => 'field_lf_poste',
-                'label' => 'Poste',
-                'name' => 'poste',
-                'type' => 'text',
-                'required' => 1
-            ],
-            [
-                'key' => 'field_lf_plat_prefere',
-                'label' => 'Plat préféré de la carte',
-                'name' => 'plat_prefere',
-                'type' => 'text'
-            ],
-            [
-                'key' => 'field_lf_couleur',
-                'label' => 'Couleur de la carte',
-                'name' => 'couleur',
-                'type' => 'select',
-                'choices' => [
-                    'jaune' => 'Jaune',
-                    'turquoise' => 'Turquoise',
-                    'rose' => 'Rose'
-                ],
-                'default_value' => 'jaune'
-            ]
-        ],
-        'location' => [
-            [
-                [
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'membre'
-                ]
-            ]
-        ],
-        'position' => 'acf_after_title'
-    ]);
-}
-add_action('acf/init', 'lf_team_fields');
-
-// 3. La liste de l'équipe est triée avec l'ordre choisi dans le back office.
+// 2. La liste de l'équipe est triée avec l'ordre choisi dans le back office.
 function lf_team_order($query) {
     if (!is_admin() && $query->is_main_query() && $query->is_post_type_archive('membre')) {
         $query->set('orderby', 'menu_order');
