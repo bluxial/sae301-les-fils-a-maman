@@ -298,7 +298,7 @@ function copyText(text) {
     const area = document.createElement('textarea');
     area.value = text;
     area.style.position = 'fixed';
-    area.style.left = '-9999px';
+    area.style.left = '-624.9375rem';
     document.body.append(area);
     area.select();
 
@@ -391,7 +391,7 @@ function detailHTML(product, prefix) {
         + '<p class="lf-detail__price" data-product-price>' + euro(product.price) + '</p>';
 
     if (product.notice !== '') {
-        html += '<p class="lf-badge lf-badge--desserts" style="margin-bottom:20px">' + escapeHTML(product.notice) + '</p>';
+        html += '<p class="lf-badge lf-badge--desserts" style="margin-bottom:1.25rem">' + escapeHTML(product.notice) + '</p>';
     }
 
     for (let g = 0; g < product.options.length; g++) {
@@ -480,8 +480,8 @@ function renderBasket() {
 
     if (basket.length === 0) {
         html = '<div class="panel"><h3 class="lf-title lf-title--h3">Ton panier est vide</h3>'
-            + '<p style="margin-top:12px">Un petit creux ? Les cartes produits t’attendent.</p>'
-            + '<a href="#produits" class="lf-btn lf-btn--small" style="margin-top:20px">Voir la carte</a></div>';
+            + '<p style="margin-top:0.75rem">Un petit creux ? Les cartes produits t’attendent.</p>'
+            + '<a href="#produits" class="lf-btn lf-btn--small" style="margin-top:1.25rem">Voir la carte</a></div>';
     }
 
     target.innerHTML = html;
