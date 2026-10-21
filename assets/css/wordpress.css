@@ -1269,6 +1269,35 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 32px;
+        float: none;
+        width: auto;
+    }
+
+    .lf-system .password-input {
+        position: relative;
+        display: block;
+    }
+
+    .lf-system .password-input input {
+        padding-right: 56px;
+    }
+
+    .lf-system .show-password-input {
+        top: 50%;
+        right: 8px;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--encre);
+        transform: translateY(-50%);
+    }
+
+    .lf-system .show-password-input:hover,
+    .lf-system .show-password-input:focus-visible {
+        background: var(--jaune);
     }
 
     .lf-system .u-columns.col2-set::before,
