@@ -8,7 +8,7 @@ Thème enfant Storefront réalisé à partir du Figma et du design system. Le si
 
 ## Installation
 
-1. Installer WordPress, WooCommerce, Storefront, Secure Custom Field, Classic Editor et PDF Invoices & Packing Slips for WooCommerce (factures, IT-17).
+1. Installer WordPress, WooCommerce, Storefront, Secure Custom Field, Classic Editor, PDF Invoices & Packing Slips for WooCommerce (factures, IT-17) et Yoast SEO (référencement, IT-21).
 2. Copier ce dossier dans wp-content/themes/les-fils-a-maman/.
 3. Activer le thème enfant dans **Apparence → Thèmes**. Garder Storefront installé.
 4. Choisir la page Click & Collect comme page d’accueil dans les réglages WordPress.
@@ -38,6 +38,8 @@ Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catég
 | inc/envies.php | IT-12 : pastilles « Envies » de la boutique (la taxonomie est créée dans SCF → Taxonomies). |
 | inc/ventes-croisees.php | IT-13 : suggestions sur la fiche produit et dans le panier. |
 | inc/avis.php | IT-14 : avis clients sous la fiche produit. |
+| page.php | Pages simples ; les pages de texte (mentions légales, CGV) reçoivent la classe lf-page-content--texte. |
+| footer.php | Pied de page, avec les liens Mentions légales et CGV (IT-22). |
 | inc/frais-preparation.php | IT-15 : frais de préparation sous un seuil. |
 | inc/filtres.php | IT-18 : barre latérale de filtres de la boutique. |
 | woocommerce/pdf/lfam/ | IT-17 : modèle de facture PDF aux couleurs de l’enseigne. |
@@ -66,7 +68,13 @@ Les styles restent organisés avec @layer :
     @layer theme, lf-reset, lf-fonts, lf-tokens, lf-base,
            lf-components, lf-utilities, lf-overrides;
 
-La couche theme contient les styles Storefront et WooCommerce : system.css les importe avec `@import url(...) layer(theme)`, et inc/setup.php retire leurs balises `<link>` d’origine avec wp_dequeue_style. Le fichier assets/css/storefront-couleurs.css reprend les couleurs du personnaliseur Storefront. Les autres couches contiennent nos styles ; la dernière couche déclarée gagne toujours. La classe lf-system porte les variables et les règles de base ; les composants utilisent des classes commençant par lf-.
+La couche theme contient les styles Storefront et WooCommerce : assets/css/wordpress.css les importe avec `@import url(...) layer(theme)`, et inc/setup.php retire leurs balises `<link>` d’origine avec wp_dequeue_style. system.css ne contient que le design system : il fonctionne aussi seul, dans design-system/system.html. Le fichier assets/css/storefront-couleurs.css reprend les couleurs du personnaliseur Storefront. Les autres couches contiennent nos styles ; la dernière couche déclarée gagne toujours. La classe lf-system porte les variables et les règles de base ; les composants utilisent des classes commençant par lf-.
+
+Conventions CSS :
+
+- noms de classes au format BEM : bloc `lf-card`, élément `lf-card__name`, modificateur `lf-card--horizontal` ;
+- déclarations toujours dans le même ordre : display (et flex/grid), position (avec dimensions, marges et bordures), font (et texte), color (et fond), puis le reste (ombres, transitions…) ;
+- unités en rem (1rem = 16px), media queries comprises. Exceptions : le CSS des e-mails et des factures PDF reste en px, car les logiciels de messagerie et le moteur PDF gèrent mal les rem.
 
 ## Design system
 
@@ -76,7 +84,7 @@ Ouvrir design-system/system.html dans un navigateur. Le catalogue utilise les im
 
 IT-1 et IT-2 en local : environnement DDEV, thème enfant, accueil, boutique, catégories, neuf produits simples, fiches et navigation responsive.
 
-Le site est déployé dans r3SAE01 sur mmi.unilim.fr depuis le 16 octobre 2026. L’accès utilise l’authentification universitaire « Devoir MMI ». Le transfert et ses contrôles sont décrits dans docs/DEPLOIEMENT.md et docs/VALIDATION.md. IT-3 (produits variables), IT-4 (champs SCF) IT-5 (paiements, expédition, panier) IT-6 (checkout, instructions de retrait) IT-7 (compte client) IT-8 (e-mails) IT-9 (commandes) IT-10 (promotions) IT-11 (équipe) IT-12 (taxonomie Envies) IT-13 (ventes croisées) IT-14 (avis) IT-15 (frais de préparation) IT-16 (nouveautés sur l’accueil), IT-17 (factures PDF) IT-18 (filtres) IT-19 (livraison au poids) et IT-20 (créneaux) sont faites en local.
+Le site est déployé dans r3SAE01 sur mmi.unilim.fr depuis le 16 octobre 2026. L’accès utilise l’authentification universitaire « Devoir MMI ». Le transfert et ses contrôles sont décrits dans docs/DEPLOIEMENT.md et docs/VALIDATION.md. IT-3 (produits variables), IT-4 (champs SCF) IT-5 (paiements, expédition, panier) IT-6 (checkout, instructions de retrait) IT-7 (compte client) IT-8 (e-mails) IT-9 (commandes) IT-10 (promotions) IT-11 (équipe) IT-12 (taxonomie Envies) IT-13 (ventes croisées) IT-14 (avis) IT-15 (frais de préparation) IT-16 (nouveautés sur l’accueil), IT-17 (factures PDF) IT-18 (filtres) IT-19 (livraison au poids) et IT-20 (créneaux) sont en ligne depuis le 21 octobre 2026. IT-21 (SEO avec Yoast) et IT-22 (mentions légales et CGV) sont faites en local.
 
 Les logos et les photographies de l’enseigne sont utilisés pour ce projet pédagogique. Les configurations privées, les mots de passe et les exports SQL sont exclus du dépôt.
 

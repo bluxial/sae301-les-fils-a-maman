@@ -174,6 +174,22 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | US-20.2 | Pastilles « Créneau horaire » (midi : 12h00 à 13h30, soir : 19h00 à 20h30, par demi-heure), même composant que les options produit. |
 | US-20.3 | Les mêmes champs servent au retrait au restaurant. Jour et créneau obligatoires et vérifiés côté serveur, enregistrés dans la commande, affichés sur la page de confirmation, dans Mon compte, dans la fiche commande du back office et dans les e-mails. Testé en local : sans choix → deux messages d’erreur ; avec mercredi 21 octobre, 12h30 – 13h00 → commande n° 60, créneau visible sur la confirmation, dans le back office et dans les e-mails client et administrateur (facture PDF jointe à l’e-mail client, IT-17). |
 
+## IT-21 : optimisation SEO
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-21.1 | Extension Yoast SEO : encadré « Titre SEO » et « Meta description » sous chaque produit et chaque catégorie du back office. Titres (moins de 60 caractères) et descriptions (moins de 155) rédigés pour les 9 produits, les 3 catégories, l’accueil et la boutique avec `tools/it21-seo.php`. |
+| US-21.2 | Yoast SEO 28.7 installé et activé ; organisation « Les Fils à Maman » et logo déclarés pour les partages. Le thème appelle `wp_head()` et déclare `title-tag`, donc Yoast gère seul `<title>` et les balises. |
+| US-21.3 | Vérifié en local sur les 14 pages : une seule balise `<title>`, `meta description`, `og:title`, `og:description`, `og:url`, `og:image` (photo du produit, logo pour l’accueil et les catégories) et `twitter:card`. |
+
+## IT-22 : mentions légales et CGV
+
+| User story | Mise en œuvre |
+| --- | --- |
+| US-22.1 | Page « Mentions légales » (`/mentions-legales/`) : projet pédagogique, éditeur et directeur de la publication, hébergeur (Université de Limoges), propriété intellectuelle, données personnelles, cookies. Elle sert aussi de page « Politique de confidentialité » de WordPress. Lien dans le pied de page. |
+| US-22.2 | Page « Conditions générales de vente » (`/cgv/`) en 10 articles : produits, prix, commande, paiement, retrait et livraison, annulation, réclamations, données, droit applicable. Lien dans le pied de page. Pages créées avec `tools/it22-pages-legales.php`. |
+| US-22.3 | WooCommerce → Réglages → Avancé : la page CGV est la « page des conditions générales ». WooCommerce ajoute la case obligatoire « J’ai lu et j’accepte les conditions générales » avant le bouton « Commander ». Testé en local : sans la case, la commande est refusée avec le message « Veuillez lire et accepter les conditions générales pour poursuivre votre commande ». |
+
 ## À traiter ensuite
 
 

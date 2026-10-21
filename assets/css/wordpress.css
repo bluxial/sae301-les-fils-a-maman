@@ -2009,3 +2009,43 @@
         }
     }
 }
+
+@layer lf-components {
+    .lf-page-content--texte {
+        max-width: 48rem;
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .lf-page-content--texte h2 {
+        margin: 2.5rem 0 0.75rem;
+        font: 400 var(--taille-titre-4)/1.2 var(--famille-titre);
+    }
+
+    .lf-page-content--texte p {
+        margin-bottom: 1rem;
+    }
+
+    .lf-page-content--texte a, .lf-system .woocommerce-terms-and-conditions-wrapper a {
+        font-weight: 600;
+        text-decoration: underline;
+    }
+
+    .lf-system .woocommerce-terms-and-conditions-wrapper {
+        margin: 1.25rem 0;
+    }
+
+    .lf-system .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        font-weight: 600;
+    }
+
+    .lf-system .woocommerce-terms-and-conditions-wrapper .woocommerce-form__input-checkbox {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin: 0;
+        accent-color: var(--encre);
+    }
+}

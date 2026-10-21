@@ -35,9 +35,8 @@ if (!defined('ABSPATH')) {
                 <li><a href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>">Toute la carte</a></li>
                 <li><a href="<?php echo esc_url(get_post_type_archive_link('membre')); ?>">L’équipe</a></li>
                 <li><a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>">Suivre mes commandes</a></li>
-                <?php if (get_privacy_policy_url()) : ?>
-                    <li><a href="<?php echo esc_url(get_privacy_policy_url()); ?>">Confidentialité</a></li>
-                <?php endif; ?>
+                <li><a href="<?php echo esc_url(home_url('/mentions-legales/')); ?>">Mentions légales</a></li>
+                <li><a href="<?php echo esc_url(wc_get_page_permalink('terms')); ?>">Conditions générales de vente</a></li>
             </ul>
         </nav>
     </footer>
