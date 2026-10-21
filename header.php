@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 <div id="page" class="lf-site">
     <header class="lf-header lf-site-header">
         <a href="<?php echo esc_url(home_url('/')); ?>" aria-label="Les Fils à Maman — accueil">
-            <img src="<?php echo esc_url(lf_asset('8594c.svg')); ?>" width="112" height="56" alt="Les Fils à Maman">
+            <img src="<?php echo esc_url(lf_asset('img/logo-en-tete.svg')); ?>" width="112" height="56" alt="Les Fils à Maman">
         </a>
 
         <nav class="lf-header__nav" id="lf-primary-nav" aria-label="Navigation principale">

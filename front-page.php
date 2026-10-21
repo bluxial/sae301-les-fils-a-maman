@@ -6,7 +6,7 @@ get_header();
 ?>
 
 <section class="lf-hero" aria-labelledby="lf-hero-title">
-    <img src="<?php echo esc_url(lf_asset('bf199.png')); ?>" alt="La salle du restaurant, ses jouets et ses souvenirs rétro" fetchpriority="high" width="1440" height="560">
+    <img src="<?php echo esc_url(lf_asset('img/accueil-salle.png')); ?>" alt="La salle du restaurant, ses jouets et ses souvenirs rétro" fetchpriority="high" width="1440" height="560">
 
     <div class="lf-hero__content">
         <p class="lf-script">Tu commandes, on cuisine,</p>
@@ -89,7 +89,7 @@ $nouveautes = wc_get_products([
             <p class="lf-script">qu’est-ce qui te ferait plaisir ?</p>
             <h2 class="lf-title lf-title--h1 lf-title--outlined" id="lf-menu-title">LA CARTE À EMPORTER</h2>
         </div>
-        <img src="<?php echo esc_url(lf_asset('21df4.svg')); ?>" width="107.777" height="140.001" alt="" aria-hidden="true">
+        <img src="<?php echo esc_url(lf_asset('img/sticker-tamagotchi.svg')); ?>" width="108" height="140" alt="" aria-hidden="true">
     </div>
 
     <div class="lf-category-grid">

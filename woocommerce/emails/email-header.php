@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 
 $store_name = get_bloginfo('name', 'display');
-$logo = get_stylesheet_directory_uri() . '/assets/email-logo.png';
+$logo = get_stylesheet_directory_uri() . '/assets/img/logo-email.png';
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

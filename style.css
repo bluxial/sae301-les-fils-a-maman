@@ -8,3 +8,4012 @@
  * Requires PHP: 8.0
  * License: GNU General Public License v2 or later
  */
+
+/* =========================================================
+   Sommaire
+   1. CSS de Storefront et ordre des couches (@layer)
+   2. Couleurs de Storefront
+   3. Remise à zéro
+   4. Polices
+   5. Variables : couleurs, tailles, espacements, ombres
+   6. Base
+   7. Titres et accroches
+   8. Boutons et liens
+   9. Pastilles, badges, quantité et options
+   10. Cartes produits et photos
+   11. Cartes catégories
+   12. Fiche produit et recommandations
+   13. En-tête, accueil et pied de page
+   14. Panier et barre panier mobile
+   15. Utilitaires
+   16. Base WordPress
+   17. Structure des pages
+   18. En-tête du site
+   19. Accueil
+   20. Boutique et catégories
+   21. Fiche produit
+   22. Pages simples
+   23. Pied de page et barre panier mobile
+   24. Messages et formulaires WooCommerce
+   25. Produits à options (IT-3)
+   26. Composition et allergènes (IT-4)
+   27. Panier et commande (IT-5, IT-6)
+   28. Instructions pour le retrait (IT-6)
+   29. Compte client (IT-7)
+   30. Codes promo (IT-10)
+   31. Équipe (IT-11)
+   32. Envies (IT-12)
+   33. Ventes croisées (IT-13)
+   34. Lien « Voir le panier » des cartes (IT-13)
+   35. Avis clients (IT-14)
+   36. Frais de préparation (IT-15)
+   37. Nouveautés sur l’accueil (IT-16)
+   38. Filtres de la boutique (IT-18)
+   39. Jour et créneau (IT-20)
+   40. Espace client connecté (IT-7)
+   41. Mentions légales, CGV et case à cocher (IT-22)
+   42. Commande en deux colonnes (IT-6)
+   ========================================================= */
+
+/* =========================================================
+   1. CSS de Storefront et ordre des couches (@layer)
+   ========================================================= */
+@import url("../storefront/style.css") layer(theme);
+@import url("../storefront/assets/css/base/icons.css") layer(theme);
+@import url("../storefront/assets/css/base/gutenberg-blocks.css") layer(theme);
+@import url("../storefront/assets/css/woocommerce/woocommerce.css") layer(theme);
+
+@layer theme, lf-reset, lf-fonts, lf-tokens, lf-base, lf-components, lf-utilities, lf-overrides;
+
+/* =========================================================
+   2. Couleurs de Storefront
+   ========================================================= */
+@layer theme {
+    .main-navigation ul li a, .site-title a, ul.menu li a, .site-branding h1 a, button.menu-toggle, button.menu-toggle:hover, .handheld-navigation .dropdown-toggle {
+        color: #333333;
+    }
+
+    button.menu-toggle, button.menu-toggle:hover {
+        border-color: #333333;
+    }
+
+    .main-navigation ul li a:hover, .main-navigation ul li:hover > a, .site-title a:hover, .site-header ul.menu li.current-menu-item > a {
+        color: #747474;
+    }
+
+    table:not( .has-background ) th {
+        background-color: #f8f8f8;
+    }
+
+    table:not( .has-background ) tbody td {
+        background-color: #fdfdfd;
+    }
+
+    table:not( .has-background ) tbody tr:nth-child(2n) td, fieldset, fieldset legend {
+        background-color: #fbfbfb;
+    }
+
+    .site-header, .secondary-navigation ul ul, .main-navigation ul.menu > li.menu-item-has-children:after, .secondary-navigation ul.menu ul, .storefront-handheld-footer-bar, .storefront-handheld-footer-bar ul li > a, .storefront-handheld-footer-bar ul li.search .site-search, button.menu-toggle, button.menu-toggle:hover {
+        background-color: #ffffff;
+    }
+
+    p.site-description, .site-header, .storefront-handheld-footer-bar {
+        color: #404040;
+    }
+
+    button.menu-toggle:after, button.menu-toggle:before, button.menu-toggle span:before {
+        background-color: #333333;
+    }
+
+    h1, h2, h3, h4, h5, h6, .wc-block-grid__product-title {
+        color: #333333;
+    }
+
+    .widget h1 {
+        border-bottom-color: #333333;
+    }
+
+    body, .secondary-navigation a {
+        color: #6d6d6d;
+    }
+
+    .widget-area .widget a, .hentry .entry-header .posted-on a, .hentry .entry-header .post-author a, .hentry .entry-header .post-comments a, .hentry .entry-header .byline a {
+        color: #727272;
+    }
+
+    a {
+        color: #7f54b3;
+    }
+
+    a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus {
+        outline-color: #7f54b3;
+    }
+
+    button, input[type="button"], input[type="reset"], input[type="submit"], .button, .widget a.button {
+        border-color: #eeeeee;
+        background-color: #eeeeee;
+        color: #333333;
+    }
+
+    button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover, .button:hover, .widget a.button:hover {
+        border-color: #d5d5d5;
+        background-color: #d5d5d5;
+        color: #333333;
+    }
+
+    button.alt, input[type="button"].alt, input[type="reset"].alt, input[type="submit"].alt, .button.alt, .widget-area .widget a.button.alt {
+        border-color: #333333;
+        background-color: #333333;
+        color: #ffffff;
+    }
+
+    button.alt:hover, input[type="button"].alt:hover, input[type="reset"].alt:hover, input[type="submit"].alt:hover, .button.alt:hover, .widget-area .widget a.button.alt:hover {
+        border-color: #1a1a1a;
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+
+    .pagination .page-numbers li .page-numbers.current {
+        background-color: #e6e6e6;
+        color: #636363;
+    }
+
+    #comments .comment-list .comment-content .comment-text {
+        background-color: #f8f8f8;
+    }
+
+    .site-footer {
+        background-color: #f0f0f0;
+        color: #6d6d6d;
+    }
+
+    .site-footer a:not(.button):not(.components-button) {
+        color: #333333;
+    }
+
+    .site-footer .storefront-handheld-footer-bar a:not(.button):not(.components-button) {
+        color: #333333;
+    }
+
+    .site-footer h1, .site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5, .site-footer h6, .site-footer .widget .widget-title, .site-footer .widget .widgettitle {
+        color: #333333;
+    }
+
+    .page-template-template-homepage.has-post-thumbnail .type-page.has-post-thumbnail .entry-title {
+        color: #000000;
+    }
+
+    .page-template-template-homepage.has-post-thumbnail .type-page.has-post-thumbnail .entry-content {
+        color: #000000;
+    }
+
+    @media screen and ( min-width: 48rem ) {
+        .secondary-navigation ul.menu a:hover {
+            color: #595959;
+        }
+
+        .secondary-navigation ul.menu a {
+            color: #404040;
+        }
+
+        .main-navigation ul.menu ul.sub-menu, .main-navigation ul.nav-menu ul.children {
+            background-color: #f0f0f0;
+        }
+
+        .site-header {
+            border-bottom-color: #f0f0f0;
+        }
+    }
+
+    .wp-block-button__link:not(.has-text-color) {
+        color: #333333;
+    }
+
+    .wp-block-button__link:not(.has-text-color):hover, .wp-block-button__link:not(.has-text-color):focus, .wp-block-button__link:not(.has-text-color):active {
+        color: #333333;
+    }
+
+    .wp-block-button__link:not(.has-background) {
+        background-color: #eeeeee;
+    }
+
+    .wp-block-button__link:not(.has-background):hover, .wp-block-button__link:not(.has-background):focus, .wp-block-button__link:not(.has-background):active {
+        border-color: #d5d5d5;
+        background-color: #d5d5d5;
+    }
+
+    .wc-block-grid__products .wc-block-grid__product .wp-block-button__link {
+        border-color: #eeeeee;
+        background-color: #eeeeee;
+        color: #333333;
+    }
+
+    .wp-block-quote footer, .wp-block-quote cite, .wp-block-quote__citation {
+        color: #6d6d6d;
+    }
+
+    .wp-block-pullquote cite, .wp-block-pullquote footer, .wp-block-pullquote__citation {
+        color: #6d6d6d;
+    }
+
+    .wp-block-image figcaption {
+        color: #6d6d6d;
+    }
+
+    .wp-block-separator.is-style-dots::before {
+        color: #333333;
+    }
+
+    .wp-block-file a.wp-block-file__button {
+        border-color: #eeeeee;
+        color: #333333;
+        background-color: #eeeeee;
+    }
+
+    .wp-block-file a.wp-block-file__button:hover, .wp-block-file a.wp-block-file__button:focus, .wp-block-file a.wp-block-file__button:active {
+        color: #333333;
+        background-color: #d5d5d5;
+    }
+
+    .wp-block-code, .wp-block-preformatted pre {
+        color: #6d6d6d;
+    }
+
+    .wp-block-table:not( .has-background ):not( .is-style-stripes ) tbody tr:nth-child(2n) td {
+        background-color: #fdfdfd;
+    }
+
+    .wp-block-cover .wp-block-cover__inner-container h1:not(.has-text-color), .wp-block-cover .wp-block-cover__inner-container h2:not(.has-text-color), .wp-block-cover .wp-block-cover__inner-container h3:not(.has-text-color), .wp-block-cover .wp-block-cover__inner-container h4:not(.has-text-color), .wp-block-cover .wp-block-cover__inner-container h5:not(.has-text-color), .wp-block-cover .wp-block-cover__inner-container h6:not(.has-text-color) {
+        color: #000000;
+    }
+
+    div.wc-block-components-price-slider__range-input-progress, .rtl .wc-block-components-price-slider__range-input-progress {
+        --range-color: #7f54b3;
+    }
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .wc-block-components-price-slider__range-input-progress {
+            background: #7f54b3;
+        }
+    }
+
+    .wc-block-components-button:not(.is-link) {
+        background-color: #333333;
+        color: #ffffff;
+    }
+
+    .wc-block-components-button:not(.is-link):hover, .wc-block-components-button:not(.is-link):focus, .wc-block-components-button:not(.is-link):active {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+
+    .wc-block-components-button:not(.is-link):disabled {
+        background-color: #333333;
+        color: #ffffff;
+    }
+
+    .wc-block-cart__submit-container {
+        background-color: #ffffff;
+    }
+
+    .wc-block-cart__submit-container::before {
+        color: rgba(220, 220, 220, 0.5);
+    }
+
+    .wc-block-components-order-summary-item__quantity {
+        border-color: #6d6d6d;
+        background-color: #ffffff;
+        color: #6d6d6d;
+        box-shadow: 0 0 0 0.125rem #ffffff;
+    }
+
+    @font-face {
+        font-family: star;
+        font-weight: 400;
+        font-style: normal;
+        src: url(../../plugins/woocommerce/assets/fonts/star.eot);
+        src: url(../../plugins/woocommerce/assets/fonts/star.eot?#iefix) format("embedded-opentype"), url(../../plugins/woocommerce/assets/fonts/star.woff) format("woff"), url(../../plugins/woocommerce/assets/fonts/star.ttf) format("truetype"), url(../../plugins/woocommerce/assets/fonts/star.svg#star) format("svg");
+    }
+
+    @font-face {
+        font-family: WooCommerce;
+        font-weight: 400;
+        font-style: normal;
+        src: url(../../plugins/woocommerce/assets/fonts/WooCommerce.eot);
+        src: url(../../plugins/woocommerce/assets/fonts/WooCommerce.eot?#iefix) format("embedded-opentype"), url(../../plugins/woocommerce/assets/fonts/WooCommerce.woff) format("woff"), url(../../plugins/woocommerce/assets/fonts/WooCommerce.ttf) format("truetype"), url(../../plugins/woocommerce/assets/fonts/WooCommerce.svg#WooCommerce) format("svg");
+    }
+
+    a.cart-contents, .site-header-cart .widget_shopping_cart a {
+        color: #333333;
+    }
+
+    a.cart-contents:hover, .site-header-cart .widget_shopping_cart a:hover, .site-header-cart:hover > li > a {
+        color: #747474;
+    }
+
+    table.cart td.product-remove, table.cart td.actions {
+        border-top-color: #ffffff;
+    }
+
+    .storefront-handheld-footer-bar ul li.cart .count {
+        border-color: #ffffff;
+        background-color: #333333;
+        color: #ffffff;
+    }
+
+    .woocommerce-tabs ul.tabs li.active a, ul.products li.product .price, .onsale, .wc-block-grid__product-onsale, .widget_search form:before, .widget_product_search form:before {
+        color: #6d6d6d;
+    }
+
+    .woocommerce-breadcrumb a, a.woocommerce-review-link, .product_meta a {
+        color: #727272;
+    }
+
+    .wc-block-grid__product-onsale, .onsale {
+        border-color: #6d6d6d;
+    }
+
+    .star-rating span:before, .quantity .plus, .quantity .minus, p.stars a:hover:after, p.stars a:after, .star-rating span:before, #payment .payment_methods li input[type=radio]:first-child:checked+label:before {
+        color: #7f54b3;
+    }
+
+    .widget_price_filter .ui-slider .ui-slider-range, .widget_price_filter .ui-slider .ui-slider-handle {
+        background-color: #7f54b3;
+    }
+
+    .order_details {
+        background-color: #f8f8f8;
+    }
+
+    .order_details > li {
+        border-bottom: 0.0625rem dotted #e3e3e3;
+    }
+
+    .order_details:before, .order_details:after {
+        background: -webkit-linear-gradient(transparent 0, transparent 0), -webkit-linear-gradient(135deg, #f8f8f8 33.33%, transparent 33.33%), -webkit-linear-gradient(45deg, #f8f8f8 33.33%, transparent 33.33%);
+    }
+
+    #order_review {
+        background-color: #ffffff;
+    }
+
+    #payment .payment_methods > li .payment_box, #payment .place-order {
+        background-color: #fafafa;
+    }
+
+    #payment .payment_methods > li:not(.woocommerce-notice) {
+        background-color: #f5f5f5;
+    }
+
+    #payment .payment_methods > li:not(.woocommerce-notice):hover {
+        background-color: #f0f0f0;
+    }
+
+    .woocommerce-pagination .page-numbers li .page-numbers.current {
+        background-color: #e6e6e6;
+        color: #636363;
+    }
+
+    .wc-block-grid__product-onsale, .onsale, .woocommerce-pagination .page-numbers li .page-numbers:not(.current) {
+        color: #6d6d6d;
+    }
+
+    p.stars a:before, p.stars a:hover~a:before, p.stars.selected a.active~a:before {
+        color: #6d6d6d;
+    }
+
+    p.stars.selected a.active:before, p.stars:hover a:before, p.stars.selected a:not(.active):before, p.stars.selected a.active:before {
+        color: #7f54b3;
+    }
+
+    .single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
+        background-color: #eeeeee;
+        color: #333333;
+    }
+
+    .single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger:hover {
+        border-color: #d5d5d5;
+        background-color: #d5d5d5;
+        color: #333333;
+    }
+
+    .button.added_to_cart:focus, .button.wc-forward:focus {
+        outline-color: #7f54b3;
+    }
+
+    .added_to_cart, .site-header-cart .widget_shopping_cart a.button, .wc-block-grid__products .wc-block-grid__product .wp-block-button__link {
+        border-color: #eeeeee;
+        background-color: #eeeeee;
+        color: #333333;
+    }
+
+    .added_to_cart:hover, .site-header-cart .widget_shopping_cart a.button:hover, .wc-block-grid__products .wc-block-grid__product .wp-block-button__link:hover {
+        border-color: #d5d5d5;
+        background-color: #d5d5d5;
+        color: #333333;
+    }
+
+    .added_to_cart.alt, .added_to_cart, .widget a.button.checkout {
+        border-color: #333333;
+        background-color: #333333;
+        color: #ffffff;
+    }
+
+    .added_to_cart.alt:hover, .added_to_cart:hover, .widget a.button.checkout:hover {
+        border-color: #1a1a1a;
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+
+    .button.loading {
+        color: #eeeeee;
+    }
+
+    .button.loading:hover {
+        background-color: #eeeeee;
+    }
+
+    .button.loading:after {
+        color: #333333;
+    }
+
+    @media screen and ( min-width: 48rem ) {
+        .site-header-cart .widget_shopping_cart, .site-header .product_list_widget li .quantity {
+            color: #404040;
+        }
+
+        .site-header-cart .widget_shopping_cart .buttons, .site-header-cart .widget_shopping_cart .total {
+            background-color: #f5f5f5;
+        }
+
+        .site-header-cart .widget_shopping_cart {
+            background-color: #f0f0f0;
+        }
+    }
+
+    .storefront-product-pagination a {
+        color: #6d6d6d;
+        background-color: #ffffff;
+    }
+
+    .storefront-sticky-add-to-cart {
+        color: #6d6d6d;
+        background-color: #ffffff;
+    }
+
+    .storefront-sticky-add-to-cart a:not(.button) {
+        color: #333333;
+    }
+}
+
+/* =========================================================
+   3. Remise à zéro
+   ========================================================= */
+@layer lf-reset {
+    .lf-system, .lf-system *, .lf-system::before, .lf-system *::before, .lf-system::after, .lf-system *::after {
+        box-sizing: border-box;
+    }
+
+    .lf-system h1, .lf-system h2, .lf-system h3, .lf-system h4, .lf-system p {
+        margin: 0;
+    }
+
+    .lf-system button, .lf-system input, .lf-system select {
+        font: inherit;
+    }
+
+    .lf-system button, .lf-system a, .lf-system input, .lf-system select {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .lf-system button, .lf-system a {
+        touch-action: manipulation;
+    }
+
+    .lf-system button, .lf-system a {
+        color: inherit;
+    }
+
+    .lf-system img {
+        display: block;
+        max-width: 100%;
+    }
+}
+
+/* =========================================================
+   4. Polices
+   ========================================================= */
+@layer lf-fonts {
+    @font-face {
+        font-family: Damion;
+        font-weight: 400;
+        font-display: swap;
+        src: url("assets/fonts/damion.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: "Luckiest Guy";
+        font-weight: 400;
+        font-display: swap;
+        src: url("assets/fonts/luckiest-guy.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: Signika;
+        font-weight: 400;
+        font-display: swap;
+        src: url("assets/fonts/signika-400.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: Signika;
+        font-weight: 600;
+        font-display: swap;
+        src: url("assets/fonts/signika-600.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: Signika;
+        font-weight: 700;
+        font-display: swap;
+        src: url("assets/fonts/signika-700.ttf") format("truetype");
+    }
+}
+
+/* =========================================================
+   5. Variables : couleurs, tailles, espacements, ombres
+   ========================================================= */
+@layer lf-tokens {
+    .lf-system {
+        --encre: #0f172a;
+        --peche: #fef5ee;
+        --creme: #fffaeb;
+        --jaune: #fede85;
+        --rose: #f3a0cf;
+        --turquoise: #79cfc2;
+        --turquoise-clair: #abe4da;
+        --orange: #ea591d;
+        --ardoise: #334155;
+        --fond-page: var(--peche);
+        --fond-surface: var(--creme);
+        --fond-sombre: var(--encre);
+        --fond-accent: var(--jaune);
+        --texte-principal: var(--encre);
+        --texte-secondaire: var(--ardoise);
+        --texte-inverse: var(--creme);
+        --texte-titre: var(--turquoise);
+        --texte-accent: var(--orange);
+        --texte-accent-sur-sombre: var(--jaune);
+        --bouton-principal: var(--turquoise-clair);
+        --bouton-secondaire: var(--creme);
+        --bouton-tertiaire: var(--rose);
+        --bouton-texte: var(--encre);
+        --categorie-a-partager: var(--rose);
+        --categorie-plats: var(--turquoise);
+        --categorie-desserts-boissons: var(--jaune);
+        --bordure-principale: var(--encre);
+        --ombre-portee: var(--encre);
+        --famille-titre: "Luckiest Guy", Impact, sans-serif;
+        --famille-accroche: Damion, cursive;
+        --famille-texte: Signika, sans-serif;
+        --graisse-normale: 400;
+        --graisse-appuyee: 600;
+        --graisse-forte: 700;
+        --taille-titre-hero: 6rem;
+        --taille-titre-1: 4rem;
+        --taille-titre-3: 2rem;
+        --taille-titre-4: 1.5rem;
+        --taille-titre-5: 1.25rem;
+        --taille-titre-6: 1.125rem;
+        --taille-accroche: 2.5rem;
+        --taille-texte-grand: 1.125rem;
+        --taille-texte: 1rem;
+        --taille-texte-petit: 0.875rem;
+        --espace-1: 0.25rem;
+        --espace-2: 0.5rem;
+        --espace-3: 0.75rem;
+        --espace-4: 1rem;
+        --espace-5: 1.25rem;
+        --espace-6: 1.5rem;
+        --espace-8: 2rem;
+        --espace-10: 2.5rem;
+        --espace-14: 3.5rem;
+        --espace-20: 5rem;
+        --rayon-bouton: 0.5rem;
+        --rayon-carte: 0.75rem;
+        --rayon-tuile: 1rem;
+        --rayon-pastille: 62.4375rem;
+        --ombre-petite: 0.125rem 0.125rem 0 var(--ombre-portee);
+        --ombre-bouton: 0.25rem 0.25rem 0 var(--ombre-portee);
+        --ombre-carte: 0.375rem 0.375rem 0 var(--ombre-portee);
+        --contour: 0.0625rem solid var(--bordure-principale);
+        --contour-fort: 0.125rem solid var(--bordure-principale);
+    }
+
+    @media (max-width: 43.75rem) {
+        .lf-system {
+            --taille-titre-hero: 3.5rem;
+            --taille-titre-1: 2.5rem;
+            --taille-titre-3: 1.5rem;
+            --taille-titre-4: 1.25rem;
+            --taille-titre-5: 1.125rem;
+            --taille-titre-6: 1rem;
+            --taille-accroche: 1.625rem;
+            --taille-texte-grand: 1rem;
+            --taille-texte: 0.875rem;
+            --taille-texte-petit: 0.75rem;
+        }
+    }
+}
+
+/* =========================================================
+   6. Base
+   ========================================================= */
+@layer lf-base {
+    .lf-system {
+        margin: 0;
+        font: var(--taille-texte)/1.6 var(--famille-texte);
+        background: var(--fond-page);
+        color: var(--texte-principal);
+    }
+
+    .lf-system button {
+        cursor: pointer;
+    }
+
+    .lf-system button:disabled {
+        cursor: not-allowed;
+    }
+
+    .lf-system :focus-visible {
+        outline: 0.1875rem solid var(--encre);
+        outline-offset: 0.3125rem;
+    }
+
+    .lf-system::selection, .lf-system ::selection {
+        background: var(--turquoise-clair);
+        color: var(--encre);
+    }
+}
+
+/* =========================================================
+   7. Titres et accroches
+   ========================================================= */
+@layer lf-components {
+    .lf-title {
+        font-family: var(--famille-titre);
+        font-weight: 400;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+
+    .lf-title--hero {
+        font-size: var(--taille-titre-hero);
+        line-height: 1;
+    }
+
+    .lf-title--h1 {
+        font-size: var(--taille-titre-1);
+        line-height: 1.1;
+    }
+
+    .lf-title--h3 {
+        font-size: var(--taille-titre-3);
+    }
+
+    .lf-title--outlined {
+        -webkit-text-stroke: 0.09375rem var(--encre);
+        text-shadow: 0.1875rem 0.4375rem 0 var(--encre);
+        color: var(--texte-titre);
+    }
+
+    .lf-script {
+        font: 400 var(--taille-accroche)/1 var(--famille-accroche);
+        color: var(--texte-accent);
+    }
+}
+
+/* =========================================================
+   8. Boutons et liens
+   ========================================================= */
+@layer lf-components {
+    .lf-btn {
+        --btn-bg: var(--bouton-principal);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: 2.75rem;
+        padding: 0.8125rem 1.375rem;
+        border: var(--contour);
+        border-radius: var(--rayon-bouton);
+        font-weight: 600;
+        line-height: 1;
+        text-decoration: none;
+        background: var(--btn-bg);
+        color: var(--bouton-texte);
+        box-shadow: var(--ombre-bouton);
+        transition: transform .16s ease, box-shadow .16s ease;
+    }
+
+    .lf-btn:hover, .lf-btn--hover {
+        transform: scale(.97);
+    }
+
+    .lf-btn:active, .lf-btn--active {
+        transform: translate(0.1875rem, 0.1875rem);
+        box-shadow: 0.0625rem 0.0625rem 0 var(--encre);
+    }
+
+    .lf-btn:disabled {
+        opacity: .45;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .lf-btn--secondary {
+        --btn-bg: var(--bouton-secondaire);
+    }
+
+    .lf-btn--tertiary {
+        --btn-bg: var(--bouton-tertiaire);
+    }
+
+    .lf-btn--yellow {
+        --btn-bg: var(--jaune);
+    }
+
+    .lf-btn--ghost {
+        --btn-bg: transparent;
+        box-shadow: none;
+    }
+
+    .lf-btn--small {
+        padding: 0.6875rem 1rem;
+        min-height: 2.5rem;
+        font-size: 0.875rem;
+    }
+
+    .lf-btn--icon {
+        width: 2.75rem;
+        padding: 0;
+        font-size: 1.375rem;
+        box-shadow: var(--ombre-petite);
+    }
+
+    .lf-btn--block {
+        width: 100%;
+    }
+
+    .lf-link {
+        padding: 0;
+        border: 0;
+        text-decoration: underline;
+        text-underline-offset: 0.1875rem;
+        background: none;
+        color: inherit;
+    }
+
+    .lf-link:hover {
+        text-decoration-thickness: 0.125rem;
+    }
+
+    @media (max-width: 43.75rem) {
+        .lf-btn {
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem;
+        }
+    }
+}
+
+/* =========================================================
+   9. Pastilles, badges, quantité et options
+   ========================================================= */
+@layer lf-components {
+    .lf-chips {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .lf-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.375rem;
+        border: var(--contour);
+        border-radius: var(--rayon-pastille);
+        padding: 0.5rem 0.875rem;
+        min-height: 2.25rem;
+        font-weight: 600;
+        line-height: 1.1;
+        text-decoration: none;
+        background: var(--fond-surface);
+        color: var(--encre);
+    }
+
+    .lf-chip:has(input:checked) {
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-chip:has(input:focus-visible) {
+        outline: 0.1875rem solid var(--encre);
+        outline-offset: 0.25rem;
+    }
+
+    .lf-chip:has(input:disabled) {
+        opacity: .45;
+        cursor: not-allowed;
+    }
+
+    .lf-chip input {
+        position: absolute;
+        width: 0.0625rem;
+        height: 0.0625rem;
+        opacity: 0;
+    }
+
+    .lf-chip--input {
+        cursor: pointer;
+    }
+
+    .lf-chip:hover {
+        box-shadow: var(--ombre-petite);
+    }
+
+    .lf-badge {
+        display: inline-flex;
+        padding: 0.25rem 0.875rem;
+        border: var(--contour);
+        border-radius: 62.4375rem;
+        font-size: 0.875rem;
+        line-height: 1.2;
+        background: var(--rose);
+    }
+
+    .lf-badge--plats {
+        background: var(--turquoise);
+    }
+
+    .lf-badge--desserts {
+        background: var(--jaune);
+    }
+
+    .lf-stamp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 11.25rem;
+        height: 11.25rem;
+        border: var(--contour-fort);
+        border-radius: 50%;
+        font: 400 1.875rem/1.2 var(--famille-titre);
+        text-align: center;
+        background: var(--rose);
+        box-shadow: var(--ombre-carte);
+        transform: rotate(-10deg);
+    }
+
+    .lf-quantity {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.125rem;
+        flex-shrink: 0;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1;
+        background: var(--creme);
+    }
+
+    .lf-quantity button {
+        width: 2.25rem;
+        min-height: 2.75rem;
+        border: 0;
+        font-size: 1.25rem;
+        background: none;
+    }
+
+    .lf-quantity button:hover {
+        background: var(--turquoise-clair);
+    }
+
+    .lf-quantity button:disabled {
+        opacity: .3;
+    }
+
+    .lf-quantity output {
+        min-width: 1.625rem;
+        text-align: center;
+    }
+
+    .lf-options {
+        border: 0;
+        padding: 0;
+        margin: 0 0 1.25rem;
+        min-width: 0;
+    }
+
+    .lf-options legend {
+        margin-bottom: 0.625rem;
+        font-size: 1.125rem;
+        font-weight: 600;
+        line-height: 1.35;
+    }
+
+    .lf-options .lf-chip {
+        font-size: 0.875rem;
+    }
+
+    .lf-check {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        font-weight: 600;
+    }
+
+    .lf-check input {
+        width: 1.25rem;
+        height: 1.25rem;
+        accent-color: var(--encre);
+    }
+}
+
+/* =========================================================
+   10. Cartes produits et photos
+   ========================================================= */
+@layer lf-components {
+    .lf-card {
+        border: 0.09375rem solid var(--encre);
+        border-radius: var(--rayon-carte);
+        overflow: hidden;
+        min-width: 0;
+        background: var(--fond-surface);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-photo {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 405/280;
+        background: var(--peche);
+    }
+
+    .lf-photo img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        max-width: none;
+    }
+
+    .lf-crop-beignets img {
+        left: -16.28%;
+        top: -44.43%;
+        width: 116.28%;
+        height: 144.43%;
+    }
+
+    .lf-crop-oeufs img {
+        left: -16.28%;
+        top: -31.5%;
+        width: 116.28%;
+        height: 163.01%;
+    }
+
+    .lf-crop-cordon img {
+        left: 0;
+        top: 0;
+        width: 116.28%;
+        height: 167.08%;
+    }
+
+    .lf-crop-tartare img {
+        left: -8.14%;
+        top: 0;
+        width: 116.28%;
+        height: 151.12%;
+    }
+
+    .lf-crop-millefeuille img {
+        left: 0;
+        top: 0;
+        width: 116.28%;
+        height: 119%;
+    }
+
+    .lf-crop-peche img {
+        left: -16.28%;
+        top: 0;
+        width: 116.28%;
+        height: 292.56%;
+    }
+
+    .lf-card__body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1.125rem 1.25rem 1.25rem;
+    }
+
+    .lf-card__name {
+        min-height: 3.3125rem;
+        font-size: 1.375rem;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .lf-card__name a {
+        border: 0;
+        padding: 0;
+        text-align: left;
+        font: inherit;
+        text-decoration: none;
+        background: none;
+        color: inherit;
+    }
+
+    .lf-card__name a:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.25rem;
+    }
+
+    .lf-card__description {
+        min-height: 2.8125rem;
+        line-height: 1.4;
+        color: var(--ardoise);
+    }
+
+    .lf-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    .lf-card__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding-top: 0.5rem;
+    }
+
+    .lf-card[data-category="partager"] .lf-btn {
+        --btn-bg: var(--rose);
+    }
+
+    .lf-card[data-category="plats"] .lf-btn {
+        --btn-bg: var(--turquoise);
+    }
+
+    .lf-card[data-category="desserts"] .lf-btn {
+        --btn-bg: var(--jaune);
+    }
+}
+
+/* =========================================================
+   11. Cartes catégories
+   ========================================================= */
+@layer lf-components {
+    .lf-category {
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        overflow: hidden;
+        min-width: 0;
+        background: var(--rose);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-category--plats {
+        background: var(--turquoise);
+    }
+
+    .lf-category--desserts {
+        background: var(--jaune);
+    }
+
+    .lf-category .lf-photo {
+        aspect-ratio: 405/320;
+        border-bottom: var(--contour-fort);
+    }
+
+    .lf-category .lf-crop-cordon img {
+        height: 145.83%;
+    }
+
+    .lf-category .lf-crop-millefeuille img {
+        width: 130.18%;
+        height: 116.28%;
+    }
+
+    .lf-category__body {
+        padding: 1.25rem 1.5rem 1.5rem;
+    }
+
+    .lf-category__body .lf-script {
+        margin-bottom: 0.5rem;
+        font-size: 2.125rem;
+        color: var(--encre);
+    }
+
+    .lf-category__body .lf-title {
+        min-height: 4.8125rem;
+        font-size: 2rem;
+    }
+
+    .lf-category__body .lf-card__bottom {
+        padding-top: 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    .lf-card--horizontal {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.625rem 0.75rem 0.625rem 0.625rem;
+        box-shadow: var(--ombre-bouton);
+    }
+
+    .lf-card--horizontal .lf-photo {
+        flex-shrink: 0;
+        width: 6rem;
+        height: 6rem;
+        aspect-ratio: 1;
+        border-radius: 0.5rem;
+    }
+
+    .lf-card--horizontal .lf-card__body {
+        gap: 0.25rem;
+        flex: 1;
+        padding: 0;
+        min-width: 0;
+    }
+
+    .lf-card--horizontal .lf-card__name {
+        min-height: 0;
+        font-size: 1.125rem;
+    }
+
+    .lf-card--horizontal .lf-card__description {
+        min-height: 0;
+        font-size: 0.875rem;
+    }
+
+    .lf-card--horizontal .lf-price {
+        font-size: 1.125rem;
+    }
+
+    .lf-card--horizontal .lf-card__bottom {
+        padding-top: 0.25rem;
+    }
+
+    .lf-card--horizontal .lf-crop-beignets img {
+        left: -34.51%;
+        top: -16.28%;
+        height: 116.28%;
+        width: 134.51%;
+    }
+
+    .lf-card--horizontal .lf-crop-oeufs img {
+        left: -19.19%;
+        top: -8.14%;
+        height: 116.28%;
+        width: 119.19%;
+    }
+
+    @media (max-width: 43.75rem) {
+        .lf-card__name {
+            font-size: 1.25rem;
+        }
+
+        .lf-card__description {
+            font-size: 0.875rem;
+        }
+
+        .lf-category__body .lf-script {
+            font-size: 1.625rem;
+        }
+    }
+}
+
+/* =========================================================
+   12. Fiche produit et recommandations
+   ========================================================= */
+@layer lf-components {
+    .lf-facts {
+        border: var(--contour-fort);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        background: var(--creme);
+    }
+
+    .lf-facts div {
+        display: grid;
+        grid-template-columns: 7.5rem 1fr;
+        gap: 1.125rem;
+        padding: 0.875rem 1.125rem;
+    }
+
+    .lf-facts div+div {
+        border-top: var(--contour);
+    }
+
+    .lf-facts dt {
+        font-weight: 600;
+    }
+
+    .lf-facts dd {
+        margin: 0;
+    }
+
+    .lf-detail {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+
+    .lf-detail__image {
+        aspect-ratio: 610/458;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-detail[data-product="1"] .lf-detail__image img {
+        left: -16.28%;
+        top: -33.88%;
+        width: 116.28%;
+        height: 133.88%;
+    }
+
+    .lf-detail[data-product="2"] .lf-detail__image img {
+        left: -16.28%;
+        top: -25.55%;
+        width: 116.28%;
+        height: 151.09%;
+    }
+
+    .lf-detail[data-product="3"] .lf-detail__image img {
+        left: 0;
+        top: 0;
+        width: 116.28%;
+        height: 154.87%;
+    }
+
+    .lf-detail[data-product="4"] .lf-detail__image img {
+        left: -8.14%;
+        top: 0;
+        width: 116.28%;
+        height: 140.07%;
+    }
+
+    .lf-detail[data-product="6"] .lf-detail__image img {
+        left: 0;
+        top: 0;
+        width: 122.58%;
+        height: 116.28%;
+    }
+
+    .lf-detail[data-product="8"] .lf-detail__image img {
+        left: -16.28%;
+        top: 0;
+        width: 116.28%;
+        height: 271.17%;
+    }
+
+    .lf-detail .lf-title {
+        margin: 1.375rem 0 1.25rem;
+    }
+
+    .lf-detail__description {
+        margin-bottom: 1.25rem;
+    }
+
+    .lf-detail__price {
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .lf-detail__actions {
+        display: flex;
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .lf-detail__actions .lf-btn {
+        flex: 1;
+    }
+
+    .lf-breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.625rem;
+        padding: 0;
+        margin: 0 0 1.75rem;
+        list-style: none;
+        font-size: 0.875rem;
+    }
+
+    .lf-recommendation {
+        display: flex;
+        align-items: center;
+        gap: 0.875rem;
+        padding: 0.625rem 0.875rem;
+        border: var(--contour-fort);
+        border-radius: 0.75rem;
+        min-width: 0;
+        background: var(--creme);
+        box-shadow: var(--ombre-bouton);
+    }
+
+    .lf-recommendation .lf-photo {
+        flex-shrink: 0;
+        width: 5.125rem;
+        height: 5.125rem;
+        aspect-ratio: 1;
+        border: var(--contour);
+        border-radius: 0.5rem;
+    }
+
+    .lf-recommendation__info {
+        flex: 1;
+        min-width: 0;
+        font-size: 1rem;
+        line-height: 1.35;
+        font-weight: 600;
+    }
+
+    .lf-recommendation__info strong {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 1.125rem;
+    }
+
+    @media (max-width: 43.75rem) {
+        .lf-detail {
+            grid-template-columns: 1fr;
+            gap: 1.75rem;
+        }
+
+        .lf-detail__actions {
+            gap: 0.75rem;
+        }
+
+        .lf-detail__image {
+            max-height: 26.25rem;
+        }
+
+        .lf-facts div {
+            grid-template-columns: 5.625rem 1fr;
+            gap: 0.75rem;
+            padding: 0.75rem;
+        }
+    }
+}
+
+/* =========================================================
+   13. En-tête, accueil et pied de page
+   ========================================================= */
+@layer lf-components {
+    .lf-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        padding: 0.75rem 2rem;
+        border-bottom: var(--contour);
+        background: var(--peche);
+    }
+
+    .lf-header__nav {
+        display: flex;
+        gap: 1.75rem;
+        align-items: center;
+        font-weight: 600;
+    }
+
+    .lf-header__nav a {
+        text-decoration: none;
+    }
+
+    .lf-header__nav a:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.3125rem;
+    }
+
+    .lf-header__actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .lf-location {
+        padding: 0.5625rem 0.875rem;
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+
+    .lf-menu {
+        display: none;
+        border: 0;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.625rem;
+        background: none;
+    }
+
+    .lf-hero {
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 35rem;
+        padding: 4.5rem 5rem;
+        background: var(--encre);
+    }
+
+    .lf-hero>img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .lf-hero:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(15, 23, 42, .88), rgba(15, 23, 42, .45) 55%, rgba(15, 23, 42, .05));
+    }
+
+    .lf-hero__content {
+        position: relative;
+        z-index: 1;
+        max-width: 50rem;
+        color: var(--creme);
+    }
+
+    .lf-hero .lf-script, .lf-hero .lf-title {
+        color: var(--jaune);
+    }
+
+    .lf-hero .lf-title {
+        margin: 1.125rem 0;
+        text-shadow: 0.25rem 0.625rem 0 var(--encre);
+    }
+
+    .lf-hero p.lf-large {
+        max-width: 38.75rem;
+    }
+
+    .lf-hero__buttons {
+        display: flex;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .lf-hero .lf-stamp {
+        position: absolute;
+        right: 2.75rem;
+        top: 2.75rem;
+        z-index: 1;
+    }
+
+    .lf-steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        padding: 2.5rem 2rem;
+        border-bottom: var(--contour);
+        background: var(--jaune);
+    }
+
+    .lf-step {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .lf-step__number {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 3.75rem;
+        height: 3.75rem;
+        border: 0.09375rem solid var(--encre);
+        border-radius: 50%;
+        font: 2rem/1 var(--famille-titre);
+        background: var(--creme);
+        box-shadow: 0.1875rem 0.1875rem 0 var(--encre);
+    }
+
+    .lf-step strong {
+        display: block;
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+
+    .lf-step small {
+        font-size: 1rem;
+        color: var(--ardoise);
+    }
+
+    .lf-footer {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 2.5rem;
+        padding: 3rem 2.5rem;
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-footer__brand p {
+        max-width: 20rem;
+        margin-top: 1rem;
+        font-size: 1rem;
+    }
+
+    .lf-footer h3 {
+        margin-bottom: 1rem;
+        font: 700 1.375rem/1.25 var(--famille-texte);
+        color: var(--jaune);
+    }
+
+    .lf-footer ul {
+        display: grid;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .lf-footer a {
+        text-decoration: none;
+    }
+
+    .lf-footer a:hover {
+        text-decoration: underline;
+    }
+
+    .lf-footer :focus-visible, .lf-hero :focus-visible {
+        outline-color: var(--jaune);
+    }
+
+    @media (max-width: 43.75rem) {
+        .lf-header {
+            gap: 0.75rem;
+            padding: 0.625rem 1rem;
+        }
+
+        .lf-header__nav {
+            order: 3;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .lf-header__actions {
+            gap: 0.5rem;
+        }
+
+        .lf-header__actions .lf-location, .lf-header__actions .lf-btn--ghost {
+            display: none;
+        }
+
+        .lf-menu {
+            display: block;
+        }
+
+        .lf-steps {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            padding: 1.5rem 1.25rem;
+        }
+
+        .lf-step__number {
+            width: 2.75rem;
+            height: 2.75rem;
+            font-size: 1.5rem;
+        }
+
+        .lf-step strong {
+            font-size: 1.125rem;
+        }
+
+        .lf-step small {
+            font-size: 0.875rem;
+        }
+
+        .lf-hero {
+            min-height: 31.25rem;
+            padding: 3rem 1.25rem;
+        }
+
+        .lf-hero .lf-title {
+            max-width: 21.25rem;
+        }
+
+        .lf-hero .lf-stamp {
+            right: 1.125rem;
+            top: 1.5rem;
+            width: 6.25rem;
+            height: 6.25rem;
+            font-size: 1.125rem;
+        }
+
+        .lf-hero__content {
+            padding-top: 3.75rem;
+        }
+
+        .lf-footer {
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem 1.25rem;
+            padding: 2rem 1.25rem;
+        }
+
+        .lf-footer__brand {
+            grid-column: 1/-1;
+        }
+    }
+}
+
+/* =========================================================
+   14. Panier et barre panier mobile
+   ========================================================= */
+@layer lf-components {
+    .lf-cart {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(17.5rem, 1fr);
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .lf-cart__items {
+        display: grid;
+        gap: 1.25rem;
+    }
+
+    .lf-cart-item {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        padding: 1rem;
+        border: var(--contour-fort);
+        border-radius: 0.75rem;
+        background: var(--creme);
+        box-shadow: var(--ombre-bouton);
+    }
+
+    .lf-cart-item .lf-photo {
+        flex-shrink: 0;
+        width: 6.25rem;
+        height: 6.25rem;
+        aspect-ratio: 1;
+        border: var(--contour);
+        border-radius: 0.5rem;
+    }
+
+    .lf-cart-item__info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .lf-cart-item__info h4 {
+        margin-bottom: 0.375rem;
+        font-size: 1.375rem;
+        line-height: 1.25;
+    }
+
+    .lf-cart-item .lf-price {
+        font-size: 1.25rem;
+    }
+
+    .lf-summary {
+        display: grid;
+        gap: 1.125rem;
+        padding: 1.75rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        background: var(--creme);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-summary hr {
+        margin: 0;
+        width: 100%;
+        border: 0;
+        border-top: var(--contour);
+    }
+
+    .lf-summary__line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .lf-summary__line--total {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .lf-cartbar {
+        padding: 0.75rem 1rem 1.25rem;
+        border-top: var(--contour);
+        background: var(--peche);
+    }
+
+    .lf-cartbar a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.875rem;
+        width: 100%;
+        min-height: 3rem;
+        padding: 0.875rem 1.125rem;
+        border: 0;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    @media (max-width: 43.75rem) {
+        .lf-cart {
+            grid-template-columns: 1fr;
+            gap: 1.75rem;
+        }
+
+        .lf-cart-item {
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .lf-cart-item .lf-photo {
+            width: 5rem;
+            height: 5rem;
+        }
+
+        .lf-cart-item__info h4 {
+            font-size: 1.125rem;
+        }
+
+        .lf-cart-item .lf-quantity {
+            margin-left: auto;
+        }
+    }
+}
+
+/* =========================================================
+   15. Utilitaires
+   ========================================================= */
+@layer lf-utilities {
+    .lf-large {
+        font-size: var(--taille-texte-grand);
+        line-height: 1.5;
+    }
+
+    .lf-small {
+        font-size: var(--taille-texte-petit);
+        line-height: 1.5;
+    }
+
+    .lf-muted {
+        color: var(--texte-secondaire);
+    }
+
+    .lf-system [hidden] {
+        display: none !important;
+    }
+
+    .lf-visually-hidden {
+        position: absolute !important;
+        width: 0.0625rem !important;
+        height: 0.0625rem !important;
+        padding: 0 !important;
+        margin: -0.0625rem !important;
+        overflow: hidden !important;
+        border: 0 !important;
+        white-space: nowrap !important;
+        clip: rect(0, 0, 0, 0) !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .lf-system, .lf-system *, .lf-system::before, .lf-system *::before, .lf-system::after, .lf-system *::after {
+            transition: none !important;
+            animation: none !important;
+        }
+    }
+}
+
+/* =========================================================
+   16. Base WordPress
+   ========================================================= */
+@layer lf-base {
+    html {
+        scroll-padding-top: 1.5rem;
+        scroll-behavior: smooth;
+    }
+
+    .lf-system h1, .lf-system h2, .lf-system h3 {
+        letter-spacing: normal;
+    }
+
+    .lf-system a {
+        text-decoration: none;
+    }
+
+    .lf-system p {
+        margin-bottom: 0;
+    }
+}
+
+/* =========================================================
+   17. Structure des pages
+   ========================================================= */
+@layer lf-components {
+    .lf-site {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .lf-site-main {
+        flex: 1;
+        outline: none;
+    }
+
+    .lf-container {
+        width: min(80rem, calc(100% - 10rem));
+        margin-inline: auto;
+    }
+
+    .lf-skip {
+        position: fixed;
+        top: -6.25rem;
+        left: 1.25rem;
+        z-index: 100;
+        padding: 0.875rem 1.25rem;
+        background: var(--jaune);
+        color: var(--encre);
+    }
+
+    .lf-skip:focus {
+        top: 1rem;
+    }
+}
+
+/* =========================================================
+   18. En-tête du site
+   ========================================================= */
+@layer lf-components {
+    .lf-site-header {
+        gap: 1.5rem;
+        padding: 0.75rem max(2.5rem, calc((100vw - 80rem)/2));
+    }
+
+    .lf-site-header .lf-header__nav {
+        gap: 1.75rem;
+    }
+
+    .lf-site-header .lf-header__actions {
+        gap: 1rem;
+    }
+
+    .lf-site-header .lf-location {
+        font-size: 0.875rem;
+    }
+
+    .lf-site-header .lf-btn {
+        white-space: nowrap;
+    }
+
+    .lf-site-header img, .lf-site-footer img {
+        max-width: none;
+    }
+}
+
+/* =========================================================
+   19. Accueil
+   ========================================================= */
+@layer lf-components {
+    .lf-hero {
+        min-height: 35rem;
+        padding-inline: max(5rem, calc((100vw - 80rem)/2));
+    }
+
+    .lf-hero__content {
+        max-width: 62.5rem;
+    }
+
+    .lf-hero .lf-title {
+        letter-spacing: 0;
+    }
+
+    .lf-hero .lf-stamp {
+        right: max(5.5rem, calc((100vw - 80rem)/2));
+        width: 12.5rem;
+        height: 12.5rem;
+        font-size: 2rem;
+    }
+
+    .lf-steps {
+        padding: 2.5rem max(5rem, calc((100vw - 80rem)/2));
+    }
+
+    .lf-step h2 {
+        font: 600 1.25rem/1.3 var(--famille-texte);
+    }
+
+    .lf-step p {
+        font-size: 1rem;
+        color: var(--ardoise);
+    }
+
+    .lf-home-categories {
+        padding-block: 5rem 6rem;
+    }
+
+    .lf-section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .lf-section-heading .lf-script {
+        margin-bottom: 0.875rem;
+    }
+
+    .lf-section-heading > img {
+        max-width: none;
+        transform: rotate(8deg);
+    }
+
+    .lf-category-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    .lf-category > a.lf-photo {
+        display: block;
+    }
+
+    .lf-category__body .lf-title {
+        min-height: 4.8125rem;
+        font-size: 2rem;
+    }
+
+    .lf-category__body .lf-card__bottom {
+        font-size: 0.875rem;
+    }
+
+    .lf-category__body .lf-btn {
+        flex-shrink: 0;
+    }
+}
+
+/* =========================================================
+   20. Boutique et catégories
+   ========================================================= */
+@layer lf-components {
+    .lf-catalogue-page {
+        padding-block: 3rem 5rem;
+    }
+
+    .lf-category-nav {
+        margin-bottom: 3.5rem;
+    }
+
+    .lf-category-nav .lf-chip[aria-current="page"] {
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-catalogue-heading {
+        margin-bottom: 2.5rem;
+    }
+
+    .lf-catalogue-heading .lf-title {
+        margin-bottom: 0.75rem;
+    }
+
+    .lf-catalogue-page[data-category="partager"] .lf-title {
+        color: var(--rose);
+    }
+
+    .lf-catalogue-page[data-category="desserts"] .lf-title {
+        color: var(--jaune);
+    }
+
+    .lf-catalogue-toolbar {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .lf-catalogue-toolbar .woocommerce-result-count {
+        float: none;
+        margin: 0;
+        color: var(--ardoise);
+    }
+
+    .lf-catalogue-toolbar .woocommerce-ordering {
+        float: none;
+        margin: 0;
+    }
+
+    .lf-catalogue-toolbar select {
+        border: var(--contour);
+        border-radius: 0.5rem;
+        padding: 0.625rem 2.125rem 0.625rem 0.875rem;
+        font: 0.875rem var(--famille-texte);
+        background: var(--creme);
+        color: var(--encre);
+    }
+
+    .lf-system .lf-catalogue-page ul.products {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .lf-system .lf-catalogue-page ul.products::before, .lf-system .lf-catalogue-page ul.products::after {
+        display: none;
+    }
+
+    .lf-system .lf-catalogue-page ul.products li.product {
+        display: flex;
+        flex-direction: column;
+        float: none;
+        width: auto;
+        margin: 0;
+        text-align: left;
+    }
+
+    .lf-card > a.lf-photo {
+        display: block;
+    }
+
+    .lf-card__body {
+        flex: 1;
+    }
+
+    .lf-card__name a {
+        color: inherit;
+    }
+
+    .lf-card__name a:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.25rem;
+    }
+
+    .lf-card__description {
+        flex: 1;
+    }
+
+    .lf-card__bottom .lf-btn {
+        flex-shrink: 0;
+        margin: 0;
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+    }
+
+    .lf-system .lf-card .added_to_cart {
+        margin: 0;
+        padding: 0;
+        font-size: 0.875rem;
+        text-decoration: underline;
+    }
+
+    .lf-card .lf-card__bottom {
+        flex-wrap: wrap;
+    }
+
+    .lf-card .lf-price, .lf-card .lf-price .amount {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--encre);
+    }
+}
+
+/* =========================================================
+   21. Fiche produit
+   ========================================================= */
+@layer lf-components {
+    .lf-product-page {
+        padding-block: 2rem 5rem;
+    }
+
+    .lf-breadcrumb a {
+        text-decoration: underline;
+    }
+
+    .lf-breadcrumb {
+        display: flex;
+        gap: 0.625rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.25rem;
+        font-size: 0.875rem;
+    }
+
+    .lf-product-detail {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .lf-product-image {
+        aspect-ratio: 610/458;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        box-shadow: 0.5rem 0.5rem 0 var(--encre);
+    }
+
+    .lf-product-image.lf-crop-beignets img {
+        left: -16.28%;
+        top: -33.88%;
+        width: 116.28%;
+        height: 133.88%;
+    }
+
+    .lf-product-image.lf-crop-oeufs img {
+        left: -16.28%;
+        top: -25.55%;
+        width: 116.28%;
+        height: 151.09%;
+    }
+
+    .lf-product-image.lf-crop-cordon img {
+        width: 116.28%;
+        height: 154.87%;
+    }
+
+    .lf-product-image.lf-crop-tartare img {
+        width: 116.28%;
+        height: 140.07%;
+    }
+
+    .lf-product-image.lf-crop-millefeuille img {
+        width: 122.58%;
+        height: 116.28%;
+    }
+
+    .lf-product-image.lf-crop-peche img {
+        width: 116.28%;
+        height: 271.17%;
+    }
+
+    .lf-system .lf-product-detail .summary {
+        float: none;
+        width: auto;
+        margin: 0;
+    }
+
+    .lf-product-summary .lf-badge {
+        margin-bottom: 1.5rem;
+        color: var(--encre);
+    }
+
+    .lf-product-summary h1.product_title {
+        margin-bottom: 2rem;
+        font: 400 4rem/1.1 var(--famille-titre);
+        text-transform: uppercase;
+        -webkit-text-stroke: 0.09375rem var(--encre);
+        text-shadow: 0.1875rem 0.4375rem 0 var(--encre);
+        color: var(--turquoise);
+    }
+
+    .lf-product-description {
+        margin-bottom: 1.5rem;
+        font-size: 1.125rem;
+        line-height: 1.6;
+    }
+
+    .lf-system .lf-product-summary p.price {
+        margin: 0 0 2rem;
+        font: 700 2rem/1.2 var(--famille-texte);
+        color: var(--encre);
+    }
+
+    .lf-product-summary form.cart {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 0;
+    }
+
+    .lf-product-summary form.cart .quantity {
+        display: inline-flex;
+        align-items: center;
+        gap: 0;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        margin: 0;
+        background: var(--creme);
+    }
+
+    .lf-product-summary .quantity input.qty {
+        width: 3rem;
+        min-height: 3rem;
+        padding: 0.5rem 0;
+        border: 0;
+        text-align: center;
+        font: 600 1.25rem/1 var(--famille-texte);
+        background: transparent;
+        color: var(--encre);
+        box-shadow: none;
+        appearance: textfield;
+    }
+
+    .lf-product-summary .quantity input::-webkit-inner-spin-button, .lf-product-summary .quantity input::-webkit-outer-spin-button {
+        margin: 0;
+        appearance: none;
+    }
+
+    .lf-product-summary .quantity button {
+        width: 2.25rem;
+        min-height: 3rem;
+        padding: 0;
+        border: 0;
+        font-size: 1.375rem;
+        background: transparent;
+        color: var(--encre);
+    }
+
+    .lf-product-summary .quantity button:hover {
+        background: var(--turquoise-clair);
+    }
+
+    .lf-product-summary .quantity button:disabled {
+        opacity: .3;
+    }
+
+    .lf-product-summary .single_add_to_cart_button {
+        flex: 1;
+        min-height: 3rem;
+        padding: 0.875rem 1.375rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        font: 600 1rem/1 var(--famille-texte);
+        background: var(--bouton-principal);
+        color: var(--encre);
+        box-shadow: var(--ombre-bouton);
+        transition: transform .16s ease;
+    }
+
+    .lf-product-summary .single_add_to_cart_button:hover {
+        transform: scale(.97);
+    }
+
+    .lf-product-summary .single_add_to_cart_button:active {
+        transform: translate(0.1875rem, 0.1875rem);
+        box-shadow: 0.0625rem 0.0625rem 0 var(--encre);
+    }
+
+    .lf-product-summary .stock {
+        margin-bottom: 1.25rem;
+        font-size: 0.875rem;
+        color: var(--ardoise);
+    }
+
+    .lf-product-summary .out-of-stock {
+        padding: 0.75rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        background: var(--jaune);
+    }
+}
+
+/* =========================================================
+   22. Pages simples
+   ========================================================= */
+@layer lf-components {
+    .lf-page {
+        padding-block: 4rem 5rem;
+        min-height: 50vh;
+    }
+
+    .lf-page-title {
+        margin-bottom: 3rem;
+    }
+
+    .lf-page-content {
+        color: var(--encre);
+    }
+}
+
+/* =========================================================
+   23. Pied de page et barre panier mobile
+   ========================================================= */
+@layer lf-components {
+    .lf-site-footer {
+        gap: 4rem;
+        padding: 3.5rem max(5rem, calc((100vw - 80rem)/2));
+    }
+
+    .lf-site-footer h2 {
+        margin-bottom: 1.25rem;
+        font: 700 1.5rem/1.25 var(--famille-texte);
+        color: var(--jaune);
+    }
+
+    .lf-site-footer address {
+        font-style: normal;
+    }
+
+    .lf-site-footer .lf-footer-note {
+        margin-top: 1.25rem;
+    }
+
+    .lf-site-footer a {
+        color: var(--creme);
+    }
+
+    .lf-live-cartbar {
+        display: none;
+    }
+
+    .lf-live-cartbar a {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.875rem 1.125rem;
+        border-radius: 0.5rem;
+        min-height: 3rem;
+        font-weight: 600;
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    @media (max-width: 75rem) {
+        .lf-container {
+            width: calc(100% - 5rem);
+        }
+
+        .lf-site-header {
+            flex-wrap: wrap;
+            padding-inline: 2.5rem;
+        }
+
+        .lf-site-header .lf-header__nav {
+            order: 3;
+            justify-content: center;
+            width: 100%;
+            padding: 0.625rem 0 0.25rem;
+        }
+
+        .lf-hero {
+            padding-inline: 2.5rem;
+        }
+
+        .lf-hero .lf-title--hero {
+            font-size: 5rem;
+        }
+
+        .lf-hero .lf-stamp {
+            right: 2.5rem;
+            width: 9.375rem;
+            height: 9.375rem;
+            font-size: 1.625rem;
+        }
+
+        .lf-steps {
+            padding-inline: 2.5rem;
+        }
+
+        .lf-step h2 {
+            font-size: 1.125rem;
+        }
+
+        .lf-step p {
+            font-size: 0.875rem;
+        }
+
+        .lf-category-grid {
+            gap: 1.5rem;
+        }
+
+        .lf-category__body {
+            padding: 1.25rem;
+        }
+
+        .lf-category__body .lf-title {
+            font-size: 1.75rem;
+        }
+
+        .lf-category__body .lf-script {
+            font-size: 1.875rem;
+        }
+
+        .lf-category__body .lf-card__bottom {
+            flex-wrap: wrap;
+        }
+
+        .lf-product-detail {
+            gap: 2.5rem;
+        }
+
+        .lf-product-summary h1.product_title {
+            font-size: 3rem;
+        }
+
+        .lf-site-footer {
+            gap: 2rem;
+            padding-inline: 2.5rem;
+        }
+    }
+
+    @media (max-width: 56.25rem) {
+        .lf-system .lf-catalogue-page ul.products {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .lf-category-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .lf-category {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .lf-category .lf-photo {
+            aspect-ratio: auto;
+            min-height: 17.5rem;
+            border-bottom: 0;
+            border-right: var(--contour-fort);
+        }
+
+        .lf-category__body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lf-category__body .lf-title {
+            min-height: 0;
+            margin-bottom: 1.25rem;
+        }
+
+        .lf-product-detail {
+            gap: 1.75rem;
+        }
+
+        .lf-product-summary h1.product_title {
+            font-size: 2.5rem;
+        }
+
+        .lf-section-heading .lf-title {
+            font-size: 3rem;
+        }
+
+        .lf-site-footer {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .lf-site-footer__brand {
+            grid-column: 1/-1;
+        }
+
+        .lf-steps {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    }
+
+    @media (max-width: 43.75rem) {
+        .lf-container {
+            width: calc(100% - 2rem);
+        }
+
+        .lf-site-header {
+            gap: 0.75rem;
+            padding: 0.625rem 1rem;
+        }
+
+        .lf-site-header > a img {
+            width: 5.25rem;
+            height: 2.625rem;
+            object-fit: contain;
+        }
+
+        .lf-site-header .lf-header__actions {
+            gap: 0.5rem;
+        }
+
+        .lf-site-header .lf-header__nav {
+            display: none;
+            justify-content: flex-start;
+            align-items: stretch;
+            padding: 0.75rem 0 0.375rem;
+        }
+
+        .lf-site-header .lf-header__nav--open {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .lf-site-header .lf-header__nav a {
+            display: block;
+            padding: 0.75rem 0.5rem;
+            border-top: 0.0625rem solid var(--encre);
+        }
+
+        .lf-hero {
+            min-height: 31.25rem;
+            padding: 4.375rem 1.25rem 2.5rem;
+        }
+
+        .lf-hero .lf-title--hero {
+            max-width: 20.625rem;
+            font-size: 3.5rem;
+        }
+
+        .lf-hero__content {
+            padding-top: 3rem;
+        }
+
+        .lf-hero .lf-stamp {
+            right: 1.25rem;
+            top: 1.5rem;
+            width: 6.25rem;
+            height: 6.25rem;
+            font-size: 1.125rem;
+        }
+
+        .lf-hero .lf-script {
+            max-width: 16.875rem;
+        }
+
+        .lf-hero__buttons {
+            gap: 1rem;
+        }
+
+        .lf-steps {
+            padding: 1.75rem 1.25rem;
+        }
+
+        .lf-home-categories {
+            padding-block: 2.5rem 3.5rem;
+        }
+
+        .lf-section-heading {
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .lf-section-heading .lf-title {
+            font-size: 2.5rem;
+        }
+
+        .lf-section-heading > img {
+            display: none;
+        }
+
+        .lf-category {
+            display: block;
+        }
+
+        .lf-category .lf-photo {
+            aspect-ratio: 405/280;
+            border-right: 0;
+            border-bottom: var(--contour-fort);
+        }
+
+        .lf-category__body {
+            padding: 1.25rem;
+        }
+
+        .lf-category__body .lf-title {
+            margin-bottom: 0.25rem;
+            font-size: 1.75rem;
+        }
+
+        .lf-category__body .lf-card__bottom {
+            flex-wrap: nowrap;
+        }
+
+        .lf-catalogue-page {
+            padding-block: 1.5rem 3rem;
+        }
+
+        .lf-category-nav {
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .lf-category-nav .lf-chip {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.8125rem;
+        }
+
+        .lf-catalogue-heading {
+            margin-bottom: 1.5rem;
+        }
+
+        .lf-catalogue-toolbar {
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .lf-catalogue-toolbar select {
+            padding: 0.5rem 0.75rem;
+            max-width: 11.875rem;
+            font-size: 0.8125rem;
+        }
+
+        .lf-system .lf-catalogue-page ul.products {
+            grid-template-columns: 1fr;
+            gap: 1.125rem;
+        }
+
+        .lf-system .lf-catalogue-page ul.products li.product {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.625rem;
+            box-shadow: var(--ombre-bouton);
+        }
+
+        .lf-card > a.lf-photo {
+            flex-shrink: 0;
+            width: 6rem;
+            height: 7rem;
+            aspect-ratio: auto;
+            border-radius: 0.5rem;
+        }
+
+        .lf-card__body {
+            gap: 0.25rem;
+            padding: 0;
+            min-width: 0;
+        }
+
+        .lf-card__name {
+            min-height: 0;
+            font-size: 1.125rem;
+        }
+
+        .lf-card__description {
+            min-height: 0;
+            font-size: 0.8125rem;
+        }
+
+        .lf-card .lf-price, .lf-card .lf-price .amount {
+            font-size: 1.125rem;
+        }
+
+        .lf-card__bottom {
+            gap: 0.5rem;
+            padding-top: 0.375rem;
+        }
+
+        .lf-card__bottom .lf-btn {
+            min-height: 2.25rem;
+            padding: 0.625rem 0.75rem;
+            font-size: 0.8125rem;
+            box-shadow: var(--ombre-petite);
+        }
+
+        .lf-card .lf-crop-beignets img {
+            left: -34.51%;
+            top: -16.28%;
+            width: 134.51%;
+            height: 116.28%;
+        }
+
+        .lf-card .lf-crop-oeufs img {
+            left: -19.19%;
+            top: -8.14%;
+            width: 119.19%;
+            height: 116.28%;
+        }
+
+        .lf-product-page {
+            padding-block: 1.5rem 3.5rem;
+        }
+
+        .lf-breadcrumb {
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.75rem;
+        }
+
+        .lf-product-detail {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .lf-product-summary .lf-badge {
+            margin-bottom: 1.25rem;
+        }
+
+        .lf-product-summary h1.product_title {
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .lf-product-description {
+            font-size: 1rem;
+        }
+
+        .lf-product-summary p.price {
+            font-size: 1.75rem;
+        }
+
+        .lf-product-summary .single_add_to_cart_button {
+            padding-inline: 0.875rem;
+            font-size: 0.875rem;
+        }
+
+        .lf-page {
+            padding-block: 2.5rem 3.5rem;
+        }
+
+        .lf-page-title {
+            margin-bottom: 2rem;
+        }
+
+        .lf-site-footer {
+            gap: 2rem 1.25rem;
+            padding: 2.5rem 1.25rem 7rem;
+        }
+
+        .lf-site-footer h2 {
+            font-size: 1.25rem;
+        }
+
+        .lf-site-footer .lf-footer__brand {
+            grid-column: 1/-1;
+        }
+
+        .lf-live-cartbar {
+            display: block;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 20;
+            padding-bottom: max(1rem, env(safe-area-inset-bottom));
+        }
+    }
+}
+
+/* =========================================================
+   24. Messages et formulaires WooCommerce
+   ========================================================= */
+@layer lf-overrides {
+    .lf-system .woocommerce-message, .lf-system .woocommerce-info, .lf-system .woocommerce-error {
+        border: var(--contour-fort);
+        border-radius: 0.75rem;
+        padding: 1.25rem 1.5rem;
+        margin: 1.5rem auto;
+        max-width: min(80rem, calc(100% - 2rem));
+        list-style-position: inside;
+        background: var(--creme);
+        color: var(--encre);
+        box-shadow: var(--ombre-bouton);
+    }
+
+    .lf-system .woocommerce-message::before, .lf-system .woocommerce-info::before, .lf-system .woocommerce-error::before {
+        display: none;
+    }
+
+    .lf-system .woocommerce-message .button {
+        margin-left: 1rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        background: var(--turquoise-clair);
+        color: var(--encre);
+    }
+
+    .lf-system .woocommerce-error {
+        border-left-width: 0.5rem;
+    }
+
+    .lf-system .woocommerce form .form-row input.input-text, .lf-system .woocommerce form .form-row textarea {
+        border: var(--contour);
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        background: var(--creme);
+        color: var(--encre);
+        box-shadow: none;
+    }
+
+    .lf-system .woocommerce-tabs {
+        clear: both;
+        margin-top: 3rem;
+    }
+
+    .lf-system .woocommerce-pagination {
+        margin-top: 2rem;
+    }
+
+    .lf-system a:focus-visible, .lf-system button:focus-visible {
+        outline: 0.1875rem solid var(--encre);
+        outline-offset: 0.3125rem;
+    }
+
+    .lf-system .lf-footer a:focus-visible {
+        outline-color: var(--jaune);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+    }
+}
+
+/* =========================================================
+   25. Produits à options (IT-3)
+   ========================================================= */
+@layer lf-components {
+    .lf-product-summary form.variations_form {
+        display: block;
+    }
+
+    .lf-variations-form .lf-options {
+        background: transparent;
+    }
+
+    .lf-variations-form .lf-chip:has(input:checked) {
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-variations-form .lf-chip:has(input:focus-visible) {
+        outline: 0.1875rem solid var(--encre);
+        outline-offset: 0.25rem;
+    }
+
+    .lf-variations-form .woocommerce-variation-price .price {
+        display: block;
+        margin-bottom: 0.75rem;
+        font: 700 1.5rem/1.2 var(--famille-texte);
+        color: var(--encre);
+    }
+
+    .lf-variations-form .woocommerce-variation-add-to-cart {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .lf-product-summary .stock.in-stock {
+        display: inline-block;
+        margin: 0;
+        padding: 0.25rem 0.875rem;
+        border: var(--contour);
+        border-radius: 62.4375rem;
+        background: var(--turquoise-clair);
+        color: var(--encre);
+    }
+
+    .lf-product-summary .stock.low-stock {
+        background: var(--jaune);
+    }
+}
+
+/* =========================================================
+   26. Composition et allergènes (IT-4)
+   ========================================================= */
+@layer lf-components {
+    .lf-product-facts {
+        margin: 0 0 2rem;
+    }
+}
+
+/* =========================================================
+   27. Panier et commande (IT-5, IT-6)
+   ========================================================= */
+@layer lf-components {
+    .lf-cart-item .lf-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .lf-cart-item__name {
+        margin: 0 0 0.375rem;
+        font: 600 1.25rem/1.25 var(--famille-texte);
+    }
+
+    .lf-cart-item__name a {
+        text-decoration: none;
+        color: var(--encre);
+    }
+
+    .lf-cart-item .variation {
+        margin: 0 0 0.375rem;
+        font-size: 0.875rem;
+        color: var(--ardoise);
+    }
+
+    .lf-cart-item .variation dt, .lf-cart-item .variation dd, .lf-cart-item .variation p {
+        display: inline;
+        margin: 0;
+    }
+
+    .lf-cart-item .quantity input.qty {
+        width: 4rem;
+        min-height: 2.75rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        text-align: center;
+        font: 600 1.125rem/1 var(--famille-texte);
+        background: var(--fond-surface);
+        color: var(--encre);
+    }
+
+    .lf-cart__actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .lf-system .lf-summary .cart_totals {
+        float: none;
+        width: 100%;
+    }
+
+    .lf-summary h2 {
+        margin: 0;
+        font: 400 1.75rem/1.2 var(--famille-titre);
+    }
+
+    .lf-summary .shop_table {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-collapse: collapse;
+    }
+
+    .lf-summary .shop_table th, .lf-summary .shop_table td {
+        padding: 0.75rem 0;
+        border: 0;
+        border-bottom: 0.0625rem dashed var(--encre);
+        vertical-align: top;
+        text-align: left;
+        background: transparent;
+    }
+
+    .lf-summary .shop_table td {
+        text-align: right;
+    }
+
+    .lf-summary .order-total th, .lf-summary .order-total td {
+        border-bottom: 0;
+        font-size: 1.375rem;
+        font-weight: 700;
+    }
+
+    .lf-summary #shipping_method {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: left;
+    }
+
+    .lf-summary #shipping_method li {
+        margin-bottom: 0.5rem;
+    }
+
+    .lf-summary .woocommerce-shipping-destination, .lf-summary .woocommerce-shipping-calculator {
+        font-size: 0.875rem;
+        text-align: left;
+    }
+
+    .lf-summary .wc-proceed-to-checkout {
+        padding: 0;
+    }
+
+    .lf-system .lf-summary .checkout-button, .lf-system #place_order {
+        display: block;
+        width: 100%;
+        padding: 1rem 1.375rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        font: 600 1.125rem/1 var(--famille-texte);
+        text-align: center;
+        background: var(--bouton-principal);
+        color: var(--encre);
+        box-shadow: var(--ombre-bouton);
+    }
+
+    .lf-system .woocommerce-checkout h3 {
+        clear: both;
+        font: 400 1.75rem/1.2 var(--famille-titre);
+    }
+
+    .lf-system #ship-to-different-address {
+        font: 600 1.125rem/1.3 var(--famille-texte);
+    }
+
+    .lf-system #ship-to-different-address label {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+    }
+
+    .lf-system .woocommerce-checkout-review-order {
+        padding: 1.5rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        background: var(--creme);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-system #payment {
+        background: transparent;
+    }
+
+    .lf-system #payment .payment_box {
+        background: var(--turquoise-clair);
+        color: var(--encre);
+    }
+}
+
+/* =========================================================
+   28. Instructions pour le retrait (IT-6)
+   ========================================================= */
+@layer lf-components {
+    .lf-pickup {
+        margin: 1.5rem 0;
+        padding: 1.25rem;
+        border: var(--contour);
+        border-radius: 0.75rem;
+        background: var(--jaune);
+    }
+
+    .lf-system .lf-pickup h3 {
+        margin: 0 0 0.5rem;
+        font: 600 1.25rem/1.3 var(--famille-texte);
+    }
+
+    .lf-pickup p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* =========================================================
+   29. Compte client (IT-7)
+   ========================================================= */
+@layer lf-components {
+    .lf-system .woocommerce-MyAccount-navigation, .lf-system .woocommerce-MyAccount-content {
+        float: none;
+        width: 100%;
+    }
+
+    .lf-account-nav {
+        margin-bottom: 2rem;
+    }
+
+    .lf-account-nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .lf-system .lf-account-nav .lf-chip::before {
+        display: none;
+    }
+
+    .lf-account-nav .lf-chip[aria-current="page"] {
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-system .woocommerce-MyAccount-content, .lf-system .u-columns.col2-set .u-column1, .lf-system .u-columns.col2-set .u-column2 {
+        padding: 1.75rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        background: var(--creme);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-system .u-columns.col2-set {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        float: none;
+        width: auto;
+    }
+
+    .lf-system .password-input {
+        display: block;
+        position: relative;
+    }
+
+    .lf-system .password-input input {
+        padding-right: 3.5rem;
+    }
+
+    .lf-system .show-password-input {
+        top: 50%;
+        right: 0.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0;
+        border: 0;
+        border-radius: 0.5rem;
+        background: transparent;
+        color: var(--encre);
+        transform: translateY(-50%);
+    }
+
+    .lf-system .show-password-input:hover, .lf-system .show-password-input:focus-visible {
+        background: var(--jaune);
+    }
+
+    .lf-system .u-columns.col2-set::before, .lf-system .u-columns.col2-set::after {
+        display: none;
+    }
+
+    .lf-system .u-columns.col2-set .u-column1, .lf-system .u-columns.col2-set .u-column2 {
+        float: none;
+        width: auto;
+        margin: 0;
+    }
+
+    .woocommerce-account .lf-page-content h2 {
+        font: 400 2rem/1.2 var(--famille-titre);
+    }
+
+    .lf-system .woocommerce-form-login .woocommerce-button, .lf-system .woocommerce-form-register .woocommerce-button, .lf-system .woocommerce-MyAccount-content .button {
+        padding: 0.875rem 1.375rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        font: 600 1rem/1 var(--famille-texte);
+        background: var(--bouton-principal);
+        color: var(--encre);
+        box-shadow: var(--ombre-bouton);
+    }
+
+    .lf-system .woocommerce-MyAccount-content table {
+        border-collapse: collapse;
+    }
+
+    .lf-system .woocommerce-MyAccount-content th, .lf-system .woocommerce-MyAccount-content td {
+        padding: 0.75rem;
+        border-bottom: 0.0625rem dashed var(--encre);
+        background: transparent;
+    }
+
+    @media (max-width: 48rem) {
+        .lf-system .u-columns.col2-set {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+/* =========================================================
+   30. Codes promo (IT-10)
+   ========================================================= */
+@layer lf-components {
+    .lf-cart__actions {
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .lf-coupon {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .lf-coupon label {
+        width: 100%;
+        font-weight: 600;
+    }
+
+    .lf-coupon input.input-text {
+        min-height: 2.75rem;
+        padding: 0.5rem 0.75rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        text-transform: uppercase;
+        background: var(--fond-surface);
+        color: var(--encre);
+    }
+
+    .lf-summary .cart-discount td, .lf-summary .cart-discount th {
+        font-weight: 600;
+        color: var(--orange);
+    }
+
+    .lf-summary .woocommerce-remove-coupon {
+        font-size: 0.875rem;
+        color: var(--encre);
+    }
+}
+
+/* =========================================================
+   31. Équipe (IT-11)
+   ========================================================= */
+@layer lf-components {
+    .lf-team-intro {
+        max-width: 40rem;
+        margin-bottom: 2.5rem;
+        font-size: 1.125rem;
+    }
+
+    .lf-team {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .lf-member a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        height: 100%;
+        padding: 2rem 1.5rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        text-align: center;
+        text-decoration: none;
+        background: var(--creme);
+        color: var(--encre);
+        box-shadow: var(--ombre-carte);
+        transition: transform .16s ease;
+    }
+
+    .lf-member a:hover {
+        transform: translate(-0.125rem, -0.125rem);
+    }
+
+    .lf-member--jaune a, .lf-member-page__grid.lf-member--jaune .lf-member__avatar {
+        background: var(--jaune);
+    }
+
+    .lf-member--turquoise a, .lf-member-page__grid.lf-member--turquoise .lf-member__avatar {
+        background: var(--turquoise);
+    }
+
+    .lf-member--rose a, .lf-member-page__grid.lf-member--rose .lf-member__avatar {
+        background: var(--rose);
+    }
+
+    .lf-member__avatar, .lf-member__photo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 8rem;
+        height: 8rem;
+        border: var(--contour-fort);
+        border-radius: 50%;
+        object-fit: cover;
+        font: 400 3rem/1 var(--famille-titre);
+        background: var(--creme);
+    }
+
+    .lf-member__name {
+        margin: 0.75rem 0 0;
+        font: 400 1.75rem/1.2 var(--famille-titre);
+    }
+
+    .lf-member__role {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .lf-member-page__grid {
+        display: grid;
+        grid-template-columns: 17.5rem 1fr;
+        gap: 3rem;
+        align-items: start;
+        margin-top: 2rem;
+    }
+
+    .lf-member-page__visual .lf-member__avatar, .lf-member-page__visual .lf-member__photo {
+        width: 15rem;
+        height: 15rem;
+        font-size: 5.5rem;
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-member-page .lf-page-content {
+        margin-bottom: 1.5rem;
+        font-size: 1.125rem;
+    }
+
+    @media (max-width: 48rem) {
+        .lf-member-page__grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .lf-member-page__visual .lf-member__avatar, .lf-member-page__visual .lf-member__photo {
+            width: 10rem;
+            height: 10rem;
+            font-size: 3.5rem;
+        }
+    }
+}
+
+/* =========================================================
+   32. Envies (IT-12)
+   ========================================================= */
+@layer lf-components {
+    .lf-envie-nav {
+        margin: 0.75rem 0 2.5rem;
+    }
+
+    .lf-envie-nav__label {
+        font-weight: 600;
+    }
+
+    .lf-envie-nav .lf-chip {
+        background: var(--turquoise-clair);
+    }
+
+    .lf-envie-nav .lf-chip[aria-current="page"] {
+        background: var(--encre);
+        color: var(--creme);
+    }
+}
+
+/* =========================================================
+   33. Ventes croisées (IT-13)
+   ========================================================= */
+@layer lf-components {
+    .lf-suggestions {
+        clear: both;
+        margin-top: 4rem;
+    }
+
+    .lf-suggestions h2 {
+        margin-bottom: 1.5rem;
+    }
+
+    .lf-recommendations {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .lf-recommendation .lf-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .lf-recommendation__info a {
+        text-decoration: none;
+        color: var(--encre);
+    }
+
+    .lf-recommendation .lf-btn--icon {
+        flex-shrink: 0;
+        height: 2.75rem;
+        background: var(--bouton-principal);
+        color: var(--encre);
+    }
+
+    .lf-recommendation .add_to_cart_button.added {
+        background: var(--turquoise);
+    }
+
+    .lf-recommendation .added_to_cart {
+        display: none;
+    }
+
+    @media (max-width: 56.25rem) {
+        .lf-recommendations {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+/* =========================================================
+   34. Lien « Voir le panier » des cartes (IT-13)
+   ========================================================= */
+@layer lf-overrides {
+    .lf-system .lf-card a.added_to_cart {
+        border: 0;
+        font-weight: 600;
+        background: transparent;
+        color: var(--encre);
+        box-shadow: none;
+    }
+}
+
+/* =========================================================
+   35. Avis clients (IT-14)
+   ========================================================= */
+@layer lf-components {
+    .lf-reviews {
+        clear: both;
+        margin-top: 4rem;
+    }
+
+    .lf-system .lf-reviews #reviews h2 {
+        margin-bottom: 1.5rem;
+        font: 400 2rem/1.2 var(--famille-titre);
+    }
+
+    .lf-system .lf-reviews .woocommerce-noreviews {
+        margin: 0 0 1rem;
+        padding: 1rem 1.25rem;
+        border: var(--contour);
+        border-radius: 0.75rem;
+        background: var(--creme);
+        color: var(--encre);
+    }
+
+    .lf-system .lf-reviews .woocommerce-noreviews::before {
+        display: none;
+    }
+
+    .lf-reviews .commentlist {
+        display: grid;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .lf-reviews .commentlist .comment_container {
+        padding: 1.25rem;
+        border: var(--contour);
+        border-radius: 0.75rem;
+        background: var(--creme);
+        box-shadow: var(--ombre-bouton);
+    }
+
+    .lf-reviews .star-rating span::before, .lf-reviews .stars a {
+        color: var(--orange);
+    }
+
+    .lf-reviews #review_form_wrapper {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        background: var(--creme);
+    }
+
+    .lf-reviews textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        background: #fff;
+    }
+
+    .lf-system .lf-reviews .form-submit input[type="submit"] {
+        padding: 0.875rem 1.375rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        font: 600 1rem/1 var(--famille-texte);
+        background: var(--bouton-principal);
+        color: var(--encre);
+        box-shadow: var(--ombre-bouton);
+    }
+}
+
+/* =========================================================
+   36. Frais de préparation (IT-15)
+   ========================================================= */
+@layer lf-components {
+    .lf-fee-hint {
+        margin: 0 0 1rem;
+        padding: 0.75rem 1rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        background: var(--jaune);
+    }
+
+    .lf-summary .fee th, .lf-summary .fee td {
+        font-weight: 600;
+    }
+}
+
+/* =========================================================
+   37. Nouveautés sur l’accueil (IT-16)
+   ========================================================= */
+@layer lf-components {
+    .lf-home-latest {
+        padding-block: 4rem 1rem;
+    }
+
+    .lf-home-latest .lf-section-heading {
+        margin-bottom: 2rem;
+    }
+}
+
+/* =========================================================
+   38. Filtres de la boutique (IT-18)
+   ========================================================= */
+@layer lf-components {
+    .lf-shop-layout {
+        display: grid;
+        grid-template-columns: 16.25rem minmax(0, 1fr);
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .lf-filters {
+        position: sticky;
+        top: 1.5rem;
+        padding: 1.5rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        background: var(--creme);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-filters__title {
+        margin: 0 0 1rem;
+        font: 400 1.75rem/1.2 var(--famille-titre);
+    }
+
+    .lf-filters form {
+        display: grid;
+        gap: 1.25rem;
+    }
+
+    .lf-filters__field {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+    }
+
+    .lf-filters label, .lf-filters legend {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .lf-filters .lf-chip {
+        display: inline-flex;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .lf-filters input[type="search"], .lf-filters input[type="number"] {
+        width: 100%;
+        min-height: 2.75rem;
+        padding: 0.5rem 0.75rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        background: #fff;
+        color: var(--encre);
+    }
+
+    .lf-filters__prices {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .lf-filters .lf-chip:has(input:checked) {
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-system .lf-shop-results ul.products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 75rem) {
+        .lf-system .lf-shop-results ul.products {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 56.25rem) {
+        .lf-shop-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .lf-filters {
+            position: static;
+        }
+    }
+}
+
+/* =========================================================
+   39. Jour et créneau (IT-20)
+   ========================================================= */
+@layer lf-components {
+    .lf-slots {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        background: var(--creme);
+    }
+
+    .lf-slots select {
+        width: 100%;
+        min-height: 2.75rem;
+        padding: 0.5rem 0.75rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        background: #fff;
+        color: var(--encre);
+    }
+
+    .lf-slots .lf-options {
+        background: transparent;
+    }
+
+    .lf-slots .lf-chip:has(input:checked) {
+        background: var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-slot-summary {
+        padding: 0.75rem 1rem;
+        border: var(--contour);
+        border-radius: 0.5rem;
+        background: var(--jaune);
+    }
+}
+
+/* =========================================================
+   40. Espace client connecté (IT-7)
+   ========================================================= */
+@layer lf-overrides {
+    .logged-in.woocommerce-account .lf-page-content > .woocommerce {
+        display: grid;
+        grid-template-columns: 16.25rem minmax(0, 1fr);
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .logged-in .lf-account-nav {
+        position: sticky;
+        top: 1.5rem;
+        margin: 0;
+        padding: 1.25rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        background: var(--creme);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .logged-in .lf-account-nav .lf-chips {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .logged-in .lf-account-nav .lf-chip {
+        justify-content: flex-start;
+        width: 100%;
+        min-height: 2.75rem;
+        font-size: 1rem;
+    }
+
+    .lf-system .woocommerce-MyAccount-content {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .lf-system .woocommerce-MyAccount-content > form, .lf-system .woocommerce-MyAccount-content .woocommerce-orders-table, .lf-system .woocommerce-MyAccount-content .woocommerce-Address, .lf-system .woocommerce-MyAccount-content .woocommerce-order-details, .lf-system .woocommerce-MyAccount-content .woocommerce-customer-details {
+        padding: 1.5rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        background: var(--creme);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-system .woocommerce-MyAccount-content .woocommerce-orders-table {
+        padding: 0;
+        overflow: hidden;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .lf-system .woocommerce-orders-table thead th {
+        border-bottom: var(--contour);
+        background: var(--jaune);
+    }
+
+    .lf-account-hello {
+        margin-bottom: 2rem;
+        padding: 2rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        background: var(--turquoise);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-account-hello .lf-script {
+        margin: 0;
+        font-size: 1.75rem;
+        color: var(--encre);
+    }
+
+    .lf-system .lf-account-hello__title {
+        margin: 0.25rem 0 0.5rem;
+        font: 400 3rem/1.1 var(--famille-titre);
+        -webkit-text-stroke: 0.09375rem var(--encre);
+        text-shadow: 0.1875rem 0.3125rem 0 var(--encre);
+        color: var(--creme);
+    }
+
+    .lf-account-hello p {
+        margin-bottom: 1.25rem;
+        font-size: 1.125rem;
+    }
+
+    .lf-account-hello__actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.25rem;
+    }
+
+    .lf-account-hello__actions .lf-btn {
+        background: var(--jaune);
+    }
+
+    .lf-account-last {
+        display: grid;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+        padding: 1.75rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        background: var(--creme);
+        box-shadow: var(--ombre-carte);
+    }
+
+    .lf-account-last__head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .lf-system .lf-account-last h2 {
+        margin: 0;
+        font: 400 1.75rem/1.2 var(--famille-titre);
+    }
+
+    .lf-account-last .lf-btn {
+        justify-self: start;
+    }
+
+    .lf-status {
+        display: inline-flex;
+        padding: 0.375rem 0.875rem;
+        border: var(--contour);
+        border-radius: 62.4375rem;
+        font-weight: 700;
+        background: var(--fond-surface);
+    }
+
+    .lf-status--processing {
+        background: var(--turquoise-clair);
+    }
+
+    .lf-status--pret-retrait, .lf-status--on-hold {
+        background: var(--jaune);
+    }
+
+    .lf-status--completed {
+        background: var(--turquoise);
+    }
+
+    .lf-status--cancelled, .lf-status--refunded {
+        background: var(--rose);
+    }
+
+    .lf-account-tiles {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .lf-account-tile {
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+        height: 100%;
+        padding: 1.5rem;
+        border: var(--contour-fort);
+        border-radius: 1rem;
+        text-decoration: none;
+        color: var(--encre);
+        box-shadow: var(--ombre-carte);
+        transition: transform .16s ease;
+    }
+
+    .lf-account-tile:hover {
+        transform: translate(-0.125rem, -0.125rem);
+    }
+
+    .lf-account-tile--rose {
+        background: var(--rose);
+    }
+
+    .lf-account-tile--turquoise {
+        background: var(--turquoise-clair);
+    }
+
+    .lf-account-tile--jaune {
+        background: var(--jaune);
+    }
+
+    .lf-account-tile__icon {
+        font-size: 2rem;
+    }
+
+    .lf-account-tile strong {
+        font: 400 1.5rem/1.2 var(--famille-titre);
+    }
+
+    @media (max-width: 56.25rem) {
+        .logged-in.woocommerce-account .lf-page-content > .woocommerce {
+            grid-template-columns: 1fr;
+        }
+
+        .logged-in .lf-account-nav {
+            position: static;
+            padding: 0.75rem;
+        }
+
+        .logged-in .lf-account-nav .lf-chips {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .logged-in .lf-account-nav .lf-chip {
+            width: auto;
+        }
+
+        .lf-account-tiles {
+            grid-template-columns: 1fr;
+        }
+
+        .lf-system .lf-account-hello__title {
+            font-size: 2.25rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .lf-account-tile {
+            transition: none;
+        }
+    }
+}
+
+/* =========================================================
+   41. Mentions légales, CGV et case à cocher (IT-22)
+   ========================================================= */
+@layer lf-components {
+    .lf-page-content--texte {
+        max-width: 48rem;
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .lf-page-content--texte h2 {
+        margin: 2.5rem 0 0.75rem;
+        font: 400 var(--taille-titre-4)/1.2 var(--famille-titre);
+    }
+
+    .lf-page-content--texte p {
+        margin-bottom: 1rem;
+    }
+
+    .lf-page-content--texte a, .lf-system .woocommerce-terms-and-conditions-wrapper a {
+        font-weight: 600;
+        text-decoration: underline;
+    }
+
+    .lf-system .woocommerce-terms-and-conditions-wrapper {
+        margin: 1.25rem 0;
+    }
+
+    .lf-system .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        font-weight: 600;
+    }
+
+    .lf-system .woocommerce-terms-and-conditions-wrapper .woocommerce-form__input-checkbox {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin: 0;
+        accent-color: var(--encre);
+    }
+}
+
+/* =========================================================
+   42. Commande en deux colonnes (IT-6)
+   ========================================================= */
+@layer lf-components {
+    .lf-system form.woocommerce-checkout {
+        display: grid;
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+        grid-template-areas: "avis avis" "client titre" "client recap";
+        grid-template-rows: auto auto 1fr;
+        column-gap: 3rem;
+        align-items: start;
+    }
+
+    .lf-system .woocommerce-checkout .woocommerce-NoticeGroup {
+        grid-area: avis;
+    }
+
+    .lf-system .woocommerce-checkout #customer_details {
+        grid-area: client;
+        float: none;
+        width: auto;
+        margin: 0;
+    }
+
+    .lf-system .woocommerce-checkout #order_review_heading {
+        grid-area: titre;
+        float: none;
+        clear: none;
+        width: auto;
+    }
+
+    .lf-system .woocommerce-checkout #order_review {
+        grid-area: recap;
+        float: none;
+        clear: none;
+        width: auto;
+    }
+
+    @media (max-width: 56.25rem) {
+        .lf-system form.woocommerce-checkout {
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-areas: "avis" "client" "titre" "recap";
+        }
+    }
+}

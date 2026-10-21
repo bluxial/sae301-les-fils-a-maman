@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
     <footer class="lf-footer lf-site-footer">
         <div class="lf-footer__brand">
             <a href="<?php echo esc_url(home_url('/')); ?>">
-                <img src="<?php echo esc_url(lf_asset('935e4.svg')); ?>" width="160" height="80" alt="Les Fils à Maman">
+                <img src="<?php echo esc_url(lf_asset('img/logo-pied-de-page.svg')); ?>" width="160" height="80" alt="Les Fils à Maman">
             </a>
             <p>Les Fils à Maman, c’est la cuisine régressive de notre enfance, revisitée avec gourmandise et à emporter.</p>
         </div>

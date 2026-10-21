@@ -1,0 +1,9 @@
+# Journal des mises en production
+
+| Date | Itération | Commit | Notes |
+|---|---|---|---|
+| 16/10/2026 | IT-1 + IT-2 | 30ca4ff | Première mise en ligne dans `~/public_html/r3SAE01` : WordPress, WooCommerce, SCF, Classic Editor, Storefront, thème enfant, 63 médias, base locale importée (préfixe `sae301_`, adresses remplacées). Sauvegarde du dossier existant avant. |
+| 21/10/2026 | IT-3 à IT-20 | 4ca724a | Thème et extension PDF Invoices envoyés, base locale importée, adresses remplacées ; commandes, compte et avis de test supprimés (consigne DSI). Sauvegarde de la base et des dossiers avant (`~/sauvegardes-r3SAE01`). |
+| 21/10/2026 | Correctif IT-7 | ab5573d | Thème mis à jour (espace avant le pied de page, bouton « voir le mot de passe »), logo de la médiathèque recopié. Base non modifiée. |
+| 21/10/2026 | IT-21 + IT-22 | 4214a6b | Yoast SEO installé, base locale importée (titres et descriptions SEO, pages Mentions légales et CGV, case CGV), données de test supprimées. Sauvegarde avant. |
+| 21/10/2026 | IT-2 + IT-6 | 7951639 | Thème mis à jour : design system sorti du thème, « Votre commande » à côté du formulaire au checkout. Base non modifiée. |

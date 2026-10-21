@@ -1,0 +1,68 @@
+{
+    "key": "taxonomy_lf_envie",
+    "title": "Envies",
+    "menu_order": 0,
+    "active": true,
+    "taxonomy": "envie",
+    "object_type": [
+        "product"
+    ],
+    "advanced_configuration": true,
+    "import_source": "",
+    "import_date": "",
+    "labels": {
+        "name": "Envies",
+        "singular_name": "Envie",
+        "menu_name": "Envies",
+        "all_items": "Toutes les envies",
+        "edit_item": "Modifier l’envie",
+        "view_item": "Voir l’envie",
+        "update_item": "Mettre à jour l’envie",
+        "add_new_item": "Ajouter une envie",
+        "new_item_name": "Nom de la nouvelle envie",
+        "search_items": "Rechercher une envie",
+        "not_found": "Aucune envie trouvée",
+        "back_to_items": "← Retour aux envies"
+    },
+    "description": "",
+    "capabilities": {
+        "manage_terms": "manage_categories",
+        "edit_terms": "manage_categories",
+        "delete_terms": "manage_categories",
+        "assign_terms": "edit_posts"
+    },
+    "public": true,
+    "publicly_queryable": true,
+    "hierarchical": false,
+    "show_ui": true,
+    "show_in_menu": true,
+    "show_in_nav_menus": true,
+    "show_in_rest": true,
+    "rest_base": "",
+    "rest_namespace": "wp\/v2",
+    "rest_controller_class": "WP_REST_Terms_Controller",
+    "show_tagcloud": true,
+    "show_in_quick_edit": true,
+    "show_admin_column": true,
+    "rewrite": {
+        "permalink_rewrite": "taxonomy_key",
+        "slug": "",
+        "with_front": true,
+        "rewrite_hierarchical": false
+    },
+    "query_var": "taxonomy_key",
+    "query_var_name": "",
+    "default_term": {
+        "default_term_enabled": false,
+        "default_term_name": "",
+        "default_term_slug": "",
+        "default_term_description": ""
+    },
+    "sort": null,
+    "meta_box": "default",
+    "meta_box_cb": "",
+    "meta_box_sanitize_cb": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792570890
+}

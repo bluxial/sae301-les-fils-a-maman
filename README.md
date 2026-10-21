@@ -1,94 +1,43 @@
-# Les Fils à Maman — SAE 3.01
+# Les Fils à Maman — thème enfant
 
-Thème enfant Storefront réalisé à partir du Figma et du design system. Le site utilise les produits, les prix, les descriptions et le panier de WooCommerce.
+Thème enfant de [Storefront](https://wordpress.org/themes/storefront/) pour le site Click & Collect des Fils à Maman.
 
-[Dépôt GitHub](https://github.com/bluxial/sae301-les-fils-a-maman)
+Projet pédagogique, SAÉ 3.01, BUT MMI, IUT du Limousin. Non affilié au restaurant Les Fils à Maman.
 
-[Site sur MMI](https://mmi.unilim.fr/~maree2/r3SAE01/) · [Administration WordPress](https://mmi.unilim.fr/~maree2/r3SAE01/wp-admin/)
+- Développement local : DDEV (`http://sae301.ddev.site`)
+- Production : https://mmi.unilim.fr/~maree2/r3SAE01/
+- Mise en production : voir [`docs/DEPLOY.md`](docs/DEPLOY.md)
+- Journal des mises en production : [`docs/CHANGELOG-PROD.md`](docs/CHANGELOG-PROD.md)
+- Itérations et user stories : [`docs/ITERATIONS.md`](docs/ITERATIONS.md), tests : [`docs/VALIDATION.md`](docs/VALIDATION.md)
+- Commits préfixés par l’itération : `[IT-X] message`
 
-## Installation
+## Organisation des fichiers
 
-1. Installer WordPress, WooCommerce, Storefront, Secure Custom Field, Classic Editor, PDF Invoices & Packing Slips for WooCommerce (factures, IT-17) et Yoast SEO (référencement, IT-21).
-2. Copier ce dossier dans wp-content/themes/les-fils-a-maman/.
-3. Activer le thème enfant dans **Apparence → Thèmes**. Garder Storefront installé.
-4. Choisir la page Click & Collect comme page d’accueil dans les réglages WordPress.
-5. Vérifier les pages boutique, panier, commande et compte dans les réglages WooCommerce.
-6. Ajouter les produits et leurs images depuis l’administration.
-7. Dans **WooCommerce → Réglages → Produits**, décocher « Activer les boutons Ajouter au panier AJAX » : après un ajout, la page se recharge et le compteur du panier se met à jour.
-
-Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catégories. Le script utilisé une fois pour préparer ces contenus a été retiré.
-
-## Fichiers
-
-| Fichier | Rôle |
+| Fichier ou dossier | Rôle |
 | --- | --- |
-| functions.php | Charge les deux fichiers PHP du dossier inc. |
-| inc/setup.php | Charge les styles et les scripts ; adapte Storefront ; affiche la barre panier mobile. |
-| inc/catalogue.php | Lit les catégories et prépare les textes et les boutons des produits. |
-| inc/produits-variables.php | IT-3 : prix « À partir de », bouton « Choisir + » et classe de stock faible. |
-| inc/champs-produits.php | IT-4 : affichage des champs SCF des produits avant le prix (les champs sont créés dans SCF → Groupes de champs). |
-| inc/retrait.php | IT-6 : texte « Instructions pour le retrait » (réglage WooCommerce et affichage au checkout). |
-| inc/compte-client.php | IT-7 : menu du compte client. |
-| woocommerce/myaccount/navigation.php | IT-7 : menu du compte en pastilles. |
-| woocommerce/myaccount/dashboard.php | IT-7 : tableau de bord du compte client. |
-| inc/emails.php | IT-8 : styles des e-mails et instructions de retrait. |
-| woocommerce/emails/ | IT-8 : en-tête et pied des e-mails. |
-| inc/commandes.php | IT-9 : statut « Prête à retirer » et e-mail au client. |
-| inc/equipe.php, archive-membre.php, single-membre.php | IT-11 : pages de l’équipe (le type de publication est créé dans SCF → Types de publication). |
-| inc/envies.php | IT-12 : pastilles « Envies » de la boutique (la taxonomie est créée dans SCF → Taxonomies). |
-| inc/ventes-croisees.php | IT-13 : suggestions sur la fiche produit et dans le panier. |
-| inc/avis.php | IT-14 : avis clients sous la fiche produit. |
-| page.php | Pages simples ; les pages de texte (mentions légales, CGV) reçoivent la classe lf-page-content--texte. |
-| footer.php | Pied de page, avec les liens Mentions légales et CGV (IT-22). |
-| inc/frais-preparation.php | IT-15 : frais de préparation sous un seuil. |
-| inc/filtres.php | IT-18 : barre latérale de filtres de la boutique. |
-| woocommerce/pdf/lfam/ | IT-17 : modèle de facture PDF aux couleurs de l’enseigne. |
-| inc/livraison-poids.php | IT-19 : prix de la livraison selon le poids. |
-| inc/creneaux.php | IT-20 : jour et créneau de retrait ou de livraison. |
-| woocommerce/cart/cart.php | IT-5 / IT-10 : page panier (articles, code promo et récapitulatif). |
-| tools/ | Scripts lancés une fois pour préparer les contenus : `ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/<script>.php` ou, en local, `http://sae301.ddev.site/?lf_outil=<script>` (extension locale `mu-plugins/lf-outils-locaux.php`, hors dépôt). |
-| header.php, footer.php | Navigation et pied de page. |
-| front-page.php | Accueil, nouveautés (IT-16) et cartes des catégories. |
-| page.php, index.php | Pages WordPress et affichage de secours. |
-| woocommerce/ | Boutique, cartes et fiches produits. |
-| system.css | Couleurs, polices et composants partagés. |
-| assets/css/wordpress.css | Mise en page propre au site WordPress. |
-| assets/js/theme.js | Menu mobile et boutons de quantité. |
-| docs/ | Itérations, vérifications, journal et transfert en production. |
+| `style.css` | En-tête du thème et tout le CSS, en couches `@layer`, découpé en parties numérotées (sommaire en haut du fichier). |
+| `functions.php` | Tout le PHP du thème, découpé en parties numérotées par itération (sommaire en haut du fichier). |
+| `header.php`, `footer.php`, `front-page.php`, `page.php`, `index.php` | Gabarits des pages. |
+| `archive-membre.php`, `single-membre.php` | Liste de l’équipe et page d’un membre (IT-11). |
+| `template-parts/membre-carte.php` | Carte d’un membre, utilisée dans la liste de l’équipe. |
+| `woocommerce/` | Gabarits WooCommerce surchargés : boutique, carte et fiche produit, panier, compte, e-mails, factures PDF. |
+| `acf-json/` | Groupes de champs, type de publication et taxonomie de Secure Custom Fields, enregistrés en JSON. |
+| `assets/img/` | Logos, photo de l’accueil, sticker. |
+| `assets/fonts/` | Polices Damion, Luckiest Guy et Signika. |
+| `assets/js/` | `menu.js` (menu mobile), `quantite.js` et `options-produit.js` (fiche produit). |
+| `docs/` | Documentation et scripts des itérations (`equipe-it11.php`…), lancés avec `wp eval-file`. |
 
-## Écriture du code
+## Extensions
 
-Le PHP utilise des fonctions nommées, des tableaux, des boucles et des conditions. Le JavaScript utilise le DOM et les événements du navigateur, sans bibliothèque ajoutée. Le CSS utilise des classes, des variables, Flexbox, Grid et des media queries.
+WooCommerce, Secure Custom Fields, Classic Editor, PDF Invoices & Packing Slips for WooCommerce (IT-17) et Yoast SEO (IT-21).
 
-Les fonctions add_action et add_filter relient nos fonctions à WordPress. La fonction remove_action retire les éléments Storefront remplacés par notre mise en page. Les fonctions esc_html, esc_attr, esc_url et wp_kses_post préparent les données avant leur affichage.
+## Conventions CSS
 
-Les styles restent organisés avec @layer :
-
-    @layer theme, lf-reset, lf-fonts, lf-tokens, lf-base,
-           lf-components, lf-utilities, lf-overrides;
-
-La couche theme contient les styles Storefront et WooCommerce : assets/css/wordpress.css les importe avec `@import url(...) layer(theme)`, et inc/setup.php retire leurs balises `<link>` d’origine avec wp_dequeue_style. system.css ne contient que le design system : le même fichier sert aussi au catalogue du design system, livré à part. Le fichier assets/css/storefront-couleurs.css reprend les couleurs du personnaliseur Storefront. Les autres couches contiennent nos styles ; la dernière couche déclarée gagne toujours. La classe lf-system porte les variables et les règles de base ; les composants utilisent des classes commençant par lf-.
-
-Conventions CSS :
-
-- noms de classes au format BEM : bloc `lf-card`, élément `lf-card__name`, modificateur `lf-card--horizontal` ; les états aussi sont des modificateurs (`lf-chip--input`, `lf-btn--hover`, `lf-header__nav--open`) ou viennent du HTML (`:has(input:checked)`, `:focus-visible`) ;
-- déclarations toujours dans le même ordre : display (et flex/grid), position (avec dimensions, marges et bordures), font (et texte), color (et fond), puis le reste (ombres, transitions…) ;
-- unités en rem (1rem = 16px), media queries comprises. Exceptions : le CSS des e-mails et des factures PDF reste en px, car les logiciels de messagerie et le moteur PDF gèrent mal les rem.
+- Couches dans cet ordre : `theme` (Storefront) → `lf-reset` → `lf-fonts` → `lf-tokens` → `lf-base` → `lf-components` → `lf-utilities` → `lf-overrides` ; la dernière couche gagne toujours.
+- Noms de classes BEM : bloc `lf-card`, élément `lf-card__name`, modificateur `lf-card--horizontal` ; les états sont des modificateurs (`lf-chip--input`, `lf-header__nav--open`) ou viennent du HTML (`:has(input:checked)`).
+- Déclarations dans le même ordre : display, position (avec dimensions, marges et bordures), font, color, puis le reste.
+- Unités en rem (1rem = 16px). Exceptions : CSS des e-mails et des factures PDF, en px.
 
 ## Design system
 
-Le design system n’est plus dans le thème : il est livré dans un dossier à part, `MAREE-Jules-design-system` (system.css, assets/ et design-system/ avec system.html et system-demo.css), en HTML et CSS uniquement. Ouvrir `design-system/system.html` dans un navigateur. Après une modification de `system.css` dans le thème, recopier le fichier dans ce dossier pour garder les deux identiques.
-
-## Périmètre
-
-IT-1 et IT-2 en local : environnement DDEV, thème enfant, accueil, boutique, catégories, neuf produits simples, fiches et navigation responsive.
-
-Le site est déployé dans r3SAE01 sur mmi.unilim.fr depuis le 16 octobre 2026. L’accès utilise l’authentification universitaire « Devoir MMI ». Le transfert et ses contrôles sont décrits dans docs/DEPLOIEMENT.md et docs/VALIDATION.md. IT-3 (produits variables), IT-4 (champs SCF) IT-5 (paiements, expédition, panier) IT-6 (checkout, instructions de retrait) IT-7 (compte client) IT-8 (e-mails) IT-9 (commandes) IT-10 (promotions) IT-11 (équipe) IT-12 (taxonomie Envies) IT-13 (ventes croisées) IT-14 (avis) IT-15 (frais de préparation) IT-16 (nouveautés sur l’accueil), IT-17 (factures PDF) IT-18 (filtres) IT-19 (livraison au poids) et IT-20 (créneaux) sont en ligne depuis le 21 octobre 2026. IT-21 (SEO avec Yoast) et IT-22 (mentions légales et CGV) sont faites en local.
-
-Les logos et les photographies de l’enseigne sont utilisés pour ce projet pédagogique. Les configurations privées, les mots de passe et les exports SQL sont exclus du dépôt.
-
-## Références
-
-- [Figma — Les Fils à Maman](https://www.figma.com/design/e8BqdgVoRoGSz7QAoYilwo?node-id=19-488)
-- [Thèmes enfants WordPress](https://developer.wordpress.org/themes/advanced-topics/child-themes/)
-- [Modèles WooCommerce](https://developer.woocommerce.com/docs/theming/theme-development/template-structure/)
+Le design system est livré à part, dans le dossier `MAREE-Jules-design-system` (HTML et CSS uniquement). Son `system.css` reprend les parties 3 à 15 de `style.css` : après une modification de ces parties, recopier les mêmes règles dans le design system.
