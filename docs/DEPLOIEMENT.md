@@ -51,6 +51,7 @@ Sans SSH, préparer un export adapté à la production avec un outil de migratio
 - Extensions actives, catégories correctes, neuf produits avec images et prix.
 - Aucun lien, script ou visuel ne pointe encore vers `sae301.ddev.site`.
 - Boutique, fiche, panier, connexion et navigation mobile vérifiés.
+- WooCommerce → Réglages → Produits : « Activer les boutons Ajouter au panier AJAX » décoché (la page se recharge après un ajout).
 - Permaliens actualisés, HTTPS et envoi d’emails vérifiés selon l’hébergement.
 
 Compléter `JOURNAL.md` avec l’URL, la date, le commit et les tests réellement exécutés. Ne pas annoncer l’itération comme déployée avant ces contrôles.

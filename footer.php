@@ -43,10 +43,8 @@ if (!defined('ABSPATH')) {
     </footer>
 
     <?php
-    if (function_exists('is_woocommerce')) {
-        if (is_woocommerce() || is_front_page()) {
-            lf_mobile_cartbar();
-        }
+    if (is_woocommerce() || is_front_page()) {
+        lf_mobile_cartbar();
     }
     ?>
 </div>

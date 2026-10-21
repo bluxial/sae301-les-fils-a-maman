@@ -51,11 +51,6 @@ add_filter('woocommerce_shipping_settings', 'lf_fee_settings');
 
 // 2. La règle : calculée à chaque mise à jour du panier.
 function lf_add_preparation_fee($cart) {
-    // Dans le back office (sauf pendant une mise à jour du panier en AJAX), on ne fait rien.
-    if (is_admin() && !wp_doing_ajax()) {
-        return;
-    }
-
     if ($cart->get_subtotal() > 0 && $cart->get_subtotal() < lf_fee_threshold()) {
         $cart->add_fee('Frais de préparation', lf_fee_amount());
     }

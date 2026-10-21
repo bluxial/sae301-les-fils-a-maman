@@ -14,6 +14,7 @@ Thème enfant Storefront réalisé à partir du Figma et du design system. Le si
 4. Choisir la page Click & Collect comme page d’accueil dans les réglages WordPress.
 5. Vérifier les pages boutique, panier, commande et compte dans les réglages WooCommerce.
 6. Ajouter les produits et leurs images depuis l’administration.
+7. Dans **WooCommerce → Réglages → Produits**, décocher « Activer les boutons Ajouter au panier AJAX » : après un ajout, la page se recharge et le compteur du panier se met à jour.
 
 Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catégories. Le script utilisé une fois pour préparer ces contenus a été retiré.
 
@@ -22,7 +23,7 @@ Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catég
 | Fichier | Rôle |
 | --- | --- |
 | functions.php | Charge les deux fichiers PHP du dossier inc. |
-| inc/setup.php | Charge les styles et les scripts ; adapte Storefront ; actualise le compteur du panier. |
+| inc/setup.php | Charge les styles et les scripts ; adapte Storefront ; affiche la barre panier mobile. |
 | inc/catalogue.php | Lit les catégories et prépare les textes et les boutons des produits. |
 | inc/produits-variables.php | IT-3 : prix « À partir de », bouton « Choisir + » et classe de stock faible. |
 | inc/champs-produits.php | IT-4 : champs SCF des produits et leur affichage avant le prix. |

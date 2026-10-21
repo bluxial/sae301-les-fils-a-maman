@@ -13,9 +13,7 @@ function lf_register_ready_status() {
         'public' => true,
         'exclude_from_search' => false,
         'show_in_admin_all_list' => true,
-        'show_in_admin_status_list' => true,
-        // Texte affiché dans la liste des commandes, au singulier et au pluriel, ex. : « Prête à retirer (3) ».
-        'label_count' => _n_noop('Prête à retirer <span class="count">(%s)</span>', 'Prêtes à retirer <span class="count">(%s)</span>')
+        'show_in_admin_status_list' => true
     ]);
 }
 add_action('init', 'lf_register_ready_status');

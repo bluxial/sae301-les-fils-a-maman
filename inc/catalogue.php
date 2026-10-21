@@ -22,7 +22,6 @@ function lf_categories() {
 }
 
 // Clé de couleur d'une catégorie : « partager » (turquoise), « plats » (jaune) ou « desserts » (rose).
-// strpos(...) !== false veut dire « le texte contient ce mot ».
 function lf_category_key($category) {
     if (!$category) {
         return 'partager';
@@ -32,7 +31,7 @@ function lf_category_key($category) {
         return 'plats';
     }
 
-    if (strpos($category->slug, 'dessert') !== false) {
+    if (str_contains($category->slug, 'dessert')) {
         return 'desserts';
     }
 
@@ -80,7 +79,7 @@ function lf_crop_class($product) {
     ];
 
     foreach ($crops as $word => $crop) {
-        if (strpos($slug, $word) !== false) {
+        if (str_contains($slug, $word)) {
             return 'lf-crop-' . $crop;
         }
     }

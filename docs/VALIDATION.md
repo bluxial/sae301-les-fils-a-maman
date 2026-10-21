@@ -14,7 +14,7 @@ Environnement local testé : `http://sae301.ddev.site/`, thème enfant actif, Ch
 
 Dans une session visiteur neuve, sans créer de commande :
 
-1. Ajout d’une portion de croquettes depuis la boutique : mise à jour AJAX du compteur du panier à 1.
+1. Ajout d’une portion de croquettes depuis la boutique : la page se recharge et le compteur du panier passe à 1.
 2. Ouverture de la fiche et augmentation de la quantité à 2 avec le bouton « + ».
 3. Envoi du formulaire natif : compteur du panier à 3.
 4. Ouverture du panier et attente de son chargement : produit visible ; API Store WooCommerce confirmant trois unités du produit 15.

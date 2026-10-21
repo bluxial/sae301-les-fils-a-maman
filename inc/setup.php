@@ -3,10 +3,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// 1. Réglages du thème et nettoyage des éléments de Storefront / WooCommerce
+// 1. Réglages du thème. On retire (remove_action) les éléments de Storefront et WooCommerce
 //    que nous remplaçons par notre propre mise en page.
-//    remove_action('crochet', 'fonction', priorité) retire une fonction ;
-//    add_action(...) en ajoute une (ici : le prix déplacé après la description).
 function lf_setup() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -68,7 +66,7 @@ function lf_asset($file) {
 }
 
 // 4. Chargement de nos fichiers CSS et JavaScript.
-//    filemtime() ajoute la date du fichier à l'adresse : le navigateur recharge le CSS dès qu'il change.
+//    filemtime() donne la date de modification du fichier : le navigateur recharge le fichier quand il change.
 function lf_styles_and_scripts() {
     $folder = get_stylesheet_directory();
     $url = get_stylesheet_directory_uri();
@@ -84,33 +82,17 @@ function lf_styles_and_scripts() {
     wp_enqueue_style('lf-system', $url . '/system.css', [], filemtime($folder . '/system.css'));
     wp_enqueue_style('lf-wordpress', lf_asset('css/wordpress.css'), ['lf-system'], filemtime($folder . '/assets/css/wordpress.css'));
     wp_enqueue_script('lf-interactions', lf_asset('js/theme.js'), [], filemtime($folder . '/assets/js/theme.js'), true);
-    wp_enqueue_script('wc-cart-fragments');
 }
 add_action('wp_enqueue_scripts', 'lf_styles_and_scripts', 100);
 
-// 5. Barre « Voir mon panier » (mobile) : nombre d'articles et sous-total.
-function lf_cartbar_html() {
-    if (!function_exists('WC') || !WC()->cart) {
-        return '';
-    }
-
-    $url = esc_url(wc_get_cart_url());
-    $count = esc_html(WC()->cart->get_cart_contents_count());
-    $total = wp_kses_post(WC()->cart->get_cart_subtotal());
-
-    return '<div class="lf-cartbar lf-live-cartbar"><a href="' . $url . '"><span>Voir mon panier · ' . $count . ' article(s)</span><strong>' . $total . '</strong></a></div>';
-}
-
+// 5. Barre « Voir mon panier » en bas de l'écran (mobile) : nombre d'articles et sous-total.
 function lf_mobile_cartbar() {
-    echo lf_cartbar_html();
+    $url = wc_get_cart_url();
+    $count = WC()->cart->get_cart_contents_count();
+    $total = WC()->cart->get_cart_subtotal();
+    ?>
+    <div class="lf-cartbar lf-live-cartbar">
+        <a href="<?php echo esc_url($url); ?>"><span>Voir mon panier · <?php echo esc_html($count); ?> article(s)</span><strong><?php echo wp_kses_post($total); ?></strong></a>
+    </div>
+    <?php
 }
-
-// 6. Après un ajout au panier sans rechargement (AJAX), WooCommerce remplace ces morceaux de page
-//    (« fragments ») par leur nouvelle version : compteur de l'en-tête et barre panier.
-function lf_cart_fragments($fragments) {
-    $count = esc_html(WC()->cart->get_cart_contents_count());
-    $fragments['.lf-cart-count'] = '<span class="lf-cart-count">' . $count . '</span>';
-    $fragments['.lf-live-cartbar'] = lf_cartbar_html();
-    return $fragments;
-}
-add_filter('woocommerce_add_to_cart_fragments', 'lf_cart_fragments');

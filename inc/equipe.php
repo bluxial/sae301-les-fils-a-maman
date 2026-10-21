@@ -30,10 +30,6 @@ add_action('init', 'lf_register_team');
 
 // 2. Les champs du membre (poste, plat préféré, couleur de la carte).
 function lf_team_fields() {
-    if (!function_exists('acf_add_local_field_group')) {
-        return;
-    }
-
     acf_add_local_field_group([
         'key' => 'group_lf_membre',
         'title' => 'Profil du membre',
@@ -87,18 +83,17 @@ function lf_team_order($query) {
 }
 add_action('pre_get_posts', 'lf_team_order');
 
-// Initiales affichées quand le membre n'a pas de photo (ex. : « Léa Martin » → « LM »).
-// explode() coupe le nom à chaque espace ; les fonctions mb_ gèrent les lettres accentuées (É, À…).
+// Initiales affichées quand le membre n'a pas de photo (ex. : « Camille Roux » → « CR »).
 function lf_member_initials($nom) {
-    $initiales = '';
+    $nom = remove_accents($nom);       // « Élodie » devient « Elodie »
+    $mots = explode(' ', $nom);        // « Camille Roux » devient ['Camille', 'Roux']
+    $initiales = substr($mots[0], 0, 1);
 
-    foreach (explode(' ', $nom) as $mot) {
-        if ($mot !== '') {
-            $initiales .= mb_strtoupper(mb_substr($mot, 0, 1));
-        }
+    if (isset($mots[1])) {
+        $initiales = $initiales . substr($mots[1], 0, 1);
     }
 
-    return mb_substr($initiales, 0, 2);
+    return strtoupper($initiales);
 }
 
 // Photo du membre, ou ses initiales dans un rond.
@@ -108,13 +103,4 @@ function lf_member_avatar() {
     } else {
         echo '<span class="lf-member__avatar" aria-hidden="true">' . esc_html(lf_member_initials(get_the_title())) . '</span>';
     }
-}
-
-// Valeur d'un champ SCF du membre (texte vide si l'extension SCF est désactivée).
-function lf_member_field($nom) {
-    if (!function_exists('get_field')) {
-        return '';
-    }
-
-    return (string) get_field($nom);
 }

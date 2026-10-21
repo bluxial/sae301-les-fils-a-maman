@@ -7,10 +7,6 @@ if (!defined('ABSPATH')) {
 
 // 1. Création des champs dans la fiche produit du back office.
 function lf_product_fields() {
-    if (!function_exists('acf_add_local_field_group')) {
-        return;
-    }
-
     acf_add_local_field_group([
         'key' => 'group_lf_infos_produit',
         'title' => 'Informations du produit',
@@ -64,10 +60,6 @@ add_action('acf/init', 'lf_product_fields');
 
 // 2. Affichage dans la fiche produit, entre la description (20) et le prix (25).
 function lf_product_facts() {
-    if (!function_exists('get_field')) {
-        return;
-    }
-
     $composition = get_field('composition');
     $allergenes = get_field('allergenes');
     $calories = get_field('calories');

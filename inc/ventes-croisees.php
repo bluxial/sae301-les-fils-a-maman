@@ -15,13 +15,21 @@ function lf_show_suggestions($ids, $titre) {
     echo '<h2 class="lf-title lf-title--h3 lf-title--outlined">' . esc_html($titre) . '</h2>';
     echo '<div class="lf-recommendations">';
 
-    // array_slice garde seulement les 3 premiers produits de la liste.
-    foreach (array_slice($ids, 0, 3) as $id) {
+    $nombre = 0;
+
+    foreach ($ids as $id) {
+        // On affiche 3 produits au maximum.
+        if ($nombre === 3) {
+            break;
+        }
+
         $product = wc_get_product($id);
 
         if (!$product || !$product->is_visible()) {
             continue;
         }
+
+        $nombre = $nombre + 1;
 
         $nom = $product->get_name();
         $lien = $product->get_permalink();
@@ -37,7 +45,7 @@ function lf_show_suggestions($ids, $titre) {
             </p>
 
             <?php if ($product->is_type('simple') && $product->is_purchasable() && $product->is_in_stock()) : ?>
-                <a class="lf-btn lf-btn--icon add_to_cart_button ajax_add_to_cart" href="<?php echo esc_url($product->add_to_cart_url()); ?>" data-quantity="1" data-product_id="<?php echo esc_attr($product->get_id()); ?>" aria-label="Ajouter <?php echo esc_attr($nom); ?> au panier" rel="nofollow">+</a>
+                <a class="lf-btn lf-btn--icon" href="<?php echo esc_url($product->add_to_cart_url()); ?>" aria-label="Ajouter <?php echo esc_attr($nom); ?> au panier" rel="nofollow">+</a>
             <?php else : ?>
                 <a class="lf-btn lf-btn--icon" href="<?php echo esc_url($lien); ?>" aria-label="Choisir les options de <?php echo esc_attr($nom); ?>">→</a>
             <?php endif; ?>

@@ -25,10 +25,10 @@ function lfCloseMenu(event) {
 }
 
 // Clic sur un lien du menu : on referme le menu.
-function lfMenuLink(event) {
+function lfMenuLink() {
     const button = document.querySelector('.lf-menu');
 
-    if (event.target.closest('a') && button.getAttribute('aria-expanded') === 'true') {
+    if (button.getAttribute('aria-expanded') === 'true') {
         lfToggleMenu();
     }
 }
@@ -51,30 +51,31 @@ function lfQuantityButtons(quantity) {
     }
 }
 
-// Clic sur − ou + : change la valeur du champ quantité.
+// Clic sur − ou + : ajoute ou enlève 1 à la quantité.
 function lfChangeQuantity(event) {
     const button = event.currentTarget;
     const quantity = button.parentElement;
     const input = quantity.querySelector('input.qty');
 
     if (button.textContent === '+') {
-        input.stepUp();
+        input.value = Number(input.value) + 1;
     } else {
-        input.stepDown();
+        input.value = Number(input.value) - 1;
     }
 
-    input.dispatchEvent(new Event('change', { bubbles: true }));
+    lfQuantityButtons(quantity);
 }
 
+// Quand on tape une quantité au clavier, on met à jour les boutons − et +.
 function lfQuantityInput(event) {
     lfQuantityButtons(event.currentTarget.parentElement);
 }
 
-// IT-3 : les pastilles d'options recopient leur choix dans la liste déroulante cachée de WooCommerce,
-// qui met alors à jour le prix et le stock de la variation.
+// IT-3 : la pastille choisie est recopiée dans la liste déroulante cachée de WooCommerce.
+// La ligne « dispatchEvent » prévient WooCommerce du changement : il affiche alors le bon prix et le stock.
 function lfChooseOption(event) {
     const radio = event.currentTarget;
-    const select = document.querySelector('select[name="' + radio.dataset.select + '"]');
+    const select = document.querySelector('select[name="' + radio.getAttribute('data-select') + '"]');
 
     select.value = radio.value;
     select.dispatchEvent(new Event('change', { bubbles: true }));
@@ -87,8 +88,13 @@ function lfStart() {
     if (menuButton) {
         const menu = document.getElementById(menuButton.getAttribute('aria-controls'));
         menuButton.addEventListener('click', lfToggleMenu);
-        menu.addEventListener('click', lfMenuLink);
         document.addEventListener('keydown', lfCloseMenu);
+
+        const links = menu.querySelectorAll('a');
+
+        for (let i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', lfMenuLink);
+        }
     }
 
     const quantities = document.querySelectorAll('.lf-product-summary .quantity');

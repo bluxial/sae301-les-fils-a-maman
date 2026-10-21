@@ -58,7 +58,7 @@ if (!empty($commandes)) {
                 <dt>Retrait</dt>
                 <dd><?php echo esc_html($derniere->get_shipping_method()); ?></dd>
             </div>
-            <?php if (function_exists('lf_order_slot_text') && lf_order_slot_text($derniere) !== '') : ?>
+            <?php if (lf_order_slot_text($derniere) !== '') : ?>
                 <div>
                     <dt>Créneau</dt>
                     <dd><?php echo esc_html(lf_order_slot_text($derniere)); ?></dd>

@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Chaque fichier du dossier inc/ correspond à une partie du site (et souvent à une itération).
+// Chaque fichier du dossier inc/ correspond à une partie du site.
 require_once get_stylesheet_directory() . '/inc/setup.php';              // IT-1/2 : réglages du thème, CSS et JS
 require_once get_stylesheet_directory() . '/inc/catalogue.php';          // IT-2 : catégories et cartes produits
 require_once get_stylesheet_directory() . '/inc/produits-variables.php'; // IT-3 : produits variables
