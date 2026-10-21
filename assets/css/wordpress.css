@@ -1509,6 +1509,55 @@
     .lf-suggestions h2 {
         margin-bottom: 24px;
     }
+
+    .lf-recommendations {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .lf-recommendation .lf-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .lf-recommendation__info a {
+        color: var(--encre);
+        text-decoration: none;
+    }
+
+    .lf-recommendation .lf-btn--icon {
+        flex-shrink: 0;
+        height: 44px;
+        background: var(--bouton-principal);
+        color: var(--encre);
+    }
+
+    .lf-recommendation .add_to_cart_button.added {
+        background: var(--turquoise);
+    }
+
+    .lf-recommendation .added_to_cart {
+        display: none;
+    }
+
+    @media (max-width: 900px) {
+        .lf-recommendations {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+/* Lien « Voir le panier » ajouté par WooCommerce après un ajout rapide */
+@layer lf-overrides {
+    .lf-system .lf-card a.added_to_cart {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        color: var(--encre);
+        font-weight: 600;
+    }
 }
 
 /* IT-14 : avis clients */
@@ -1521,6 +1570,19 @@
     .lf-system .lf-reviews #reviews h2 {
         margin-bottom: 24px;
         font: 400 32px/1.2 var(--famille-titre);
+    }
+
+    .lf-system .lf-reviews .woocommerce-noreviews {
+        margin: 0 0 16px;
+        padding: 16px 20px;
+        border: var(--contour);
+        border-radius: 12px;
+        background: var(--creme);
+        color: var(--encre);
+    }
+
+    .lf-system .lf-reviews .woocommerce-noreviews::before {
+        display: none;
     }
 
     .lf-reviews .commentlist {

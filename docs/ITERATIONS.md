@@ -115,7 +115,7 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | User story | Mise en œuvre |
 | --- | --- |
 | US-13.1 | Script `tools/it13-ventes-croisees.php` : six produits reçoivent 2 ou 3 produits complémentaires (ex. : cordon bleu → pêche d’enfer, cookie, beignets). Modifiable dans **Produits → Modifier → Données produit → Produits liés → Ventes croisées**. |
-| US-13.2 | `inc/ventes-croisees.php` : bloc « Ça va bien avec… » sous la fiche produit et « Pour compléter ta commande » sous le panier (pleine largeur au lieu de la colonne du récapitulatif), avec les cartes produits de la boutique. |
+| US-13.2 | `inc/ventes-croisees.php` : bloc « Ça va bien avec… » sous la fiche produit et « Pour compléter ta commande » sous le panier, en cartes horizontales `lf-recommendation` comme dans la maquette (photo, nom, prix, bouton « + » turquoise qui ajoute au panier sans recharger la page). Correctif du 21/10 : couleurs de bouton identiques et lien noir « Voir le panier » supprimé. |
 | US-13.3 | Testé en local : fiche du cordon bleu (3 suggestions) et panier avec un tartare (pêche d’enfer et millefeuille), boutons « Ajouter + » fonctionnels. |
 
 ## IT-14 : avis clients
