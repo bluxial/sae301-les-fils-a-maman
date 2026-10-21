@@ -2049,3 +2049,46 @@
         accent-color: var(--encre);
     }
 }
+
+@layer lf-components {
+    .lf-system form.woocommerce-checkout {
+        display: grid;
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+        grid-template-areas: "avis avis" "client titre" "client recap";
+        grid-template-rows: auto auto 1fr;
+        column-gap: 3rem;
+        align-items: start;
+    }
+
+    .lf-system .woocommerce-checkout .woocommerce-NoticeGroup {
+        grid-area: avis;
+    }
+
+    .lf-system .woocommerce-checkout #customer_details {
+        grid-area: client;
+        float: none;
+        width: auto;
+        margin: 0;
+    }
+
+    .lf-system .woocommerce-checkout #order_review_heading {
+        grid-area: titre;
+        float: none;
+        clear: none;
+        width: auto;
+    }
+
+    .lf-system .woocommerce-checkout #order_review {
+        grid-area: recap;
+        float: none;
+        clear: none;
+        width: auto;
+    }
+
+    @media (max-width: 56.25rem) {
+        .lf-system form.woocommerce-checkout {
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-areas: "avis" "client" "titre" "recap";
+        }
+    }
+}
