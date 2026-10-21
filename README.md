@@ -54,7 +54,6 @@ Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catég
 | system.css | Couleurs, polices et composants partagés. |
 | assets/css/wordpress.css | Mise en page propre au site WordPress. |
 | assets/js/theme.js | Menu mobile et boutons de quantité. |
-| design-system/ | Catalogue des composants en HTML et CSS uniquement (system.html et system-demo.css), sans JavaScript. |
 | docs/ | Itérations, vérifications, journal et transfert en production. |
 
 ## Écriture du code
@@ -68,7 +67,7 @@ Les styles restent organisés avec @layer :
     @layer theme, lf-reset, lf-fonts, lf-tokens, lf-base,
            lf-components, lf-utilities, lf-overrides;
 
-La couche theme contient les styles Storefront et WooCommerce : assets/css/wordpress.css les importe avec `@import url(...) layer(theme)`, et inc/setup.php retire leurs balises `<link>` d’origine avec wp_dequeue_style. system.css ne contient que le design system : il fonctionne aussi seul, dans design-system/system.html. Le fichier assets/css/storefront-couleurs.css reprend les couleurs du personnaliseur Storefront. Les autres couches contiennent nos styles ; la dernière couche déclarée gagne toujours. La classe lf-system porte les variables et les règles de base ; les composants utilisent des classes commençant par lf-.
+La couche theme contient les styles Storefront et WooCommerce : assets/css/wordpress.css les importe avec `@import url(...) layer(theme)`, et inc/setup.php retire leurs balises `<link>` d’origine avec wp_dequeue_style. system.css ne contient que le design system : le même fichier sert aussi au catalogue du design system, livré à part. Le fichier assets/css/storefront-couleurs.css reprend les couleurs du personnaliseur Storefront. Les autres couches contiennent nos styles ; la dernière couche déclarée gagne toujours. La classe lf-system porte les variables et les règles de base ; les composants utilisent des classes commençant par lf-.
 
 Conventions CSS :
 
@@ -78,7 +77,7 @@ Conventions CSS :
 
 ## Design system
 
-Ouvrir design-system/system.html dans un navigateur. Le catalogue utilise les images et les polices du dossier assets. Son panier et ses options sont des démonstrations locales. Le panier du site WordPress reste celui de WooCommerce.
+Le design system n’est plus dans le thème : il est livré dans un dossier à part, `MAREE-Jules-design-system` (system.css, assets/ et design-system/ avec system.html et system-demo.css), en HTML et CSS uniquement. Ouvrir `design-system/system.html` dans un navigateur. Après une modification de `system.css` dans le thème, recopier le fichier dans ce dossier pour garder les deux identiques.
 
 ## Périmètre
 

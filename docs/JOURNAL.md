@@ -37,5 +37,6 @@
 | 21/10/2026 | IT-21 / 0.21.0 | DDEV local | Yoast SEO : titres et meta descriptions des 9 produits, 3 catégories, accueil et boutique ; balises Open Graph vérifiées. | Non déployée. |
 | 21/10/2026 | IT-22 / 0.22.0 | DDEV local | Pages Mentions légales et CGV, liens dans le pied de page, case CGV obligatoire au checkout (commande refusée sans elle). | Non déployée. |
 | 21/10/2026 | Design system sans JavaScript | DDEV local | system.js supprimé : filtre des produits et menu mobile en HTML/CSS natif, fiche produit et panier montrés en états fixes, blocs de code et boutons « Copier » retirés. États en modificateurs BEM (`lf-chip--input`, `lf-btn--hover`, `lf-header__nav--open`) ou en `:has()`. Valeurs de la documentation en rem. 0 erreur aux validateurs W3C. | Non déployée. |
+| 21/10/2026 | Design system à part | DDEV local | Dossier `design-system/` retiré du thème à la demande de Jules : le design system est livré dans le dossier séparé `MAREE-Jules-design-system`. | Non déployée. |
 
 Pour chaque mise en production, ajouter une ligne avec date/heure, URL, hash du commit, export de base utilisé, fichiers transférés, tests effectués et éventuels problèmes. Ne pas consigner de mots de passe.
