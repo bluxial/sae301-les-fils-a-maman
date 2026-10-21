@@ -4,28 +4,9 @@ if (!defined('ABSPATH')) {
 }
 
 // IT-12 : taxonomie « Envies » (indépendante des catégories) pour classer les produits.
+// La taxonomie est créée dans SCF → Taxonomies ; on gère les envies dans Produits → Envies.
 
-// 1. La taxonomie, administrable dans Produits → Envies.
-function lf_register_envies() {
-    register_taxonomy('envie', 'product', [
-        'labels' => [
-            'name' => 'Envies',
-            'singular_name' => 'Envie',
-            'add_new_item' => 'Ajouter une envie',
-            'edit_item' => 'Modifier l’envie',
-            'all_items' => 'Toutes les envies',
-            'menu_name' => 'Envies'
-        ],
-        'public' => true,
-        'hierarchical' => false,
-        'show_admin_column' => true,
-        'show_in_rest' => true,
-        'rewrite' => ['slug' => 'envie']
-    ]);
-}
-add_action('init', 'lf_register_envies');
-
-// 2. Les pastilles « Envies » affichées dans la boutique.
+// Les pastilles « Envies » affichées dans la boutique.
 function lf_envie_navigation() {
     $envies = get_terms(['taxonomy' => 'envie', 'hide_empty' => true]);
 

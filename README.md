@@ -34,8 +34,8 @@ Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catég
 | inc/emails.php | IT-8 : styles des e-mails et instructions de retrait. |
 | woocommerce/emails/ | IT-8 : en-tête et pied des e-mails. |
 | inc/commandes.php | IT-9 : statut « Prête à retirer » et e-mail au client. |
-| inc/equipe.php, archive-membre.php, single-membre.php | IT-11 : pages de l’équipe. |
-| inc/envies.php | IT-12 : taxonomie Envies et pastilles de la boutique. |
+| inc/equipe.php, archive-membre.php, single-membre.php | IT-11 : pages de l’équipe (le type de publication est créé dans SCF → Types de publication). |
+| inc/envies.php | IT-12 : pastilles « Envies » de la boutique (la taxonomie est créée dans SCF → Taxonomies). |
 | inc/ventes-croisees.php | IT-13 : suggestions sur la fiche produit et dans le panier. |
 | inc/avis.php | IT-14 : avis clients sous la fiche produit. |
 | inc/frais-preparation.php | IT-15 : frais de préparation sous un seuil. |

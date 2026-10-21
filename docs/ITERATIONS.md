@@ -97,7 +97,7 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 
 | User story | Mise en œuvre |
 | --- | --- |
-| US-11.1 | Type de contenu « Équipe » (`membre`) avec son menu dans le back office (`inc/equipe.php`) : un membre = une page. Groupe de champs SCF « Profil du membre » (créé dans SCF → Groupes de champs) : poste, plat préféré, couleur de la carte. La photo se met en « Image mise en avant » ; sans photo, les initiales s’affichent. |
+| US-11.1 | Type de contenu « Équipe » (`membre`) créé dans SCF → Types de publication, avec son menu dans le back office : un membre = une page. Groupe de champs SCF « Profil du membre » (créé dans SCF → Groupes de champs) : poste, plat préféré, couleur de la carte. La photo se met en « Image mise en avant » ; sans photo, les initiales s’affichent. |
 | US-11.2 | Script `tools/it11-equipe.php` : trois profils fictifs (cheffe de cuisine, pâtissier, responsable du Click & Collect). |
 | US-11.3 | Modèles `archive-membre.php` (liste, adresse `/equipe/`) et `single-membre.php` (profil). Ordre d’affichage réglable avec le champ « Ordre » du membre. |
 | US-11.4 | Pas d’écran « Équipe » dans la maquette Figma : les pages reprennent les composants du design system (cartes colorées, bordures et ombres, titres Luckiest Guy, bloc `lf-facts`). Écran à ajouter dans Figma pour la cohérence du rendu. |
@@ -107,7 +107,7 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 
 | User story | Mise en œuvre |
 | --- | --- |
-| US-12.1 | Taxonomie « Envies » (`envie`) indépendante des catégories, rattachée aux produits (`inc/envies.php`). Administration dans **Produits → Envies**, case à cocher dans chaque fiche produit et colonne dans la liste des produits. |
+| US-12.1 | Taxonomie « Envies » (`envie`) indépendante des catégories, rattachée aux produits, créée dans SCF → Taxonomies. Administration dans **Produits → Envies**, case à cocher dans chaque fiche produit et colonne dans la liste des produits. |
 | US-12.2 | Script `tools/it12-envies.php` : Végétarien (4 produits), Gourmand (3), Léger (3). |
 | US-12.3 | Page dédiée par envie (`/envie/vegetarien/`, `/envie/gourmand/`, `/envie/leger/`) avec la grille de la boutique ; pastilles « Envie de : » sous les catégories. Correctif : « Toute la carte » n’est active que sur la boutique. |
 

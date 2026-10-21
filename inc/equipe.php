@@ -3,33 +3,11 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// IT-11 : pages de l'équipe (un type de contenu « Membre de l'équipe »).
+// IT-11 : pages de l'équipe.
+// Le type de publication « Équipe » (membre) est créé dans SCF → Types de publication.
 // Les champs (poste, plat préféré, couleur) sont créés dans SCF → Groupes de champs → « Profil du membre ».
 
-// 1. Le type de contenu, avec son menu « Équipe » dans le back office.
-function lf_register_team() {
-    register_post_type('membre', [
-        'labels' => [
-            'name' => 'Équipe',
-            'singular_name' => 'Membre de l’équipe',
-            'add_new' => 'Ajouter un membre',
-            'add_new_item' => 'Ajouter un membre de l’équipe',
-            'edit_item' => 'Modifier le membre',
-            'all_items' => 'Toute l’équipe',
-            'menu_name' => 'Équipe'
-        ],
-        'public' => true,
-        'has_archive' => 'equipe',
-        'rewrite' => ['slug' => 'equipe'],
-        'menu_icon' => 'dashicons-groups',
-        'menu_position' => 25,
-        'supports' => ['title', 'editor', 'thumbnail', 'page-attributes'],
-        'show_in_rest' => true
-    ]);
-}
-add_action('init', 'lf_register_team');
-
-// 2. La liste de l'équipe est triée avec l'ordre choisi dans le back office.
+// 1. La liste de l'équipe est triée avec l'ordre choisi dans le back office.
 function lf_team_order($query) {
     if (!is_admin() && $query->is_main_query() && $query->is_post_type_archive('membre')) {
         $query->set('orderby', 'menu_order');
