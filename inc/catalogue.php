@@ -3,6 +3,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// IT-2 : catégories de la carte et cartes produits.
+
+// Liste des catégories qui contiennent au moins un produit, dans l'ordre de création.
 function lf_categories() {
     $categories = get_terms([
         'taxonomy' => 'product_cat',
@@ -18,6 +21,8 @@ function lf_categories() {
     return $categories;
 }
 
+// Clé de couleur d'une catégorie : « partager » (turquoise), « plats » (jaune) ou « desserts » (rose).
+// strpos(...) !== false veut dire « le texte contient ce mot ».
 function lf_category_key($category) {
     if (!$category) {
         return 'partager';
@@ -34,6 +39,7 @@ function lf_category_key($category) {
     return 'partager';
 }
 
+// Première catégorie d'un produit (ou null s'il n'en a pas).
 function lf_product_category($product) {
     $categories = get_the_terms($product->get_id(), 'product_cat');
 
@@ -44,6 +50,7 @@ function lf_product_category($product) {
     return $categories[0];
 }
 
+// Petite phrase manuscrite affichée sur les cartes de chaque catégorie.
 function lf_category_script($key) {
     if ($key === 'partager') {
         return 'pour picorer';
@@ -60,6 +67,7 @@ function lf_category_script($key) {
     return 'à ta façon';
 }
 
+// Classe CSS qui recadre la photo de certains produits (mot du slug => classe).
 function lf_crop_class($product) {
     $slug = $product->get_slug();
     $crops = [
@@ -80,6 +88,7 @@ function lf_crop_class($product) {
     return '';
 }
 
+// Pastilles de navigation entre les catégories (la catégorie affichée a aria-current="page").
 function lf_category_navigation() {
     $current = 0;
 
@@ -97,6 +106,7 @@ function lf_category_navigation() {
     <?php
 }
 
+// Description de la fiche produit (la courte si la longue est vide).
 function lf_product_description() {
     global $product;
     $description = $product->get_description();
@@ -110,12 +120,14 @@ function lf_product_description() {
     }
 }
 
+// Boutons « Ajouter » des cartes : on ajoute notre classe lf-btn.
 function lf_cart_button_class($args) {
     $args['class'] .= ' lf-btn';
     return $args;
 }
 add_filter('woocommerce_loop_add_to_cart_args', 'lf_cart_button_class');
 
+// Texte du bouton pour un produit simple disponible.
 function lf_cart_button_text($text, $product) {
     if ($product->is_type('simple') && $product->is_purchasable() && $product->is_in_stock()) {
         return 'Ajouter +';

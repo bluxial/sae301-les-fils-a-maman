@@ -7,8 +7,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$email = $email ?? null;
-$footer_text = apply_filters('woocommerce_email_footer_text', get_option('woocommerce_email_footer_text'), $email);
+$footer_text = apply_filters('woocommerce_email_footer_text', get_option('woocommerce_email_footer_text'));
 ?>
                                                                         </div>
                                                                     </td>

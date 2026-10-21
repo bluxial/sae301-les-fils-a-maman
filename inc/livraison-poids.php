@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) {
 // IT-19 : prix de la livraison calculé selon le poids total du panier (3 tranches).
 // Tranches réglables dans WooCommerce → Réglages → Expédition → Options d'expédition.
 
+// Prix de la livraison pour un poids donné (en kg).
 function lf_weight_price($poids) {
     if ($poids <= (float) get_option('lf_poids_seuil_1', 1)) {
         return (float) get_option('lf_poids_prix_1', 3.9);
@@ -27,20 +28,21 @@ function lf_weight_settings($settings) {
         'id' => 'lf_poids'
     ];
 
+    // Un champ par ligne : identifiant du réglage, libellé affiché et valeur par défaut.
     $champs = [
-        'lf_poids_seuil_1' => ['Tranche 1 : jusqu’à (kg)', '1'],
-        'lf_poids_prix_1' => ['Tranche 1 : prix (€)', '3.9'],
-        'lf_poids_seuil_2' => ['Tranche 2 : jusqu’à (kg)', '3'],
-        'lf_poids_prix_2' => ['Tranche 2 : prix (€)', '5.9'],
-        'lf_poids_prix_3' => ['Tranche 3 : au-delà, prix (€)', '8.9']
+        ['id' => 'lf_poids_seuil_1', 'libelle' => 'Tranche 1 : jusqu’à (kg)', 'defaut' => '1'],
+        ['id' => 'lf_poids_prix_1', 'libelle' => 'Tranche 1 : prix (€)', 'defaut' => '3.9'],
+        ['id' => 'lf_poids_seuil_2', 'libelle' => 'Tranche 2 : jusqu’à (kg)', 'defaut' => '3'],
+        ['id' => 'lf_poids_prix_2', 'libelle' => 'Tranche 2 : prix (€)', 'defaut' => '5.9'],
+        ['id' => 'lf_poids_prix_3', 'libelle' => 'Tranche 3 : au-delà, prix (€)', 'defaut' => '8.9']
     ];
 
-    foreach ($champs as $id => $champ) {
+    foreach ($champs as $champ) {
         $settings[] = [
-            'title' => $champ[0],
-            'id' => $id,
+            'title' => $champ['libelle'],
+            'id' => $champ['id'],
             'type' => 'number',
-            'default' => $champ[1],
+            'default' => $champ['defaut'],
             'custom_attributes' => ['min' => '0', 'step' => '0.1']
         ];
     }

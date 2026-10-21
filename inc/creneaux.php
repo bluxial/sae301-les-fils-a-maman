@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) {
 // IT-20 : choix du jour et du créneau horaire pour le retrait ou la livraison.
 
 // Les 6 prochains jours (aujourd'hui compris).
+// Tableau du type : ['2026-10-21' => 'Mercredi 21 octobre', ...]
 function lf_slot_days() {
     $jours = [];
 
@@ -29,38 +30,40 @@ function lf_slot_hours() {
     ];
 }
 
-// Texte du créneau d'une commande, ex. : « Mardi 21 octobre, 12h30 – 13h00 ».
+// Valeur envoyée par le formulaire de commande (texte vide si le champ n'existe pas).
+function lf_posted_value($nom) {
+    if (isset($_POST[$nom])) {
+        return sanitize_text_field(wp_unslash($_POST[$nom]));
+    }
+
+    return '';
+}
+
+// Texte du créneau d'une commande, ex. : « Mercredi 21 octobre, 12h30 – 13h00 ».
 function lf_order_slot_text($order) {
     $jour = $order->get_meta('_lf_jour');
     $heure = $order->get_meta('_lf_creneau');
-    $jours = lf_slot_days();
-    $heures = lf_slot_hours();
 
     if ($jour === '' || $heure === '') {
         return '';
     }
 
-    $texte_jour = ucfirst(wp_date('l j F', strtotime($jour)));
+    $heures = lf_slot_hours();
+    $texte_heure = $heure;
 
-    if (isset($jours[$jour])) {
-        $texte_jour = $jours[$jour];
+    if (isset($heures[$heure])) {
+        $texte_heure = $heures[$heure];
     }
 
-    return $texte_jour . ', ' . ($heures[$heure] ?? $heure);
+    $texte_jour = ucfirst(wp_date('l j F', strtotime($jour)));
+
+    return $texte_jour . ', ' . $texte_heure;
 }
 
 // 1. Les champs dans le formulaire de commande.
 function lf_slot_fields() {
-    $jour_choisi = '';
-    $heure_choisie = '';
-
-    if (isset($_POST['lf_jour'])) {
-        $jour_choisi = sanitize_text_field(wp_unslash($_POST['lf_jour']));
-    }
-
-    if (isset($_POST['lf_creneau'])) {
-        $heure_choisie = sanitize_text_field(wp_unslash($_POST['lf_creneau']));
-    }
+    $jour_choisi = lf_posted_value('lf_jour');
+    $heure_choisie = lf_posted_value('lf_creneau');
     ?>
     <div class="lf-slots">
         <h3>Jour et créneau</h3>
@@ -92,16 +95,16 @@ function lf_slot_fields() {
 }
 add_action('woocommerce_after_order_notes', 'lf_slot_fields');
 
-// 2. Vérification : jour et créneau obligatoires et proposés par le site.
+// 2. Vérification : le jour et le créneau doivent faire partie de ceux proposés.
 function lf_slot_validation() {
-    $jour = sanitize_text_field(wp_unslash($_POST['lf_jour'] ?? ''));
-    $heure = sanitize_text_field(wp_unslash($_POST['lf_creneau'] ?? ''));
+    $jours = lf_slot_days();
+    $heures = lf_slot_hours();
 
-    if (!array_key_exists($jour, lf_slot_days())) {
+    if (!isset($jours[lf_posted_value('lf_jour')])) {
         wc_add_notice('Choisissez le jour du retrait ou de la livraison.', 'error');
     }
 
-    if (!array_key_exists($heure, lf_slot_hours())) {
+    if (!isset($heures[lf_posted_value('lf_creneau')])) {
         wc_add_notice('Choisissez un créneau horaire.', 'error');
     }
 }
@@ -109,12 +112,12 @@ add_action('woocommerce_checkout_process', 'lf_slot_validation');
 
 // 3. Enregistrement dans la commande.
 function lf_slot_save($order) {
-    $order->update_meta_data('_lf_jour', sanitize_text_field(wp_unslash($_POST['lf_jour'] ?? '')));
-    $order->update_meta_data('_lf_creneau', sanitize_text_field(wp_unslash($_POST['lf_creneau'] ?? '')));
+    $order->update_meta_data('_lf_jour', lf_posted_value('lf_jour'));
+    $order->update_meta_data('_lf_creneau', lf_posted_value('lf_creneau'));
 }
 add_action('woocommerce_checkout_create_order', 'lf_slot_save');
 
-// 4. Affichage : page de confirmation, Mon compte, back office et e-mails.
+// 4. Affichage : page de confirmation, Mon compte et fiche commande du back office.
 function lf_slot_display($order) {
     $texte = lf_order_slot_text($order);
 
@@ -125,6 +128,7 @@ function lf_slot_display($order) {
 add_action('woocommerce_order_details_after_order_table', 'lf_slot_display');
 add_action('woocommerce_admin_order_data_after_shipping_address', 'lf_slot_display');
 
+// 5. Affichage dans les e-mails (version HTML ou texte brut).
 function lf_slot_email($order, $sent_to_admin, $plain_text) {
     $texte = lf_order_slot_text($order);
 

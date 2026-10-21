@@ -27,5 +27,6 @@
 | 20/10/2026 | IT-20 / 0.20.0 | DDEV local | Jour et créneau horaire obligatoires au checkout (retrait et livraison), enregistrés et affichés partout (confirmation, compte, back office, e-mails). | Non déployée. |
 | 21/10/2026 | Correctifs IT-13 / IT-14 | DDEV local | Suggestions en cartes horizontales conformes à la maquette (bouton « + » turquoise), lien « Voir le panier » lisible dans les cartes, message « pas encore d’avis » aux couleurs du site. | Non déployée. |
 | 21/10/2026 | Correctif IT-7 | DDEV local | Nouvelle interface du compte client (menu latéral, tableau de bord, dernière commande, raccourcis). Profil administrateur remis à « Jules Marée » après des commandes de test. | Non déployée. |
+| 21/10/2026 | Relecture du code | DDEV local | Code simplifié pour être lisible en 1re année : plus de fonctions PHP qui réécrivent le CSS (remplacées par `@import ... layer(theme)`), plus d’opérateur `??`, tableaux avec des clés nommées, commentaires simples dans chaque fichier `inc/`, `functions.php` et `theme.js`. Rendu identique vérifié page par page (desktop et mobile), checkout, créneaux, e-mails et options produit retestés. | Non déployée. |
 
 Pour chaque mise en production, ajouter une ligne avec date/heure, URL, hash du commit, export de base utilisé, fichiers transférés, tests effectués et éventuels problèmes. Ne pas consigner de mots de passe.

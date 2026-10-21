@@ -65,7 +65,7 @@ Les styles restent organisés avec @layer :
     @layer theme, lf-reset, lf-fonts, lf-tokens, lf-base,
            lf-components, lf-utilities, lf-overrides;
 
-La couche theme contient les styles Storefront et WooCommerce. Les autres couches contiennent nos styles. La classe lf-system porte les variables et les règles de base ; les composants utilisent des classes commençant par lf-.
+La couche theme contient les styles Storefront et WooCommerce : system.css les importe avec `@import url(...) layer(theme)`, et inc/setup.php retire leurs balises `<link>` d’origine avec wp_dequeue_style. Le fichier assets/css/storefront-couleurs.css reprend les couleurs du personnaliseur Storefront. Les autres couches contiennent nos styles ; la dernière couche déclarée gagne toujours. La classe lf-system porte les variables et les règles de base ; les composants utilisent des classes commençant par lf-.
 
 ## Design system
 

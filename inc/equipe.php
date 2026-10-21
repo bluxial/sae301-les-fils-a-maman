@@ -88,6 +88,7 @@ function lf_team_order($query) {
 add_action('pre_get_posts', 'lf_team_order');
 
 // Initiales affichées quand le membre n'a pas de photo (ex. : « Léa Martin » → « LM »).
+// explode() coupe le nom à chaque espace ; les fonctions mb_ gèrent les lettres accentuées (É, À…).
 function lf_member_initials($nom) {
     $initiales = '';
 
@@ -109,6 +110,7 @@ function lf_member_avatar() {
     }
 }
 
+// Valeur d'un champ SCF du membre (texte vide si l'extension SCF est désactivée).
 function lf_member_field($nom) {
     if (!function_exists('get_field')) {
         return '';

@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) {
 // IT-15 : frais de préparation ajoutés quand le panier est inférieur à un seuil.
 // Montant et seuil réglables dans WooCommerce → Réglages → Expédition → Options d'expédition.
 
+// Montant et seuil enregistrés dans le back office (valeur par défaut si rien n'est enregistré).
 function lf_fee_amount() {
     return (float) get_option('lf_frais_montant', 1.5);
 }
@@ -50,6 +51,7 @@ add_filter('woocommerce_shipping_settings', 'lf_fee_settings');
 
 // 2. La règle : calculée à chaque mise à jour du panier.
 function lf_add_preparation_fee($cart) {
+    // Dans le back office (sauf pendant une mise à jour du panier en AJAX), on ne fait rien.
     if (is_admin() && !wp_doing_ajax()) {
         return;
     }

@@ -15,6 +15,7 @@ function lf_show_suggestions($ids, $titre) {
     echo '<h2 class="lf-title lf-title--h3 lf-title--outlined">' . esc_html($titre) . '</h2>';
     echo '<div class="lf-recommendations">';
 
+    // array_slice garde seulement les 3 premiers produits de la liste.
     foreach (array_slice($ids, 0, 3) as $id) {
         $product = wc_get_product($id);
 

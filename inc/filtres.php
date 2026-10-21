@@ -7,6 +7,7 @@ if (!defined('ABSPATH')) {
 // Le formulaire utilise les paramètres reconnus par WooCommerce :
 // s (recherche), min_price / max_price (prix) et filter_taille (attribut Taille).
 
+// Valeur d'un filtre dans l'adresse de la page (texte vide si le filtre n'est pas utilisé).
 function lf_filter_value($nom) {
     if (isset($_GET[$nom])) {
         return sanitize_text_field(wp_unslash($_GET[$nom]));
@@ -15,6 +16,8 @@ function lf_filter_value($nom) {
     return '';
 }
 
+// Le formulaire de filtres (appelé dans archive-product.php).
+// Il renvoie vers la page affichée (boutique ou catégorie) avec les filtres dans l'adresse.
 function lf_shop_filters() {
     $tailles = get_terms(['taxonomy' => 'pa_taille', 'hide_empty' => true]);
     $choix = lf_filter_value('filter_taille');

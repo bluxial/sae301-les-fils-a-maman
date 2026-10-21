@@ -1,3 +1,4 @@
+// Menu mobile : ouvre ou ferme le menu (aria-expanded indique l'état aux lecteurs d'écran).
 function lfToggleMenu() {
     const button = document.querySelector('.lf-menu');
     const menu = document.getElementById(button.getAttribute('aria-controls'));
@@ -13,6 +14,7 @@ function lfToggleMenu() {
     }
 }
 
+// Touche Échap : ferme le menu et remet le focus sur le bouton.
 function lfCloseMenu(event) {
     const button = document.querySelector('.lf-menu');
 
@@ -22,6 +24,7 @@ function lfCloseMenu(event) {
     }
 }
 
+// Clic sur un lien du menu : on referme le menu.
 function lfMenuLink(event) {
     const button = document.querySelector('.lf-menu');
 
@@ -30,6 +33,7 @@ function lfMenuLink(event) {
     }
 }
 
+// Boutons − et + de la quantité : désactivés quand on atteint le minimum ou le maximum.
 function lfQuantityButtons(quantity) {
     const input = quantity.querySelector('input.qty');
     const buttons = quantity.querySelectorAll('button');
@@ -47,6 +51,7 @@ function lfQuantityButtons(quantity) {
     }
 }
 
+// Clic sur − ou + : change la valeur du champ quantité.
 function lfChangeQuantity(event) {
     const button = event.currentTarget;
     const quantity = button.parentElement;
@@ -65,6 +70,8 @@ function lfQuantityInput(event) {
     lfQuantityButtons(event.currentTarget.parentElement);
 }
 
+// IT-3 : les pastilles d'options recopient leur choix dans la liste déroulante cachée de WooCommerce,
+// qui met alors à jour le prix et le stock de la variation.
 function lfChooseOption(event) {
     const radio = event.currentTarget;
     const select = document.querySelector('select[name="' + radio.dataset.select + '"]');
@@ -73,6 +80,7 @@ function lfChooseOption(event) {
     select.dispatchEvent(new Event('change', { bubbles: true }));
 }
 
+// Au chargement de la page : on branche tous les événements.
 function lfStart() {
     const menuButton = document.querySelector('.lf-menu');
 
