@@ -686,7 +686,7 @@
             padding: 0.75rem 0 0.375rem;
         }
 
-        .lf-site-header .lf-header__nav.is-open {
+        .lf-site-header .lf-header__nav--open {
             display: flex;
             flex-direction: column;
             gap: 0.25rem;

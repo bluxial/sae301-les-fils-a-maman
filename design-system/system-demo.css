@@ -81,7 +81,7 @@
         color: var(--ardoise);
     }
 
-    .sidebar nav a:hover, .sidebar nav a[aria-current="location"] {
+    .sidebar nav a:hover {
         border-color: var(--encre);
         background: var(--turquoise-clair);
     }
@@ -293,18 +293,6 @@
         line-height: 1.4;
     }
 
-    .copy-color {
-        padding: 0;
-        border: 0;
-        margin-top: 0.625rem;
-        text-align: left;
-        text-decoration: underline;
-        text-underline-offset: 0.1875rem;
-        font: 0.6875rem monospace;
-        background: none;
-        cursor: copy;
-    }
-
     .type-table {
         border-top: var(--contour);
     }
@@ -407,7 +395,7 @@
         color: var(--ardoise);
     }
 
-    .is-focus {
+    .lf-btn--focus {
         outline: 0.1875rem solid var(--encre);
         outline-offset: 0.3125rem;
     }
@@ -421,45 +409,6 @@
     .product-grid {
         gap: 2rem 1.5rem;
         margin-top: 1.75rem;
-    }
-
-    .code-box {
-        margin-top: 1.25rem;
-        border: var(--contour);
-        border-radius: 0.5rem;
-        overflow: hidden;
-        background: var(--creme);
-    }
-
-    .code-box summary {
-        padding: 0.75rem 1rem;
-        font: 0.75rem/1.5 monospace;
-        cursor: pointer;
-    }
-
-    .code-box__toolbar {
-        padding: 0 1rem 0.75rem;
-    }
-
-    .code-box pre {
-        margin: 0;
-        border-top: var(--contour);
-        padding: 1.25rem;
-        max-height: 18.75rem;
-        overflow: auto;
-        font: 0.75rem/1.6 monospace;
-        white-space: pre-wrap;
-        overflow-wrap: anywhere;
-        background: var(--encre);
-        color: var(--creme);
-    }
-
-    .code-box button {
-        padding: 0.5rem 0.75rem;
-        border: var(--contour);
-        border-radius: 0.25rem;
-        font: 0.75rem monospace;
-        background: var(--peche);
     }
 
     .catalog-tools {
@@ -696,7 +645,7 @@
     }
 
     .phone__menu {
-        display: flex;
+        display: none;
         gap: 1rem;
         flex-wrap: wrap;
         padding: 1rem;
@@ -762,50 +711,6 @@
         border-top: var(--contour);
         font-size: 0.75rem;
         color: var(--ardoise);
-    }
-
-    .toast {
-        position: fixed;
-        bottom: 1.5rem;
-        left: 50%;
-        z-index: 100;
-        padding: 0.875rem 1.375rem;
-        border-radius: 0.5rem;
-        max-width: calc(100vw - 2rem);
-        font-size: 0.875rem;
-        text-align: center;
-        background: var(--encre);
-        color: var(--creme);
-        transform: translateX(-50%);
-        box-shadow: 0.25rem 0.25rem 0 var(--turquoise);
-    }
-
-    .product-dialog {
-        width: min(68.75rem, calc(100vw - 2.5rem));
-        max-height: 90vh;
-        border: var(--contour-fort);
-        border-radius: 1rem;
-        padding: 2rem;
-        background: var(--peche);
-        color: var(--encre);
-        box-shadow: 0.5rem 0.5rem 0 var(--encre);
-    }
-
-    .product-dialog::backdrop {
-        background: rgba(15, 23, 42, .7);
-    }
-
-    .product-dialog__top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1.5rem;
-        font: 0.6875rem monospace;
-        text-transform: uppercase;
-    }
-
-    .product-dialog .lf-title--h1 {
-        font-size: 3rem;
     }
 
     .export-buttons {
@@ -1231,23 +1136,6 @@
             padding: 0.75rem;
         }
 
-        .product-dialog {
-            width: calc(100vw - 1.5rem);
-            padding: 1.25rem;
-        }
-
-        .product-dialog .lf-title--h1 {
-            font-size: 2.25rem;
-        }
-
-        .product-dialog .lf-detail__actions {
-            flex-wrap: wrap;
-        }
-
-        .product-dialog .lf-detail__actions .lf-btn {
-            min-width: 11.25rem;
-        }
-
         .geometry {
             gap: 1.5rem;
         }
@@ -1283,7 +1171,7 @@
     }
 
     @media print {
-        .sidebar, .doc-top, .export-buttons, .code-box, .toast, .source-link {
+        .sidebar, .doc-top, .export-buttons, .source-link {
             display: none;
         }
 
@@ -1313,5 +1201,36 @@
         .photo-gallery {
             grid-template-columns: repeat(4, 1fr);
         }
+    }
+}
+
+@layer lf-catalogue {
+    .catalog-tools__filter {
+        margin: 0;
+    }
+
+    .section--catalog:has(.catalog-tools__filter input[value="partager"]:checked) .product-grid > .lf-card:not([data-category="partager"]), .section--catalog:has(.catalog-tools__filter input[value="plats"]:checked) .product-grid > .lf-card:not([data-category="plats"]), .section--catalog:has(.catalog-tools__filter input[value="desserts"]:checked) .product-grid > .lf-card:not([data-category="desserts"]) {
+        display: none;
+    }
+
+    .phone__menu-button {
+        cursor: pointer;
+    }
+
+    .phone:has(.phone__toggle:checked) .phone__menu {
+        display: flex;
+    }
+
+    .phone:has(.phone__toggle:focus-visible) .phone__menu-button {
+        outline: 0.1875rem solid var(--encre);
+        outline-offset: 0.25rem;
+    }
+
+    .panel__text {
+        margin-top: 0.75rem;
+    }
+
+    .panel__action {
+        margin-top: 1.25rem;
     }
 }

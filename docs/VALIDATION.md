@@ -33,7 +33,7 @@ Le parcours complet a réussi sans erreur JavaScript ni requête en échec relev
 - Parcours WooCommerce et trente contrôles responsive ci-dessus rejoués avec succès après réécriture.
 - Cinquante-quatre captures avant/après couvrent l’accueil, le catalogue, les catégories, les neuf fiches, le panier, le compte, la commande et le design system, sur ordinateur et mobile.
 - Comparaison détaillée de dix-sept vues : éléments visibles, dimensions, polices, couleurs, espacements, bordures, ombres et attributs des images identiques. Les deux captures du design system sont identiques pixel par pixel. Certaines captures WordPress présentent de légères variations de rasterisation des photos ; les fichiers des visuels n’ont pas été modifiés.
-- Design system testé depuis le fichier local et depuis le thème servi en HTTP : filtres, options, quantités, panier de démonstration, copie du CSS et des couleurs, exemples de code et menu mobile fonctionnels, sans erreur JavaScript relevée.
+- Design system (21/10/2026) : HTML et CSS uniquement, sans JavaScript. Filtre des cartes produits (pastilles radio et `:has()`), pastilles d’options, case à cocher et menu mobile (case à cocher cachée) fonctionnent avec le navigateur seul ; panier montré rempli et vide. Nu HTML Checker et validateur CSS du W3C : 0 erreur.
 - Le code utilise des fonctions nommées, des conditions et des boucles. Les appels et protections nécessaires à WordPress et WooCommerce sont conservés. Les feuilles CSS gardent leurs couches `@layer`.
 
 ## Limites de cette validation

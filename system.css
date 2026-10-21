@@ -230,11 +230,11 @@
         transition: transform .16s ease, box-shadow .16s ease;
     }
 
-    .lf-btn:hover, .lf-btn.is-hover {
+    .lf-btn:hover, .lf-btn--hover {
         transform: scale(.97);
     }
 
-    .lf-btn:active, .lf-btn.is-active {
+    .lf-btn:active, .lf-btn--active {
         transform: translate(0.1875rem, 0.1875rem);
         box-shadow: 0.0625rem 0.0625rem 0 var(--encre);
     }
@@ -322,17 +322,17 @@
         color: var(--encre);
     }
 
-    .lf-chip[aria-pressed="true"], .lf-chip.is-selected {
+    .lf-chip:has(input:checked) {
         background: var(--encre);
         color: var(--creme);
     }
 
-    .lf-chip.is-focused {
+    .lf-chip:has(input:focus-visible) {
         outline: 0.1875rem solid var(--encre);
         outline-offset: 0.25rem;
     }
 
-    .lf-chip.is-disabled {
+    .lf-chip:has(input:disabled) {
         opacity: .45;
         cursor: not-allowed;
     }
@@ -344,7 +344,7 @@
         opacity: 0;
     }
 
-    .lf-chip.has-input {
+    .lf-chip--input {
         cursor: pointer;
     }
 
@@ -533,16 +533,17 @@
         line-height: 1.2;
     }
 
-    .lf-card__name button {
+    .lf-card__name a {
         border: 0;
         padding: 0;
         text-align: left;
         font: inherit;
+        text-decoration: none;
         background: none;
         color: inherit;
     }
 
-    .lf-card__name button:hover {
+    .lf-card__name a:hover {
         text-decoration: underline;
         text-underline-offset: 0.25rem;
     }
@@ -1217,7 +1218,7 @@
         background: var(--peche);
     }
 
-    .lf-cartbar button {
+    .lf-cartbar a {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -1228,6 +1229,7 @@
         border: 0;
         border-radius: 0.5rem;
         font-weight: 600;
+        text-decoration: none;
         background: var(--encre);
         color: var(--creme);
     }

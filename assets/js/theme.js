@@ -5,11 +5,11 @@ function lfToggleMenu() {
     if (button.getAttribute('aria-expanded') === 'true') {
         button.setAttribute('aria-expanded', 'false');
         button.setAttribute('aria-label', 'Ouvrir le menu');
-        menu.classList.remove('is-open');
+        menu.classList.remove('lf-header__nav--open');
     } else {
         button.setAttribute('aria-expanded', 'true');
         button.setAttribute('aria-label', 'Fermer le menu');
-        menu.classList.add('is-open');
+        menu.classList.add('lf-header__nav--open');
     }
 }
 

@@ -54,7 +54,7 @@ Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catég
 | system.css | Couleurs, polices et composants partagés. |
 | assets/css/wordpress.css | Mise en page propre au site WordPress. |
 | assets/js/theme.js | Menu mobile et boutons de quantité. |
-| design-system/ | Catalogue HTML et ses démonstrations JavaScript. |
+| design-system/ | Catalogue des composants en HTML et CSS uniquement (system.html et system-demo.css), sans JavaScript. |
 | docs/ | Itérations, vérifications, journal et transfert en production. |
 
 ## Écriture du code
@@ -72,7 +72,7 @@ La couche theme contient les styles Storefront et WooCommerce : assets/css/wordp
 
 Conventions CSS :
 
-- noms de classes au format BEM : bloc `lf-card`, élément `lf-card__name`, modificateur `lf-card--horizontal` ;
+- noms de classes au format BEM : bloc `lf-card`, élément `lf-card__name`, modificateur `lf-card--horizontal` ; les états aussi sont des modificateurs (`lf-chip--input`, `lf-btn--hover`, `lf-header__nav--open`) ou viennent du HTML (`:has(input:checked)`, `:focus-visible`) ;
 - déclarations toujours dans le même ordre : display (et flex/grid), position (avec dimensions, marges et bordures), font (et texte), color (et fond), puis le reste (ombres, transitions…) ;
 - unités en rem (1rem = 16px), media queries comprises. Exceptions : le CSS des e-mails et des factures PDF reste en px, car les logiciels de messagerie et le moteur PDF gèrent mal les rem.
 

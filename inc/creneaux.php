@@ -75,7 +75,7 @@ function lf_slot_fields() {
             <legend>Créneau horaire <abbr class="required" title="obligatoire">*</abbr></legend>
             <div class="lf-chips">
                 <?php foreach (lf_slot_hours() as $valeur => $libelle) : ?>
-                    <label class="lf-chip has-input">
+                    <label class="lf-chip lf-chip--input">
                         <input type="radio" name="lf_creneau" value="<?php echo esc_attr($valeur); ?>" <?php checked($heure_choisie, $valeur); ?>>
                         <?php echo esc_html($libelle); ?>
                     </label>

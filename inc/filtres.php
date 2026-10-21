@@ -45,9 +45,9 @@ function lf_shop_filters() {
                 <fieldset class="lf-options lf-filters__field">
                     <legend>Taille</legend>
                     <div class="lf-chips">
-                        <label class="lf-chip has-input"><input type="radio" name="filter_taille" value="" <?php checked($choix, ''); ?>> Toutes</label>
+                        <label class="lf-chip lf-chip--input"><input type="radio" name="filter_taille" value="" <?php checked($choix, ''); ?>> Toutes</label>
                         <?php foreach ($tailles as $taille) : ?>
-                            <label class="lf-chip has-input"><input type="radio" name="filter_taille" value="<?php echo esc_attr($taille->slug); ?>" <?php checked($choix, $taille->slug); ?>> <?php echo esc_html($taille->name); ?></label>
+                            <label class="lf-chip lf-chip--input"><input type="radio" name="filter_taille" value="<?php echo esc_attr($taille->slug); ?>" <?php checked($choix, $taille->slug); ?>> <?php echo esc_html($taille->name); ?></label>
                         <?php endforeach; ?>
                     </div>
                 </fieldset>

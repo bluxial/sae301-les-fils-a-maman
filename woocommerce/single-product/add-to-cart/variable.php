@@ -27,7 +27,7 @@ do_action('woocommerce_before_add_to_cart_form');
 
                     <div class="lf-chips">
                         <?php foreach ($options as $option) : ?>
-                            <label class="lf-chip has-input">
+                            <label class="lf-chip lf-chip--input">
                                 <input type="radio" name="lf-<?php echo esc_attr($select_name); ?>" value="<?php echo esc_attr($option); ?>" data-select="<?php echo esc_attr($select_name); ?>" <?php checked($selected, $option); ?>>
                                 <?php echo esc_html($option); ?>
                             </label>
