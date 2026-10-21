@@ -29,6 +29,7 @@ Le site DDEV possède déjà ses neuf produits, leurs images et ses trois catég
 | inc/retrait.php | IT-6 : texte « Instructions pour le retrait » (réglage WooCommerce et affichage au checkout). |
 | inc/compte-client.php | IT-7 : menu du compte client. |
 | woocommerce/myaccount/navigation.php | IT-7 : menu du compte en pastilles. |
+| woocommerce/myaccount/dashboard.php | IT-7 : tableau de bord du compte client. |
 | inc/emails.php | IT-8 : styles des e-mails et instructions de retrait. |
 | woocommerce/emails/ | IT-8 : en-tête et pied des e-mails. |
 | inc/commandes.php | IT-9 : statut « Prête à retirer » et e-mail au client. |

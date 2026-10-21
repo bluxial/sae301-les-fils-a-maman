@@ -65,6 +65,7 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 | --- | --- |
 | US-7.1 | Script `tools/it7-compte-client.php` : inscription depuis « Mon compte » et pendant la commande, rappel de connexion au checkout, le client choisit son mot de passe, identifiant créé à partir de l’e-mail. Réglages dans **WooCommerce → Réglages → Comptes et confidentialité**. |
 | US-7.2 | Connexion et inscription dans deux cartes crème côte à côte (une colonne sur mobile). Menu du compte en pastilles `lf-chip` (`woocommerce/myaccount/navigation.php`), page active en encre. « Téléchargements » retiré du menu (`inc/compte-client.php`) : la boutique ne vend pas de fichiers. |
+| US-7.2 (v2, 21/10) | Espace client refait : menu en colonne à gauche (pastilles sur mobile), tableau de bord `woocommerce/myaccount/dashboard.php` avec bandeau « Bonjour … ! », carte « Ma dernière commande » (numéro, total, mode de retrait, créneau, badge de statut coloré) et trois raccourcis colorés (commandes, adresses, informations). Tableaux, adresses et formulaires du compte en cartes crème. |
 | US-7.3 | Testé en local : inscription d’un client test, tableau de bord, commandes, adresses, détails du compte, déconnexion. Identifiants de test rangés hors du dépôt dans `SAE301-backups/comptes-test.md`. |
 
 ## IT-8 : e-mails transactionnels

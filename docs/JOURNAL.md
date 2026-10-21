@@ -26,5 +26,6 @@
 | 20/10/2026 | IT-19 / 0.19.0 | DDEV local | Poids des produits, livraison à vélo selon 3 tranches de poids réglables, express retirée. Script `tools/it19-poids.php`. | Non déployée. |
 | 20/10/2026 | IT-20 / 0.20.0 | DDEV local | Jour et créneau horaire obligatoires au checkout (retrait et livraison), enregistrés et affichés partout (confirmation, compte, back office, e-mails). | Non déployée. |
 | 21/10/2026 | Correctifs IT-13 / IT-14 | DDEV local | Suggestions en cartes horizontales conformes à la maquette (bouton « + » turquoise), lien « Voir le panier » lisible dans les cartes, message « pas encore d’avis » aux couleurs du site. | Non déployée. |
+| 21/10/2026 | Correctif IT-7 | DDEV local | Nouvelle interface du compte client (menu latéral, tableau de bord, dernière commande, raccourcis). Profil administrateur remis à « Jules Marée » après des commandes de test. | Non déployée. |
 
 Pour chaque mise en production, ajouter une ligne avec date/heure, URL, hash du commit, export de base utilisé, fichiers transférés, tests effectués et éventuels problèmes. Ne pas consigner de mots de passe.
