@@ -1,10 +1,4 @@
 <?php
-/**
- * IT-13 : associe des produits complémentaires (ventes croisées).
- * À lancer depuis le dossier du site :
- * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it13-ventes-croisees.php
- * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it13-ventes-croisees
- */
 if (!defined('ABSPATH')) {
     exit;
 }

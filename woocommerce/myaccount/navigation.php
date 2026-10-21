@@ -1,8 +1,4 @@
 <?php
-/**
- * Menu du compte client (copie simplifiée du modèle WooCommerce myaccount/navigation.php 9.3.0).
- * Les liens prennent la forme des pastilles lf-chip du design system.
- */
 if (!defined('ABSPATH')) {
     exit;
 }

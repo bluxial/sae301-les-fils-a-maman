@@ -1,8 +1,4 @@
 <?php
-/**
- * Page panier (copie simplifiée du modèle WooCommerce cart/cart.php 11.2.0).
- * Articles à gauche (lf-cart-item) et récapitulatif à droite (lf-summary), comme dans la maquette.
- */
 if (!defined('ABSPATH')) {
     exit;
 }

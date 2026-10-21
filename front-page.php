@@ -49,7 +49,6 @@ get_header();
 </section>
 
 <?php
-// IT-16 : les 3 derniers produits ajoutés au catalogue.
 global $post;
 $nouveautes = wc_get_products([
     'status' => 'publish',

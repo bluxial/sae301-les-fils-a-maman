@@ -1,10 +1,4 @@
 <?php
-/**
- * IT-12 : crée les trois envies et y range les produits (au moins 2 par envie).
- * À lancer depuis le dossier du site :
- * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it12-envies.php
- * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it12-envies
- */
 if (!defined('ABSPATH')) {
     exit;
 }

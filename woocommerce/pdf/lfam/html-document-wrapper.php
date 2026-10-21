@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <!DOCTYPE html>
 <html <?php $this->language_attributes(); ?>>
 <head>
@@ -8,6 +8,6 @@
 	<style type="text/css"><?php $this->template_custom_styles(); ?></style>
 </head>
 <body class="<?php $this->body_class(); ?>">
-<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+<?php echo $content;?>
 </body>
 </html>

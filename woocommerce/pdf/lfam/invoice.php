@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
 <?php do_action( 'wpo_wcpdf_before_document', $this->get_type(), $this->order ); ?>
 
@@ -129,11 +129,11 @@
 						<?php if ( ! empty( $item['weight'] ) ) : ?>
 							<p class="weight"><span class="label"><?php $this->weight_title(); ?></span> <?php echo esc_html( $item['weight'] ); ?><?php echo esc_html( get_option( 'woocommerce_weight_unit' ) ); ?></p>
 						<?php endif; ?>
-						<!-- ul.wc-item-meta -->
+
 						<?php if ( ! empty( $item['meta'] ) ) : ?>
 							<?php echo wp_kses_post( $item['meta'] ); ?>
 						<?php endif; ?>
-						<!-- / ul.wc-item-meta -->
+
 					</div>
 					<?php do_action( 'wpo_wcpdf_after_item_meta', $this->get_type(), $item, $this->order ); ?>
 				</td>
@@ -186,13 +186,13 @@
 <div class="bottom-spacer"></div>
 
 <?php if ( $this->get_footer() ) : ?>
-	<htmlpagefooter name="docFooter"><!-- required for mPDF engine -->
+	<htmlpagefooter name="docFooter">
 		<div id="footer">
-			<!-- hook available: wpo_wcpdf_before_footer -->
+
 			<?php $this->footer(); ?>
-			<!-- hook available: wpo_wcpdf_after_footer -->
+
 		</div>
-	</htmlpagefooter><!-- required for mPDF engine -->
+	</htmlpagefooter>
 <?php endif; ?>
 
 <?php do_action( 'wpo_wcpdf_after_document', $this->get_type(), $this->order ); ?>

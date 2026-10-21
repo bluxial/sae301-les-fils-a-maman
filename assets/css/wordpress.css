@@ -1003,7 +1003,6 @@
 
 }
 
-/* IT-3 : produits variables (pastilles d'options et niveaux de stock) */
 @layer lf-components {
     .lf-product-summary form.variations_form {
         display: block;
@@ -1053,14 +1052,12 @@
     }
 }
 
-/* IT-4 : composition, allergènes et énergie dans la fiche produit */
 @layer lf-components {
     .lf-product-facts {
         margin: 0 0 32px;
     }
 }
 
-/* IT-5 : page panier (articles + récapitulatif) et page de commande */
 @layer lf-components {
     .lf-cart-item .lf-photo img {
         width: 100%;
@@ -1213,8 +1210,6 @@
     }
 }
 
-
-/* IT-6 : instructions pour le retrait */
 @layer lf-components {
     .lf-pickup {
         margin: 24px 0;
@@ -1234,7 +1229,6 @@
     }
 }
 
-/* IT-7 : compte client (connexion, inscription, menu et contenu) */
 @layer lf-components {
     .lf-system .woocommerce-MyAccount-navigation,
     .lf-system .woocommerce-MyAccount-content {
@@ -1323,7 +1317,6 @@
     }
 }
 
-/* IT-10 : code promo dans le panier et lignes de réduction */
 @layer lf-components {
     .lf-cart__actions {
         flex-wrap: wrap;
@@ -1366,7 +1359,6 @@
     }
 }
 
-/* IT-11 : page équipe et profil d'un membre */
 @layer lf-components {
     .lf-team-intro {
         max-width: 640px;
@@ -1479,7 +1471,6 @@
     }
 }
 
-/* IT-12 : pastilles « Envie de » dans la boutique */
 @layer lf-components {
     .lf-envie-nav {
         margin: 12px 0 40px;
@@ -1499,7 +1490,6 @@
     }
 }
 
-/* IT-13 : ventes croisées sur la fiche produit et dans le panier */
 @layer lf-components {
     .lf-suggestions {
         clear: both;
@@ -1549,7 +1539,6 @@
     }
 }
 
-/* Lien « Voir le panier » ajouté par WooCommerce après un ajout rapide */
 @layer lf-overrides {
     .lf-system .lf-card a.added_to_cart {
         background: transparent;
@@ -1560,7 +1549,6 @@
     }
 }
 
-/* IT-14 : avis clients */
 @layer lf-components {
     .lf-reviews {
         clear: both;
@@ -1633,7 +1621,6 @@
     }
 }
 
-/* IT-15 : frais de préparation */
 @layer lf-components {
     .lf-fee-hint {
         margin: 0 0 16px;
@@ -1651,7 +1638,6 @@
     }
 }
 
-/* IT-16 : nouveautés sur la page d'accueil */
 @layer lf-components {
     .lf-home-latest {
         padding-block: 64px 16px;
@@ -1662,7 +1648,6 @@
     }
 }
 
-/* IT-18 : barre latérale de filtres de la boutique */
 @layer lf-components {
     .lf-shop-layout {
         display: grid;
@@ -1754,7 +1739,6 @@
     }
 }
 
-/* IT-20 : jour et créneau de retrait ou de livraison */
 @layer lf-components {
     .lf-slots {
         margin-top: 32px;
@@ -1791,7 +1775,6 @@
     }
 }
 
-/* Compte client v2 (21/10) : menu en colonne, tableau de bord en cartes */
 @layer lf-overrides {
     .logged-in.woocommerce-account .lf-page-content > .woocommerce {
         display: grid;

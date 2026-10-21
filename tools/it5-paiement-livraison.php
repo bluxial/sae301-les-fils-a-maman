@@ -1,18 +1,10 @@
 <?php
-/**
- * IT-5 : paiements, zones d'expédition et pages panier / commande.
- * À lancer depuis le dossier du site :
- * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it5-paiement-livraison.php
- * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it5-paiement-livraison
- * Le script peut être relancé : il recrée les zones.
- */
 if (!defined('ABSPATH')) {
     exit;
 }
 
 require_once __DIR__ . '/outils.php';
 
-// 1. Adresse du restaurant et pays de vente.
 update_option('woocommerce_store_address', '7 bis rue Geoffroy-Marie');
 update_option('woocommerce_store_city', 'Paris');
 update_option('woocommerce_store_postcode', '75009');
@@ -24,7 +16,6 @@ update_option('woocommerce_ship_to_countries', '');
 update_option('woocommerce_enable_shipping_calc', 'yes');
 update_option('woocommerce_shipping_cost_requires_address', 'no');
 
-// 2. Moyens de paiement : virement et paiement au retrait.
 update_option('woocommerce_bacs_settings', [
     'enabled' => 'yes',
     'title' => 'Virement bancaire',
@@ -41,11 +32,9 @@ update_option('woocommerce_cod_settings', [
     'enable_for_virtual' => 'no'
 ]);
 
-// 3. Panier et commande en version classique (shortcodes) pour pouvoir les personnaliser.
 wp_update_post(['ID' => wc_get_page_id('cart'), 'post_content' => '[woocommerce_cart]']);
 wp_update_post(['ID' => wc_get_page_id('checkout'), 'post_content' => '[woocommerce_checkout]']);
 
-// 4. Zones d'expédition.
 function lf_tool_add_method($zone, $type, $titre, $prix) {
     $instance_id = $zone->add_shipping_method($type);
 
@@ -62,7 +51,6 @@ foreach (WC_Shipping_Zones::get_zones() as $ancienne_zone) {
     }
 }
 
-// Paris : retrait gratuit et deux livraisons payantes.
 $paris = new WC_Shipping_Zone();
 $paris->set_zone_name('Paris');
 $paris->set_zone_order(1);
@@ -74,7 +62,6 @@ lf_tool_add_method($paris, 'local_pickup', 'Retrait au restaurant (Click & Colle
 lf_tool_add_method($paris, 'flat_rate', 'Livraison à vélo', '4.90');
 lf_tool_add_method($paris, 'flat_rate', 'Livraison express (30 min)', '8.90');
 
-// Ailleurs : seulement le retrait au restaurant.
 $ailleurs = new WC_Shipping_Zone(0);
 
 foreach ($ailleurs->get_shipping_methods() as $methode) {

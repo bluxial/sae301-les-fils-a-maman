@@ -3,9 +3,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// IT-8 : e-mails transactionnels aux couleurs des Fils à Maman.
-
-// 1. Styles ajoutés à ceux de WooCommerce (bordures et ombres du design system).
 function lf_email_styles($css) {
     $css .= '
         #template_container { border: 2px solid #0f172a !important; border-radius: 16px !important; box-shadow: 6px 6px 0 #0f172a !important; overflow: hidden; }
@@ -22,7 +19,6 @@ function lf_email_styles($css) {
 }
 add_filter('woocommerce_email_styles', 'lf_email_styles');
 
-// 2. Instructions de retrait dans les e-mails envoyés au client, pour les commandes en Click & Collect.
 function lf_email_pickup($order, $sent_to_admin, $plain_text) {
     if ($sent_to_admin || !$order->has_shipping_method('local_pickup')) {
         return;

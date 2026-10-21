@@ -1,11 +1,5 @@
-/*
- * Ordre des couches (@layer) : la dernière couche gagne toujours.
- * « theme » contient le CSS du thème parent Storefront : nos couches « lf-… » passent donc toujours devant,
- * sans avoir à écrire des sélecteurs plus forts que ceux de Storefront.
- */
 @layer theme, lf-reset, lf-fonts, lf-tokens, lf-base, lf-components, lf-utilities, lf-overrides;
 
-/* Le CSS de Storefront est chargé ici, dans la couche « theme » (il est retiré de la page dans inc/setup.php). */
 @import url("../storefront/style.css") layer(theme);
 @import url("../storefront/assets/css/base/icons.css") layer(theme);
 @import url("../storefront/assets/css/base/gutenberg-blocks.css") layer(theme);

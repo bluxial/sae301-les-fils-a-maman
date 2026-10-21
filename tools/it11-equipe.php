@@ -1,11 +1,4 @@
 <?php
-/**
- * IT-11 : crée trois membres de l'équipe (profils fictifs pour le projet).
- * À lancer depuis le dossier du site :
- * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it11-equipe.php
- * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it11-equipe
- * Le script peut être relancé : il met à jour les membres existants.
- */
 if (!defined('ABSPATH')) {
     exit;
 }

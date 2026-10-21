@@ -1,8 +1,4 @@
 <?php
-/**
- * En-tête des e-mails (copie simplifiée du modèle WooCommerce emails/email-header.php 10.7.0).
- * Logo des Fils à Maman toujours affiché, bandeau turquoise et titre en encre.
- */
 if (!defined('ABSPATH')) {
     exit;
 }

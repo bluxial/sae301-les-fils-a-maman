@@ -3,10 +3,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// IT-20 : choix du jour et du créneau horaire pour le retrait ou la livraison.
-
-// Les 6 prochains jours (aujourd'hui compris).
-// Tableau du type : ['2026-10-21' => 'Mercredi 21 octobre', ...]
 function lf_slot_days() {
     $jours = [];
 
@@ -18,7 +14,6 @@ function lf_slot_days() {
     return $jours;
 }
 
-// Les créneaux du midi et du soir.
 function lf_slot_hours() {
     return [
         '12:00' => '12h00 – 12h30',
@@ -30,7 +25,6 @@ function lf_slot_hours() {
     ];
 }
 
-// Valeur envoyée par le formulaire de commande (texte vide si le champ n'existe pas).
 function lf_posted_value($nom) {
     if (isset($_POST[$nom])) {
         return sanitize_text_field(wp_unslash($_POST[$nom]));
@@ -39,7 +33,6 @@ function lf_posted_value($nom) {
     return '';
 }
 
-// Texte du créneau d'une commande, ex. : « Mercredi 21 octobre, 12h30 – 13h00 ».
 function lf_order_slot_text($order) {
     $jour = $order->get_meta('_lf_jour');
     $heure = $order->get_meta('_lf_creneau');
@@ -60,7 +53,6 @@ function lf_order_slot_text($order) {
     return $texte_jour . ', ' . $texte_heure;
 }
 
-// 1. Les champs dans le formulaire de commande.
 function lf_slot_fields() {
     $jour_choisi = lf_posted_value('lf_jour');
     $heure_choisie = lf_posted_value('lf_creneau');
@@ -95,7 +87,6 @@ function lf_slot_fields() {
 }
 add_action('woocommerce_after_order_notes', 'lf_slot_fields');
 
-// 2. Vérification : le jour et le créneau doivent faire partie de ceux proposés.
 function lf_slot_validation() {
     $jours = lf_slot_days();
     $heures = lf_slot_hours();
@@ -110,14 +101,12 @@ function lf_slot_validation() {
 }
 add_action('woocommerce_checkout_process', 'lf_slot_validation');
 
-// 3. Enregistrement dans la commande.
 function lf_slot_save($order) {
     $order->update_meta_data('_lf_jour', lf_posted_value('lf_jour'));
     $order->update_meta_data('_lf_creneau', lf_posted_value('lf_creneau'));
 }
 add_action('woocommerce_checkout_create_order', 'lf_slot_save');
 
-// 4. Affichage : page de confirmation, Mon compte et fiche commande du back office.
 function lf_slot_display($order) {
     $texte = lf_order_slot_text($order);
 
@@ -128,7 +117,6 @@ function lf_slot_display($order) {
 add_action('woocommerce_order_details_after_order_table', 'lf_slot_display');
 add_action('woocommerce_admin_order_data_after_shipping_address', 'lf_slot_display');
 
-// 5. Affichage dans les e-mails (version HTML ou texte brut).
 function lf_slot_email($order, $sent_to_admin, $plain_text) {
     $texte = lf_order_slot_text($order);
 

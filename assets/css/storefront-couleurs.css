@@ -1,11 +1,3 @@
-/*
- * Couleurs par défaut de Storefront (menu Apparence → Personnaliser), copiées telles quelles.
- * Storefront les ajoutait dans la page ; comme son CSS est maintenant importé dans system.css,
- * on les garde ici, dans la même couche « theme ». Nos styles « lf-… » passent devant.
- */
-
-/* storefront-style */
-
 			.main-navigation ul li a,
 			.site-title a,
 			ul.menu li a,
@@ -184,8 +176,6 @@
 				}
 			}
 
-/* storefront-gutenberg-blocks */
-
 				.wp-block-button__link:not(.has-text-color) {
 					color: #333333;
 				}
@@ -269,7 +259,6 @@
 					--range-color: #7f54b3;
 				}
 
-				/* Target only IE11 */
 				@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 					.wc-block-components-price-slider__range-input-progress {
 						background: #7f54b3;
@@ -307,9 +296,7 @@
 					box-shadow: 0 0 0 2px #ffffff;
 					color: #6d6d6d;
 				}
-			
 
-/* storefront-woocommerce-style */
 @font-face {
 				font-family: star;
 				src: url(http://sae301.ddev.site/wp-content/plugins/woocommerce/assets/fonts/star.eot);

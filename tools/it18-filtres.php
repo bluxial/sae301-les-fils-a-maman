@@ -1,28 +1,19 @@
 <?php
-/**
- * IT-18 : attribut global « Taille » (Petite faim / Grosse faim) pour filtrer les produits.
- * À lancer depuis le dossier du site :
- * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it18-filtres.php
- * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it18-filtres
- */
 if (!defined('ABSPATH')) {
     exit;
 }
 
 require_once __DIR__ . '/outils.php';
 
-// Les filtres sont mis à jour tout de suite quand un produit est enregistré.
 update_option('woocommerce_attribute_lookup_enabled', 'yes');
 update_option('woocommerce_attribute_lookup_direct_updates', 'yes');
 
-// 1. L'attribut « Taille » (Produits → Attributs).
 $attribute_id = wc_attribute_taxonomy_id_by_name('taille');
 
 if (!$attribute_id) {
     $attribute_id = wc_create_attribute(['name' => 'Taille', 'slug' => 'taille', 'has_archives' => false]);
 }
 
-// La taxonomie pa_taille doit exister dans cette requête pour ajouter les termes.
 register_taxonomy('pa_taille', 'product', ['hierarchical' => false]);
 
 $tailles = [
@@ -45,7 +36,6 @@ foreach ($tailles as $taille => $mots) {
             continue;
         }
 
-        // 2. On ajoute « Taille » aux attributs déjà présents (ex. : Portion des croquettes).
         $attributs = $product->get_attributes();
 
         $attribut = new WC_Product_Attribute();

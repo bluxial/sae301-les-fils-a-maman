@@ -3,11 +3,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// IT-4 : champs personnalisés des produits (Secure Custom Fields).
-
-// Les champs (composition, allergènes, calories) sont créés dans SCF → Groupes de champs → « Informations du produit ».
-
-// Affichage dans la fiche produit, entre la description (20) et le prix (25).
 function lf_product_facts() {
     $composition = get_field('composition');
     $allergenes = get_field('allergenes');

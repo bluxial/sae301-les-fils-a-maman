@@ -3,9 +3,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// IT-6 : « Instructions pour le retrait », modifiables dans
-// WooCommerce → Réglages → Expédition → Options d'expédition.
-
 function lf_pickup_default_text() {
     return "Votre commande vous attend au comptoir des Fils à Maman, 7 bis rue Geoffroy-Marie, 75009 Paris.\nDonnez votre nom et votre numéro de commande. Le paiement au retrait se fait par carte ou en espèces.";
 }
@@ -20,7 +17,6 @@ function lf_pickup_text() {
     return $texte;
 }
 
-// 1. Le champ dans le back office.
 function lf_pickup_setting($settings) {
     $settings[] = [
         'title' => 'Instructions pour le retrait',
@@ -46,7 +42,6 @@ function lf_pickup_setting($settings) {
 }
 add_filter('woocommerce_shipping_settings', 'lf_pickup_setting');
 
-// 2. L'affichage dans le formulaire de commande, juste avant le choix du paiement.
 function lf_pickup_instructions() {
     echo '<div class="lf-pickup">';
     echo '<h3>Instructions pour le retrait</h3>';

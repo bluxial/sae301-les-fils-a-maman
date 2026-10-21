@@ -1,4 +1,3 @@
-// Menu mobile : ouvre ou ferme le menu (aria-expanded indique l'état aux lecteurs d'écran).
 function lfToggleMenu() {
     const button = document.querySelector('.lf-menu');
     const menu = document.getElementById(button.getAttribute('aria-controls'));
@@ -14,7 +13,6 @@ function lfToggleMenu() {
     }
 }
 
-// Touche Échap : ferme le menu et remet le focus sur le bouton.
 function lfCloseMenu(event) {
     const button = document.querySelector('.lf-menu');
 
@@ -24,7 +22,6 @@ function lfCloseMenu(event) {
     }
 }
 
-// Clic sur un lien du menu : on referme le menu.
 function lfMenuLink() {
     const button = document.querySelector('.lf-menu');
 
@@ -33,7 +30,6 @@ function lfMenuLink() {
     }
 }
 
-// Boutons − et + de la quantité : désactivés quand on atteint le minimum ou le maximum.
 function lfQuantityButtons(quantity) {
     const input = quantity.querySelector('input.qty');
     const buttons = quantity.querySelectorAll('button');
@@ -51,7 +47,6 @@ function lfQuantityButtons(quantity) {
     }
 }
 
-// Clic sur − ou + : ajoute ou enlève 1 à la quantité.
 function lfChangeQuantity(event) {
     const button = event.currentTarget;
     const quantity = button.parentElement;
@@ -66,13 +61,10 @@ function lfChangeQuantity(event) {
     lfQuantityButtons(quantity);
 }
 
-// Quand on tape une quantité au clavier, on met à jour les boutons − et +.
 function lfQuantityInput(event) {
     lfQuantityButtons(event.currentTarget.parentElement);
 }
 
-// IT-3 : la pastille choisie est recopiée dans la liste déroulante cachée de WooCommerce.
-// La ligne « dispatchEvent » prévient WooCommerce du changement : il affiche alors le bon prix et le stock.
 function lfChooseOption(event) {
     const radio = event.currentTarget;
     const select = document.querySelector('select[name="' + radio.getAttribute('data-select') + '"]');
@@ -81,7 +73,6 @@ function lfChooseOption(event) {
     select.dispatchEvent(new Event('change', { bubbles: true }));
 }
 
-// Au chargement de la page : on branche tous les événements.
 function lfStart() {
     const menuButton = document.querySelector('.lf-menu');
 

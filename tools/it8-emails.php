@@ -1,10 +1,4 @@
 <?php
-/**
- * IT-8 : réglages des e-mails transactionnels (expéditeur, couleurs, pied de page).
- * À lancer depuis le dossier du site :
- * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it8-emails.php
- * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it8-emails
- */
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -19,7 +13,6 @@ update_option('woocommerce_email_body_background_color', '#fffaeb');
 update_option('woocommerce_email_text_color', '#0f172a');
 update_option('woocommerce_email_footer_text', 'Merci pour votre commande ! Une question ? Répondez simplement à cet e-mail.');
 
-// E-mails envoyés au client : commande reçue (en attente / en cours), terminée, annulée, remboursée.
 $emails = ['customer_on_hold_order', 'customer_processing_order', 'customer_completed_order', 'customer_refunded_order', 'customer_cancelled_order', 'customer_new_account'];
 
 foreach ($emails as $id) {

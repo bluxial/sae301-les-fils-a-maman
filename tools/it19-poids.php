@@ -1,10 +1,4 @@
 <?php
-/**
- * IT-19 : poids des produits et livraison selon le poids.
- * À lancer depuis le dossier du site :
- * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it19-poids.php
- * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it19-poids
- */
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -13,7 +7,6 @@ require_once __DIR__ . '/outils.php';
 
 update_option('woocommerce_weight_unit', 'kg');
 
-// 1. Poids d'une portion, emballage compris (kg).
 $poids = [
     'chorizo' => '0.3',
     'courgettes' => '0.3',
@@ -37,7 +30,6 @@ foreach ($poids as $mot => $kg) {
     $product->set_weight($kg);
     $product->save();
 
-    // La grande portion de croquettes pèse le double.
     foreach ($product->get_children() as $variation_id) {
         $variation = wc_get_product($variation_id);
 
@@ -50,7 +42,6 @@ foreach ($poids as $mot => $kg) {
     lf_tool_message('OK : ' . $product->get_name() . ' : ' . $kg . ' kg');
 }
 
-// 2. Zone Paris : retrait gratuit et une livraison à vélo au prix du poids (l'express est retiré).
 foreach (WC_Shipping_Zones::get_zones() as $zone_data) {
     if ($zone_data['zone_name'] === 'Paris') {
         $zone = new WC_Shipping_Zone($zone_data['id']);
@@ -64,7 +55,6 @@ foreach (WC_Shipping_Zones::get_zones() as $zone_data) {
     }
 }
 
-// 3. Tranches par défaut.
 update_option('lf_poids_seuil_1', '1');
 update_option('lf_poids_prix_1', '3.9');
 update_option('lf_poids_seuil_2', '3');

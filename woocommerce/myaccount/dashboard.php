@@ -1,8 +1,4 @@
 <?php
-/**
- * Tableau de bord du compte client (remplace le modèle WooCommerce myaccount/dashboard.php 4.4.0).
- * Bonjour + dernière commande + raccourcis, avec les composants du design system.
- */
 if (!defined('ABSPATH')) {
     exit;
 }

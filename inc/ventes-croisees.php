@@ -3,9 +3,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// IT-13 : ventes croisées (« Ça va bien avec… ») sur la fiche produit et dans le panier.
-
-// Affiche jusqu'à 3 produits en cartes horizontales « lf-recommendation », comme dans la maquette.
 function lf_show_suggestions($ids, $titre) {
     if (empty($ids)) {
         return;
@@ -18,7 +15,6 @@ function lf_show_suggestions($ids, $titre) {
     $nombre = 0;
 
     foreach ($ids as $id) {
-        // On affiche 3 produits au maximum.
         if ($nombre === 3) {
             break;
         }
@@ -57,14 +53,12 @@ function lf_show_suggestions($ids, $titre) {
     echo '</section>';
 }
 
-// 1. Fiche produit : les produits complémentaires choisis dans le back office.
 function lf_product_suggestions() {
     global $product;
     lf_show_suggestions($product->get_cross_sell_ids(), 'Ça va bien avec…');
 }
 add_action('woocommerce_after_single_product_summary', 'lf_product_suggestions', 15);
 
-// 2. Panier : les suggestions sous les articles, en pleine largeur.
 function lf_cart_suggestions() {
     lf_show_suggestions(WC()->cart->get_cross_sells(), 'Pour compléter ta commande');
 }

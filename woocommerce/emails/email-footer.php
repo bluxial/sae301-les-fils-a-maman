@@ -1,8 +1,4 @@
 <?php
-/**
- * Pied des e-mails (copie simplifiée du modèle WooCommerce emails/email-footer.php 10.4.0).
- * Adresse du restaurant et texte de pied réglable dans WooCommerce → Réglages → E-mails.
- */
 if (!defined('ABSPATH')) {
     exit;
 }

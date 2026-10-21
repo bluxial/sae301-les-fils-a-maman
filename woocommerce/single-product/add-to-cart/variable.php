@@ -1,9 +1,4 @@
 <?php
-/**
- * Formulaire d'un produit variable (copie simplifiée du modèle WooCommerce 11.1.0).
- * Les listes déroulantes sont remplacées par des pastilles (lf-chip) comme dans la maquette.
- * Les listes restent dans la page, cachées, car le script de WooCommerce les utilise.
- */
 if (!defined('ABSPATH')) {
     exit;
 }

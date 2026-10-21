@@ -3,10 +3,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// IT-12 : taxonomie « Envies » (indépendante des catégories) pour classer les produits.
-// La taxonomie est créée dans SCF → Taxonomies ; on gère les envies dans Produits → Envies.
-
-// Les pastilles « Envies » affichées dans la boutique.
 function lf_envie_navigation() {
     $envies = get_terms(['taxonomy' => 'envie', 'hide_empty' => true]);
 

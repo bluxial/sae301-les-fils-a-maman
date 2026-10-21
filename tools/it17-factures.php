@@ -1,10 +1,4 @@
 <?php
-/**
- * IT-17 : réglages des factures PDF (extension « PDF Invoices & Packing Slips for WooCommerce »).
- * À lancer depuis le dossier du site, une fois l'extension activée :
- * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it17-factures.php
- * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it17-factures
- */
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -17,7 +11,6 @@ if (!function_exists('WPO_WCPDF')) {
     return;
 }
 
-// 1. Le logo de l'enseigne dans la médiathèque (une seule fois).
 $logo_id = (int) get_option('lf_logo_facture_id');
 
 if (!$logo_id || !get_post($logo_id)) {
@@ -35,7 +28,6 @@ if (!$logo_id || !get_post($logo_id)) {
     update_option('lf_logo_facture_id', $logo_id);
 }
 
-// 2. Réglages généraux : modèle du thème, logo et coordonnées de l'enseigne.
 delete_option('wpo_wcpdf_installed_template_paths');
 
 $general = get_option('wpo_wcpdf_settings_general', []);
@@ -51,8 +43,6 @@ $general['shop_address_country'] = ['default' => 'FR'];
 $general['footer'] = ['default' => 'Les Fils à Maman — projet pédagogique SAÉ 3.01 (BUT MMI, IUT du Limousin). Facture de démonstration, sans valeur commerciale.'];
 update_option('wpo_wcpdf_settings_general', $general);
 
-// 3. La facture : créée et jointe aux e-mails « commande en cours » et « terminée »,
-// téléchargeable depuis Mon compte dès qu'elle existe.
 $facture = get_option('wpo_wcpdf_documents_settings_invoice', []);
 $facture['enabled'] = 1;
 $facture['attach_to_email_ids'] = ['customer_processing_order' => 1, 'customer_completed_order' => 1];

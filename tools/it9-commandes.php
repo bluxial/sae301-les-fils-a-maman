@@ -1,21 +1,13 @@
 <?php
-/**
- * IT-9 : textes des e-mails de suivi de commande et gestion du stock.
- * À lancer depuis le dossier du site :
- * ddev wp eval-file wp-content/themes/les-fils-a-maman/tools/it9-commandes.php
- * Ou en local dans le navigateur : https://sae301.ddev.site/?lf_outil=it9-commandes
- */
 if (!defined('ABSPATH')) {
     exit;
 }
 
 require_once __DIR__ . '/outils.php';
 
-// Le stock baisse à chaque commande et remonte si elle est annulée.
 update_option('woocommerce_manage_stock', 'yes');
 update_option('woocommerce_hold_stock_minutes', '60');
 
-// Textes adaptés au Click & Collect.
 $textes = [
     'customer_processing_order' => ['Commande n° {order_number} reçue : on s’en occupe !', 'Merci pour votre commande'],
     'customer_on_hold_order' => ['Commande n° {order_number} en attente de votre virement', 'Merci pour votre commande'],
