@@ -53,6 +53,7 @@
    40. Espace client connecté (IT-7)
    41. Mentions légales, CGV et case à cocher (IT-22)
    42. Commande en deux colonnes (IT-6)
+   43. Espacement des champs de la commande
    ========================================================= */
 
 /* =========================================================
@@ -4014,6 +4015,72 @@
         .lf-system form.woocommerce-checkout {
             grid-template-columns: minmax(0, 1fr);
             grid-template-areas: "avis" "client" "titre" "recap";
+        }
+    }
+}
+
+/* =========================================================
+   43. Espacement des champs de la commande
+   ========================================================= */
+@layer lf-components {
+    .lf-system .woocommerce-billing-fields__field-wrapper, .lf-system .woocommerce-shipping-fields__field-wrapper, .lf-system .woocommerce-additional-fields__field-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 1.5rem;
+        row-gap: 1.25rem;
+    }
+
+    .lf-system .woocommerce-checkout .form-row {
+        grid-column: 1 / -1;
+        float: none;
+        clear: none;
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .lf-system .woocommerce-checkout .form-row-first {
+        grid-column: 1;
+    }
+
+    .lf-system .woocommerce-checkout .form-row-last {
+        grid-column: 2;
+    }
+
+    .lf-system .woocommerce-checkout .form-row label {
+        display: block;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+
+    .lf-system .woocommerce-checkout .form-row .woocommerce-input-wrapper {
+        display: block;
+    }
+
+    .lf-system .woocommerce-checkout .form-row select {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    .lf-system .woocommerce-checkout #customer_details h3 {
+        margin: 0 0 1.25rem;
+    }
+
+    .lf-system .woocommerce-checkout .woocommerce-shipping-fields, .lf-system .woocommerce-checkout .woocommerce-additional-fields {
+        margin-top: 2rem;
+    }
+
+    .lf-system .woocommerce-checkout #ship-to-different-address {
+        margin: 0 0 1.25rem;
+    }
+
+    .lf-system .woocommerce-checkout .woocommerce-additional-fields h3 {
+        margin-top: 0;
+    }
+
+    @media (max-width: 40rem) {
+        .lf-system .woocommerce-checkout .form-row-first, .lf-system .woocommerce-checkout .form-row-last {
+            grid-column: 1 / -1;
         }
     }
 }
