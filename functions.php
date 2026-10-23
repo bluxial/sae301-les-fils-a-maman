@@ -487,8 +487,13 @@ function lf_member_initials($nom) {
 }
 
 function lf_member_avatar() {
+    $slug = get_post_field('post_name', get_the_ID());
+    $fichier = '/assets/img/equipe/' . $slug . '.jpg';
+
     if (has_post_thumbnail()) {
         the_post_thumbnail('medium', ['class' => 'lf-member__photo', 'alt' => '']);
+    } elseif (file_exists(get_stylesheet_directory() . $fichier)) {
+        echo '<img class="lf-member__photo" src="' . esc_url(get_stylesheet_directory_uri() . $fichier) . '" width="600" height="600" alt="" loading="lazy" decoding="async">';
     } else {
         echo '<span class="lf-member__avatar" aria-hidden="true">' . esc_html(lf_member_initials(get_the_title())) . '</span>';
     }
