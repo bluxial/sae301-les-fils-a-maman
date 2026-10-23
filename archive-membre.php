@@ -16,6 +16,7 @@ get_header();
                 <?php get_template_part('template-parts/membre', 'carte'); ?>
             <?php endwhile; ?>
         </ul>
+        <p class="lf-team-credit lf-small lf-muted">Portraits : photos de personnes réelles (pravatar.cc) servant d’illustrations. L’équipe présentée est fictive.</p>
     <?php else : ?>
         <p>L’équipe arrive bientôt.</p>
     <?php endif; ?>

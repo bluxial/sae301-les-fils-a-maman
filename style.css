@@ -3282,6 +3282,10 @@
         list-style: none;
     }
 
+    .lf-team-credit {
+        margin-top: 2rem;
+    }
+
     .lf-member a {
         display: flex;
         flex-direction: column;
