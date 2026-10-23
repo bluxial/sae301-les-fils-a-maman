@@ -529,35 +529,35 @@
         font-family: Damion;
         font-weight: 400;
         font-display: swap;
-        src: url("assets/fonts/damion.ttf") format("truetype");
+        src: url("assets/fonts/damion.woff2") format("woff2");
     }
 
     @font-face {
         font-family: "Luckiest Guy";
         font-weight: 400;
         font-display: swap;
-        src: url("assets/fonts/luckiest-guy.ttf") format("truetype");
+        src: url("assets/fonts/luckiest-guy.woff2") format("woff2");
     }
 
     @font-face {
         font-family: Signika;
         font-weight: 400;
         font-display: swap;
-        src: url("assets/fonts/signika-400.ttf") format("truetype");
+        src: url("assets/fonts/signika-400.woff2") format("woff2");
     }
 
     @font-face {
         font-family: Signika;
         font-weight: 600;
         font-display: swap;
-        src: url("assets/fonts/signika-600.ttf") format("truetype");
+        src: url("assets/fonts/signika-600.woff2") format("woff2");
     }
 
     @font-face {
         font-family: Signika;
         font-weight: 700;
         font-display: swap;
-        src: url("assets/fonts/signika-700.ttf") format("truetype");
+        src: url("assets/fonts/signika-700.woff2") format("woff2");
     }
 }
 
