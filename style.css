@@ -54,6 +54,7 @@
    41. Mentions légales, CGV et case à cocher (IT-22)
    42. Commande en deux colonnes (IT-6)
    43. Espacement des champs de la commande
+   44. Pastille de stock (IT-Y)
    ========================================================= */
 
 /* =========================================================
@@ -4082,5 +4083,17 @@
         .lf-system .woocommerce-checkout .form-row-first, .lf-system .woocommerce-checkout .form-row-last {
             grid-column: 1 / -1;
         }
+    }
+}
+
+/* =========================================================
+   44. Pastille de stock (IT-Y)
+   ========================================================= */
+@layer lf-components {
+    .lf-system .stock::before {
+        content: "✓";
+        margin-right: 0.375rem;
+        font-family: var(--famille-texte);
+        font-weight: 600;
     }
 }

@@ -32,6 +32,10 @@ function lf_setup() {
     add_theme_support('post-thumbnails');
     add_theme_support('woocommerce', ['product_grid' => ['default_columns' => 3]]);
 
+    remove_theme_support('wc-product-gallery-zoom');
+    remove_theme_support('wc-product-gallery-lightbox');
+    remove_theme_support('wc-product-gallery-slider');
+
     remove_action('woocommerce_before_main_content', 'storefront_before_content', 10);
     remove_action('woocommerce_after_main_content', 'storefront_after_content', 10);
     remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
