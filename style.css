@@ -3393,14 +3393,14 @@
         color: var(--creme);
     }
 
-    .lf-catalogue-intro {
+    .lf-catalogue-heading .term-description {
         max-width: 40rem;
         margin: 1rem 0 0;
         font-size: 1.125rem;
         line-height: 1.6;
     }
 
-    .lf-catalogue-intro p {
+    .lf-catalogue-heading .term-description p {
         margin: 0;
     }
 }
