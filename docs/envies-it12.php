@@ -17,10 +17,19 @@ $envies = [
     'Léger' => ['Tartare', 'mimosa', 'pêche']
 ];
 
+$descriptions = [
+    'Végétarien' => 'Sans viande ni poisson : des recettes de maman pour tous les appétits.',
+    'Gourmand' => 'Les plats qui font plaisir : généreux, fondants, comme à la maison.',
+    'Léger' => 'Pour une faim tranquille : des assiettes fraîches, sans renoncer au goût.'
+];
+
 foreach ($envies as $nom => $mots) {
     if (!term_exists($nom, 'envie')) {
         wp_insert_term($nom, 'envie');
     }
+
+    $terme = get_term_by('name', $nom, 'envie');
+    wp_update_term($terme->term_id, 'envie', ['description' => $descriptions[$nom]]);
 
     foreach ($mots as $mot) {
         $id = lf_tool_find_product($mot);

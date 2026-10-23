@@ -107,9 +107,9 @@ La version 0.2.1 conserve cette présentation et ces fonctionnalités avec les t
 
 | User story | Mise en œuvre |
 | --- | --- |
-| US-12.1 | Taxonomie « Envies » (`envie`) indépendante des catégories, rattachée aux produits, créée dans SCF → Taxonomies. Administration dans **Produits → Envies**, case à cocher dans chaque fiche produit et colonne dans la liste des produits. |
-| US-12.2 | Script `docs/envies-it12.php` : Végétarien (4 produits), Gourmand (3), Léger (3). |
-| US-12.3 | Page dédiée par envie (`/envie/vegetarien/`, `/envie/gourmand/`, `/envie/leger/`) avec la grille de la boutique ; pastilles « Envie de : » sous les catégories. Correctif : « Toute la carte » n’est active que sur la boutique. |
+| US-12.1 | Taxonomie « Envies » (`envie`) indépendante des catégories, rattachée aux produits, créée dans SCF → Taxonomies. Administration dans **Produits → Envies** (nom, description), colonne dans la liste des produits. Le filtre `register_taxonomy_args` la déclare hiérarchique pour que la fiche produit affiche des **cases à cocher** (et non un champ d’étiquettes) ; les adresses ne changent pas. |
+| US-12.2 | Script `docs/envies-it12.php`, relançable : Végétarien (4 produits), Gourmand (3), Léger (3), chacune avec une description courte. |
+| US-12.3 | Page dédiée par envie (`/envie/vegetarien/`, `/envie/gourmand/`, `/envie/leger/`) : titre, texte de présentation (description de l’envie), grille de la boutique avec filtres ; pastilles « Envie de : » sous les catégories. Titre de l’onglet et meta description Yoast propres à l’envie (« Gourmand : la carte selon ton envie - Les Fils à Maman ») au lieu de « Archives des Gourmand ». Affichage mobile corrigé (une colonne). |
 
 ## IT-13 : ventes croisées
 
@@ -244,3 +244,4 @@ Historique des versions locales ; les chemins sont ceux de l’époque (avant la
 | 21/10/2026 | IT-22 / 0.22.0 | DDEV local | Pages Mentions légales et CGV, liens dans le pied de page, case CGV obligatoire au checkout (commande refusée sans elle). | Non déployée. |
 | 21/10/2026 | Design system sans JavaScript | DDEV local | system.js supprimé : filtre des produits et menu mobile en HTML/CSS natif, fiche produit et panier montrés en états fixes, blocs de code et boutons « Copier » retirés. États en modificateurs BEM (`lf-chip--input`, `lf-btn--hover`, `lf-header__nav--open`) ou en `:has()`. Valeurs de la documentation en rem. 0 erreur aux validateurs W3C. | Non déployée. |
 | 21/10/2026 | Design system à part | DDEV local | Dossier `design-system/` retiré du thème à la demande de Jules : le design system est livré dans le dossier séparé `MAREE-Jules-design-system`. | Non déployée. |
+| 23/10/2026 | IT-12 (reprise) | https://mmi.unilim.fr/~maree2/r3SAE01/envie/gourmand/ | Cases à cocher dans la fiche produit, présentation de chaque envie, titres et descriptions Yoast, grille en une colonne sur mobile. | Voir le journal des mises en production. |

@@ -27,6 +27,9 @@ if (is_tax('envie')) {
     <header class="lf-catalogue-heading">
         <h1 class="lf-title lf-title--h1 lf-title--outlined"><?php woocommerce_page_title(); ?></h1>
         <p class="lf-script"><?php echo esc_html($subtitle); ?></p>
+        <?php if (is_tax('envie') && term_description() !== '') : ?>
+            <div class="lf-catalogue-intro"><?php echo wp_kses_post(term_description()); ?></div>
+        <?php endif; ?>
         <?php do_action('woocommerce_archive_description'); ?>
     </header>
 

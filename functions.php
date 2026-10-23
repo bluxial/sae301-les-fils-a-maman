@@ -525,6 +525,39 @@ function lf_envie_navigation() {
     <?php
 }
 
+function lf_envie_taxonomy_args($args, $taxonomy) {
+    if ($taxonomy === 'envie') {
+        $args['hierarchical'] = true;
+    }
+
+    return $args;
+}
+add_filter('register_taxonomy_args', 'lf_envie_taxonomy_args', 10, 2);
+
+function lf_envie_seo_title($titre) {
+    if (is_tax('envie')) {
+        return single_term_title('', false) . ' : la carte selon ton envie - Les Fils à Maman';
+    }
+
+    return $titre;
+}
+add_filter('wpseo_title', 'lf_envie_seo_title');
+add_filter('wpseo_opengraph_title', 'lf_envie_seo_title');
+
+function lf_envie_seo_description($description) {
+    if (is_tax('envie')) {
+        $texte = trim(wp_strip_all_tags(term_description()));
+
+        if ($texte !== '') {
+            return $texte;
+        }
+    }
+
+    return $description;
+}
+add_filter('wpseo_metadesc', 'lf_envie_seo_description');
+add_filter('wpseo_opengraph_desc', 'lf_envie_seo_description');
+
 /* =========================================================
  * 11. Ventes croisées (IT-13)
  * ========================================================= */
