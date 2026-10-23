@@ -8,3 +8,4 @@
 | 21/10/2026 | IT-21 + IT-22 | 4214a6b | Yoast SEO installé, base locale importée (titres et descriptions SEO, pages Mentions légales et CGV, case CGV), données de test supprimées. Sauvegarde avant. |
 | 21/10/2026 | IT-2 + IT-6 | 7951639 | Thème mis à jour : design system sorti du thème, « Votre commande » à côté du formulaire au checkout. Base non modifiée. |
 | 21/10/2026 | Réorganisation | 935df50 | Thème réorganisé comme chartier-child (style.css, functions.php, assets/img|js|fonts, acf-json, template-parts, docs/). Le thème en production devient un clone Git du dépôt (ancien dossier sauvegardé dans `~/sauvegardes-r3SAE01`), mises à jour par `git pull`. Logo des e-mails mis à jour. Base non modifiée. |
+| 23/10/2026 | Correctif IT-6 | c74d02e | Thème mis à jour par `git pull` : espacement régulier entre les champs du formulaire de commande. Base non modifiée. |
