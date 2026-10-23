@@ -3636,8 +3636,10 @@
         color: var(--creme);
     }
 
-    .lf-system .lf-shop-results ul.products {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media (min-width: 43.8125rem) {
+        .lf-system .lf-shop-results ul.products {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
     }
 
     @media (min-width: 75rem) {
@@ -3953,6 +3955,17 @@
     .lf-page-content--texte a, .lf-system .woocommerce-terms-and-conditions-wrapper a {
         font-weight: 600;
         text-decoration: underline;
+    }
+
+    .lf-page__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .lf-page-content--texte .lf-page__actions a {
+        text-decoration: none;
     }
 
     .lf-system .woocommerce-terms-and-conditions-wrapper {
