@@ -1,6 +1,6 @@
 <?php
 /**
- * IT-21 : titres et meta descriptions Yoast SEO.
+ * IT-21 : titres et meta descriptions Yoast SEO, site ouvert aux moteurs de recherche.
  * Relançable.
  * Local : ddev wp eval-file wp-content/themes/les-fils-a-maman/docs/seo-it21.php
  * Prod  : wp eval-file wp-content/themes/les-fils-a-maman/docs/seo-it21.php
@@ -145,5 +145,7 @@ if ($logo) {
     WPSEO_Options::set('og_default_image', wp_get_attachment_url($logo));
     WPSEO_Options::set('og_default_image_id', $logo);
 }
+
+update_option('blog_public', 1);
 
 lf_tool_message('SEO configuré');

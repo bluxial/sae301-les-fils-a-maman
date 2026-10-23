@@ -67,6 +67,11 @@ function lf_body_class($classes) {
 }
 add_filter('body_class', 'lf_body_class');
 
+function lf_icone() {
+    echo '<link rel="icon" type="image/svg+xml" href="' . esc_url(get_stylesheet_directory_uri() . '/assets/img/sticker-tamagotchi.svg') . '">' . "\n";
+}
+add_action('wp_head', 'lf_icone');
+
 function lf_shop_columns() {
     return 3;
 }
